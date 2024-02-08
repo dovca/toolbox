@@ -1,0 +1,6 @@
+import {map} from '../array';
+import {keys} from './keys';
+
+export function toPairs<T extends object, K extends keyof T = keyof T>(obj: T): [K, T[K]][] {
+	return map<K, [K, T[K]]>((key) => [key, obj[key]])(keys<T, K>(obj));
+}
