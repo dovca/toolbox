@@ -1,5 +1,5 @@
 import type {Fn} from '../types';
 
-export function property<P extends string, T extends { [K in P]: any }>(prop: P): Fn<T[P], T> {
+export function property<T extends object, P extends keyof T>(prop: P): Fn<T[P], T> {
 	return (obj) => obj[prop];
 }

@@ -1,6 +1,6 @@
-import type {Fn, StringKeys} from '../types';
+import type {Fn} from '../types';
 
-export function omit<T extends object, K extends StringKeys<T>>(...keys: K[]): Fn<Omit<T, K>, T> {
+export function omit<T extends object>(...keys: (keyof T)[]): Fn<Omit<T, keyof T>, T> {
 	return (object) => {
 		const result = {...object};
 		for (const key of keys) {

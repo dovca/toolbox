@@ -1,12 +1,12 @@
-import type {Fn, Predicate, StringKeys} from '../types';
+import type {Fn, Predicate} from '../types';
 import {keys} from './keys';
 import {isOneOf} from '../predicate';
 
-export function pickBy<T extends object, K extends StringKeys<T>>(picker: Predicate<K>): Fn<Pick<T, K>, T>;
-export function pickBy<T extends object>(picker: Predicate<StringKeys<T>>): Fn<Partial<T>, T> {
+export function pickBy<T extends object>(picker: Predicate<keyof T>): Fn<Pick<T, keyof T>, T>;
+export function pickBy<T extends object>(picker: Predicate<keyof T>): Fn<Partial<T>, T> {
 	return (object) => {
 		const result: Partial<T> = {};
-		for (const key of keys(object)) {
+		for (const key of keys<T, true>(object)) {
 			if (picker(key)) {
 				result[key] = object[key];
 			}
@@ -15,4 +15,4 @@ export function pickBy<T extends object>(picker: Predicate<StringKeys<T>>): Fn<P
 	};
 }
 
-export const pick = <T extends object, K extends StringKeys<T>>(...keys: K[]) => pickBy<T, K>(isOneOf(keys));
+export const pick = <T extends object>(...keys: (keyof T)[]) => pickBy(isOneOf(keys));

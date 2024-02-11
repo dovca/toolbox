@@ -1,3 +1,5 @@
+import type {ToString} from 'type-fest/source/internal';
+
 export type Fn<R, P1 = R> = (p1: P1) => R;
 export type Fn2<R, P1 = R, P2 = P1> = (p1: P1, p2: P2) => R;
 export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = (p1: P1, p2: P2, p3: P3) => R;
@@ -22,8 +24,8 @@ export type Comparator<T, R = boolean> = Fn2<R, T>;
 export type Arrayifier<T> = Fn<T[], T>;
 
 export type Dictionary<T> = Record<string, T>;
-export type StringKeys<T extends object> = keyof T & string;
-export type Values<T extends object> = T[StringKeys<T>];
+export type StringKeys<T extends object> = ToString<keyof T>;
+export type Values<T extends object> = T[keyof T];
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 

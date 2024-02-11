@@ -10,5 +10,4 @@ export * from "./mapValues";
 export * from "./omit";
 export * from "./pick";
 export * from "./property";
-export * from "./toPairs";
 export * from "./values";

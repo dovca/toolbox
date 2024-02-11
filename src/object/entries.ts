@@ -1,5 +1,5 @@
-import type {StringKeys} from '../types';
+import type {Values} from '../types';
 
-export function entries<T extends object>(obj: T): [StringKeys<T>, T[StringKeys<T>]][] {
-	return Object.entries(obj) as [StringKeys<T>, T[StringKeys<T>]][];
+export function entries<T extends object>(obj: T): [keyof T, Values<T>][] {
+	return Object.entries(obj) as [keyof T, Values<T>][];
 }
