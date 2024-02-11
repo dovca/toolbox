@@ -11,5 +11,4 @@ export * from "./omit";
 export * from "./pick";
 export * from "./property";
 export * from "./toPairs";
-export * from "./valueOperations";
 export * from "./values";

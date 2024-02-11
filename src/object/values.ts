@@ -1,5 +1,5 @@
-import type {Dictionary} from '../types';
+import type {Dictionary, Values} from '../types';
 
-export function values<T extends object, K extends keyof T>(object: T): T[K][] {
+export function values<T extends object>(object: T): Values<T>[] {
 	return Object.values(object);
 }
