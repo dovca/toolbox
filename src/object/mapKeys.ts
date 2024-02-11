@@ -1,7 +1,6 @@
 import {type Join} from 'string-ts';
-import type {Dictionary, Fn, Fn2, JoinMarker, StringKeys, Values} from '../types';
+import type {Dictionary, Fn, Fn2, JoinMarker, ToString, StringKeys, Values} from '../types';
 import {entries} from './entries';
-import type {ToString} from 'type-fest/source/internal';
 
 // Lowercase overload
 export function mapKeys<T extends object>(

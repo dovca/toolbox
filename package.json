@@ -23,7 +23,6 @@
     "bun": "^1.0.23"
   },
   "dependencies": {
-    "string-ts": "^2.0.0",
-    "type-fest": "^4.10.2"
+    "string-ts": "^2.0.0"
   }
 }
