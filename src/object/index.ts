@@ -3,6 +3,7 @@
  */
 
 export * from "./entries";
+export * from "./findKey";
 export * from "./keys";
 export * from "./mapKeys";
 export * from "./mapValues";
