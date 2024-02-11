@@ -1,4 +1,4 @@
-import type {Fn, IndexedPredicate} from '../types/types';
+import type {Fn, IndexedPredicate} from '../types';
 import {forwardIterator} from './utils/iterators';
 
 export function filter<I, O extends I = I>(predicate: IndexedPredicate<I>): Fn<O[], ReadonlyArray<I>>;

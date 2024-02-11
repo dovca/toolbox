@@ -1,5 +1,5 @@
-import type {Fn, Fn2} from '../types/types';
-import {gather, type Gather2} from '../function/gather';
+import {gather, type Gather2} from '../function';
+import type {Fn, Fn2} from '../types';
 
 export function zipWith<A, I, R>(zipper: Fn2<R, I | undefined, A | undefined>): Fn<Fn<R[], I[]>, A[]> {
 	return (argValues) => (inputValues) => {
@@ -12,5 +12,5 @@ export function zipWith<A, I, R>(zipper: Fn2<R, I | undefined, A | undefined>): 
 	}
 }
 
-export const zip: <A, I>(values: A[]) => (input: I[]) => [I | undefined, A | undefined][] = zipWith(gather as Gather2);
+export const zip: <I, A>(values: A[]) => (input: I[]) => [I | undefined, A | undefined][] = zipWith(gather as Gather2);
 

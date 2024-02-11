@@ -1,4 +1,4 @@
-import type {Fn, IterationCallback} from '../types/types';
+import type {Fn, IterationCallback} from '../types';
 import {pipe} from '../function/pipe';
 import {map} from './map';
 import {flat} from './flat';

@@ -1,4 +1,4 @@
-import type {Fn, Fn2} from '../types/types';
+import type {Fn, Fn2} from '../types';
 
 export function binaryOperation(operation: Fn2<number>): (num?: number) => Fn<number> {
 	return (b) => (a) => operation(a, b ?? a);

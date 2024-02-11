@@ -1,4 +1,4 @@
-import type {Fn} from '../types/types';
+import type {Fn} from '../types';
 
 export function replace(
 	searchValue: string | RegExp,

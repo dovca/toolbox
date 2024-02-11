@@ -1,4 +1,4 @@
-import type {Fn} from '../types/types';
+import type {Fn} from '../types';
 
 export function flow<V>(value: V): V;
 export function flow<V, A>(value: V, ...fns: [Fn<A, V>]): A;

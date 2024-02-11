@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {curry} from '../../src/function/curry';
+import {curry} from '../../src';
 
 test('curry', () => {
 	const fn0 = () => 1;

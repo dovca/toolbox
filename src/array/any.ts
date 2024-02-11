@@ -1,4 +1,4 @@
-import type {Predicate} from '../types/types';
+import type {Predicate} from '../types';
 import {forwardIterator} from './utils/iterators';
 
 export function any<T>(...predicates: Predicate<T>[]): Predicate<T> {

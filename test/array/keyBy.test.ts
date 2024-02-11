@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {keyBy} from '../../src/array/keyBy';
+import {keyBy} from '../../src';
 
 test('keyBy: callback', () => {
 	const keyByFloor = keyBy(Math.floor);

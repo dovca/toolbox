@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {findLastIndex, findIndex} from '../../src/array';
+import {findLastIndex, findIndex} from '../../src';
 
 const positive = (x: number) => x > 0;
 

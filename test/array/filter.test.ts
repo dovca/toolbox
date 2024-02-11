@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {filter} from '../../src/array';
+import {filter} from '../../src';
 
 const positive = (x: number) => x > 0;
 

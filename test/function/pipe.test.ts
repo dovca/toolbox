@@ -1,9 +1,5 @@
 import {expect, test} from 'bun:test';
-import {pipe} from '../../src/function/pipe';
-import {multiply, increment, square} from '../../src/number/arithmetic';
-import {fromCharCode, toLowerCase} from '../../src/string';
-import {push, reverse} from '../../src/array';
-import {arrayify} from '../../src/misc/arrayify';
+import {arrayify, fromCharCode, increment, multiply, pipe, push, square, reverse, lowerCase} from '../../src';
 
 test('pipe 0 functions', () => {
 	const piped = pipe();
@@ -35,7 +31,7 @@ test('pipe functions of different argument types', () => {
 		square,
 		increment,
 		fromCharCode,
-		toLowerCase,
+		lowerCase,
 		arrayify,
 		push('b'),
 		reverse,

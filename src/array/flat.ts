@@ -1,4 +1,4 @@
-import type {Fn} from '../types/types';
+import type {Fn} from '../types';
 import {forwardIterator} from './utils/iterators';
 
 export function flat<T extends ReadonlyArray<any>, D extends number = 1>(depth: D = 1 as D): Fn<FlatArray<T, D>[], T> {

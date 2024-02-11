@@ -1,4 +1,4 @@
-import type {Fn, Fn3, MyIterator} from '../types/types';
+import type {Fn, Fn3, MyIterator} from '../types';
 import {backwardIterator, forwardIterator, reversedIterator} from './utils/iterators';
 
 type Reduce = <A, V = A>(

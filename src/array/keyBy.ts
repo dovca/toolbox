@@ -1,6 +1,6 @@
-import type {Dictionary, Fn} from '../types/types';
+import type {Dictionary, Fn} from '../types';
 
-export function keyBy<T>(key: Fn<T, string | number>): Fn<Dictionary<T>, ReadonlyArray<T>>;
+export function keyBy<T>(key: Fn<string | number, T>): Fn<Dictionary<T>, ReadonlyArray<T>>;
 export function keyBy<K extends string, T extends { [k in K]?: any }>(key: K): Fn<Dictionary<T>, ReadonlyArray<T>>;
 export function keyBy<T>(key: keyof T | Fn<string | number, T>): Fn<Dictionary<T>, ReadonlyArray<T>> {
 	return (values) => {

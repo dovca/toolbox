@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {map} from '../../src/array';
+import {map} from '../../src';
 
 const double = (x: number) => x * 2;
 

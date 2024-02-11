@@ -1,4 +1,4 @@
-import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types/types';
+import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
 
 export function spread<R, A>(fn: Fn<R, A>): Fn<R, A>;
 export function spread<R, A, B>(fn: Fn2<R, A, B>): Fn<R, [A, B]>;

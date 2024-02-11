@@ -1,5 +1,5 @@
-import type {Fn} from '../types/types';
+import type {Fn, Predicate} from '../types';
 
-export function endsWith(str: string): Fn<string, boolean> {
+export function endsWith(str: string): Predicate<string> {
 	return (input) => input.endsWith(str);
 }

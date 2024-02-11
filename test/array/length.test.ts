@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {length} from '../../src/array/length';
+import {length} from '../../src';
 
 test('length', () => {
 	expect(length([])).toBe(0);

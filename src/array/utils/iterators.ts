@@ -1,4 +1,4 @@
-import type {MyIterator} from '../../types/types';
+import type {MyIterator} from '../../types';
 
 export function *forwardIterator<T>(values: ReadonlyArray<T>): MyIterator<T> {
 	for (let i = 0; i < values.length; i++) {

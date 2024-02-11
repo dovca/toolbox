@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {chunk, chunkBy} from '../../src/array/chunk';
+import {chunk, chunkBy} from '../../src';
 
 test('chunk', () => {
 	expect(chunk(3)([])).toEqual([]);

@@ -1,5 +1,5 @@
-import type {Fn} from '../types/types';
+import type {Fn} from '../types';
 
-export function localeCompare(that: string): Fn<string, number> {
-  return (input) => input.localeCompare(that);
+export function localeCompare(other: string): Fn<number, string> {
+  return (input) => input.localeCompare(other);
 }

@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {isNotNullish} from '../../src/predicate/isNotNullish';
+import {isNotNullish} from '../../src';
 
 test('isNotNullish', () => {
 	expect(isNotNullish(null)).toBe(false);

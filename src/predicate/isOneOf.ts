@@ -1,4 +1,4 @@
-import type {Predicate} from '../types/types';
+import type {Predicate} from '../types';
 import {forwardIterator} from '../array/utils/iterators';
 
 export function isOneOf<T>(values: T[]): Predicate<T> {

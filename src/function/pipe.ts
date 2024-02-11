@@ -1,4 +1,4 @@
-import type {Fn} from '../types/types';
+import type {Fn} from '../types';
 import {reduce} from '../array';
 
 export function pipe<T>(): Fn<T>;

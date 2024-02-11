@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {not} from '../../src/bool/not';
+import {not} from '../../src';
 
 test('not', () => {
 	expect(not(true)).toBe(false);

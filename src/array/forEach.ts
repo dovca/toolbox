@@ -1,4 +1,4 @@
-import type {Fn, IterationCallback, MyIterator} from '../types/types';
+import type {Fn, IterationCallback, MyIterator} from '../types';
 import {forwardIterator, reversedIterator} from './utils/iterators';
 
 function forEachFactory<T>(generator: Fn<MyIterator<T>, ReadonlyArray<T>>): Fn<Fn<ReadonlyArray<T>>, IterationCallback<void, T>>;

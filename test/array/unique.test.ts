@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {unique} from '../../src/array';
+import {unique} from '../../src';
 
 test('unique', () => {
 	expect(unique([])).toEqual([]);

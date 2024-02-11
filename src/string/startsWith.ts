@@ -1,5 +1,5 @@
-import type {Fn} from '../types/types';
+import type {Predicate} from '../types';
 
-export function startsWith(str: string): Fn<string, boolean> {
+export function startsWith(str: string): Predicate<string> {
 	return (input) => input.startsWith(str);
 }

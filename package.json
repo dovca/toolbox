@@ -7,15 +7,19 @@
     "test": "test"
   },
   "scripts": {
-    "test": "bun test"
+    "test": "bun test --bail",
+    "generate-barrels": "barrelsby --delete -d ./src -l all",
+    "prepare": "husky"
   },
   "author": "david@ovcacik.xyz",
   "license": "ISC",
   "devDependencies": {
+    "barrelsby": "^2.8.1",
     "bun": "^1.0.23"
   },
   "dependencies": {
     "@types/bun": "^1.0.2",
+    "husky": "^9.0.10",
     "string-ts": "^2.0.0",
     "type-fest": "^4.10.2"
   }

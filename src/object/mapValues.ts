@@ -1,4 +1,4 @@
-import type {Fn, Fn2, StringKeys, Values} from '../types/types';
+import type {Fn, Fn2, StringKeys, Values} from '../types';
 import {entries} from './entries';
 
 export function mapValues<

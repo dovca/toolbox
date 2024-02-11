@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {cut} from '../../src/array';
+import {cut} from '../../src';
 
 test('cut', () => {
 	expect(cut(0)([])).toEqual([[], []]);

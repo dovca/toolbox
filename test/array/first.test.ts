@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {first} from '../../src/array';
+import {first} from '../../src';
 
 test('first', () => {
 	expect(first([])).toBe(undefined);

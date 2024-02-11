@@ -1,36 +1,26 @@
-import type {
-	Append,
-	Dictionary,
-	Fn,
-	Fn2,
-	JoinMarker,
-	Prepend,
-	StringKeys,
-	Values
-} from '../types/types';
+import {type Join} from 'string-ts';
+import type {Dictionary, Fn, Fn2, JoinMarker, StringKeys, Values} from '../types';
 import {entries} from './entries';
-import {flow} from '../misc/flow';
-import {append, prepend, toUpperCase} from '../string';
 
-// Prepend overload
-export function mapKeys<T extends object, Prefix extends string>(
-	mapper: Fn<Prepend<StringKeys<T>, Prefix, JoinMarker>, StringKeys<T>>,
-): Fn<{ [Key in StringKeys<T> as Prepend<Key, Prefix>]: T[Key] }, T>;
-
-// Append overload
-export function mapKeys<T extends object, Suffix extends string>(
-	mapper: Fn<Append<StringKeys<T>, Suffix, JoinMarker>, StringKeys<T>>,
-): Fn<{ [Key in StringKeys<T> as Append<Key, Suffix>]: T[Key] }, T>;
+// Lowercase overload
+export function mapKeys<T extends object>(
+	mapper: Fn<Lowercase<StringKeys<T>>, StringKeys<T>>,
+): Fn<{ [Key in StringKeys<T> as Lowercase<Key>]: T[Key] }, T>;
 
 // Uppercase overload
 export function mapKeys<T extends object>(
 	mapper: Fn<Uppercase<StringKeys<T>>, StringKeys<T>>,
 ): Fn<{ [Key in StringKeys<T> as Uppercase<Key>]: T[Key] }, T>;
 
-// Lowercase overload
-export function mapKeys<T extends object>(
-	mapper: Fn<Lowercase<StringKeys<T>>, StringKeys<T>>,
-): Fn<{ [Key in StringKeys<T> as Lowercase<Key>]: T[Key] }, T>;
+// Prepend overload
+export function mapKeys<T extends object, Prefix extends string>(
+	mapper: Fn<Join<[Prefix, StringKeys<T>], JoinMarker>, StringKeys<T>>,
+): Fn<{ [Key in StringKeys<T> as Join<[Prefix, Key]>]: T[Key] }, T>;
+
+// Append overload
+export function mapKeys<T extends object, Suffix extends string>(
+	mapper: Fn<Join<[StringKeys<T>, Suffix], JoinMarker>, StringKeys<T>>,
+): Fn<{ [Key in StringKeys<T> as Join<[Key, Suffix]>]: T[Key] }, T>;
 
 // Generic type -> type overload
 export function mapKeys<
@@ -51,7 +41,3 @@ export function mapKeys<
 		return result;
 	};
 }
-
-const a = flow({a: 1, b: 2}, mapKeys(append('x')));
-const b = flow({a: 1, b: 2}, mapKeys(prepend('x')));
-const c = flow({a: 1, b: 2}, mapKeys(toUpperCase));

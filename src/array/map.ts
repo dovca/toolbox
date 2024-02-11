@@ -1,4 +1,4 @@
-import type {Fn, Fn3, IterationCallback} from '../types/types';
+import type {Fn, Fn3, IterationCallback} from '../types';
 import {forwardIterator} from './utils/iterators';
 import {values} from '../object/values';
 

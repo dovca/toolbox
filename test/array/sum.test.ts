@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {sum} from '../../src/array';
+import {sum} from '../../src';
 
 test('sum', () => {
 	expect(sum([])).toEqual(0);

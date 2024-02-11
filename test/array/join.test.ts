@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {join} from '../../src/array';
+import {join} from '../../src';
 
 test('join', () => {
 	expect(join()([])).toBe('');

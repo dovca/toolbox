@@ -1,4 +1,4 @@
-import type {Fn} from '../types/types';
+import type {Fn} from '../types';
 import {forwardIterator} from './utils/iterators';
 
 export function join<T>(glue = ''): Fn<string, ReadonlyArray<T>> {

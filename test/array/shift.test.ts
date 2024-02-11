@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {shift} from '../../src/array';
+import {shift} from '../../src';
 
 test('shift', () => {
 	expect(shift([])).toEqual([]);

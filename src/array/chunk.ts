@@ -1,4 +1,4 @@
-import type {Fn, IterationCallback} from '../types/types';
+import type {Fn, IterationCallback} from '../types';
 import {forwardIterator} from './utils/iterators';
 
 export function chunkWith<T>(mapper: IterationCallback<any, T>): Fn<T[][], T[]> {

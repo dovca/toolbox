@@ -15,14 +15,11 @@ export type IterationCallback<R, T> = FnT3<R, IterationResult<T>>;
 export type MyIterator<T> = Generator<IterationResult<T>>;
 
 export type JoinMarker = '___join___';
-export type RemoveJoinMarker<T extends string> = T extends `${infer P}${JoinMarker}${infer S}` ? `${P}${S}` : T;
 
 export type Predicate<T> = Fn<boolean, T>;
 export type IndexedPredicate<T> = Fn2<boolean, T, number>;
 export type Comparator<T, R = boolean> = Fn2<R, T>;
-
-export type Append<Base extends string, Suffix extends string, Glue extends string = ''> = `${Base}${Glue}${Suffix}`;
-export type Prepend<Base extends string, Prefix extends string, Glue extends string = ''> = `${Prefix}${Glue}${Base}`;
+export type Arrayifier<T> = Fn<T[], T>;
 
 export type Dictionary<T> = Record<string, T>;
 export type StringKeys<T extends object> = keyof T & string;

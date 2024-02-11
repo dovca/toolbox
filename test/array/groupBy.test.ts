@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {groupBy} from '../../src/array/groupBy';
+import {groupBy} from '../../src';
 
 test('groupBy: callback', () => {
 	const groupByFloor = groupBy<number>(Math.floor);

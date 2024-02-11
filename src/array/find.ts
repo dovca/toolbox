@@ -1,4 +1,4 @@
-import type {Fn, FnT3, IterationResult, MyIterator} from '../types/types';
+import type {Fn, FnT3, IterationResult, MyIterator} from '../types';
 import {backwardIterator, reversedIterator, forwardIterator} from './utils/iterators';
 
 function findFactory<T>(generator: Fn<MyIterator<T>, ReadonlyArray<T>>): Fn<Fn<T | undefined, ReadonlyArray<T>>, FnT3<boolean, IterationResult<T>>> {

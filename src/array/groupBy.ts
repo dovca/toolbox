@@ -1,4 +1,4 @@
-import type {Dictionary, Fn} from '../types/types';
+import type {Dictionary, Fn} from '../types';
 import {isNullish} from '../predicate/isNullish';
 
 export function groupBy<T>(identification: Fn<string | number, T>): Fn<Dictionary<T[]>, T[]>;

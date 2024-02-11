@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {flat} from '../../src/array';
+import {flat} from '../../src';
 
 test('flat', () => {
 	expect(flat()([])).toEqual([]);

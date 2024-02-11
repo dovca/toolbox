@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {includes} from '../../src/array';
+import {includes} from '../../src';
 
 test('includes', () => {
 	expect(includes(0)([])).toBe(false);

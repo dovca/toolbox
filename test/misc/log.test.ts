@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {log} from '../../src/misc/log';
+import {log} from '../../src';
 
 test('log', () => {
 	const x = 1;

@@ -1,5 +1,5 @@
-import type {Fn} from '../types/types';
+import type {Fn} from '../types';
 
-export function search(searchValue: string | RegExp): Fn<string, number> {
+export function search(searchValue: string | RegExp): Fn<number, string> {
 	return (input) => input.search(searchValue);
 }

@@ -1,4 +1,4 @@
-import type {Comparator, Fn, Fn2, Predicate} from '../types/types';
+import type {Comparator, Fn, Fn2, Predicate} from '../types';
 
 export function compare<T>(predicate: Predicate<T>): Predicate<T> {
 	return (input) => predicate(input);

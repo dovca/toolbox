@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {neighbors} from '../../src/array/neighbors';
+import {neighbors} from '../../src';
 
 test('neighbors', () => {
 	expect(neighbors([])).toEqual([]);

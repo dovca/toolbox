@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {flatMap} from '../../src/array';
+import {flatMap} from '../../src';
 
 const expand = (x: number) => [x, x * 10, x * 100];
 

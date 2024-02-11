@@ -1,4 +1,4 @@
-import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types/types';
+import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
 
 export function curry<R>(fn: Fn<R, void>): Fn<R, void>;
 export function curry<R, P1>(fn: Fn<R, P1>): Fn<R, P1>;

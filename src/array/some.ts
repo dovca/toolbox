@@ -1,4 +1,4 @@
-import type {IndexedPredicate, Predicate} from '../types/types';
+import type {IndexedPredicate, Predicate} from '../types';
 import {forwardIterator} from './utils/iterators';
 
 export function some<T>(predicate: IndexedPredicate<T>): Predicate<ReadonlyArray<T>> {

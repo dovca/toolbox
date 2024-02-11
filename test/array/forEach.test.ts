@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {forEach, forEachReversed} from '../../src/array';
+import {forEach, forEachReversed} from '../../src';
 
 test('forEach', () => {
 	const values = [1, 2, 3];

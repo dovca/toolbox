@@ -1,9 +1,8 @@
 import {expect, test} from 'bun:test';
-import {reduce} from '../../src/array';
-import {reduceReversed, reduceRight} from '../../src/array/reduce';
+import {reduce, reduceReversed, reduceRight} from '../../src';
 
 const add = (acc: number, value: number) => acc + value;
-const concat = (acc: string | number, value: number) => `${acc}${value}`;
+const concat = (acc: string | number, value: number): string => `${acc}${value}`;
 
 test('reduce', () => {
 	expect(() => reduce(add)([])).toThrow();
@@ -15,9 +14,9 @@ test('reduce', () => {
 	expect(reduce(add, 100)([1, 2, 3])).toBe(106);
 	expect(reduce<number>((acc, val) => acc * val)([1, 2, 3])).toBe(6);
 
-	expect(reduce<number, string>(concat)([1, 2, 3])).toBe('123');
-	expect(reduce<number, string>(concat, '')([1, 2, 3])).toBe('123');
-	expect(reduce<number, string>(concat, 'abc')([1, 2, 3])).toBe('abc123');
+	expect(reduce(concat)([1, 2, 3])).toBe('123');
+	expect(reduce(concat, '')([1, 2, 3])).toBe('123');
+	expect(reduce(concat, 'abc')([1, 2, 3])).toBe('abc123');
 });
 
 test('reduceRight', () => {
@@ -32,9 +31,9 @@ test('reduceRight', () => {
 	expect(reduceRight(sum, 100)([1, 2, 3])).toBe(106);
 	expect(reduceRight<number>((acc, val) => acc * val)([1, 2, 3])).toBe(6);
 
-	expect(reduceRight<number, string>(concat)([1, 2, 3])).toBe('321');
-	expect(reduceRight<number, string>(concat, '')([1, 2, 3])).toBe('321');
-	expect(reduceRight<number, string>(concat, 'abc')([1, 2, 3])).toBe('abc321');
+	expect(reduceRight(concat)([1, 2, 3])).toBe('321');
+	expect(reduceRight(concat, '')([1, 2, 3])).toBe('321');
+	expect(reduceRight(concat, 'abc')([1, 2, 3])).toBe('abc321');
 });
 
 test('reduceReversed', () => {
@@ -49,7 +48,7 @@ test('reduceReversed', () => {
 	expect(reduceReversed(sum, 100)([1, 2, 3])).toBe(106);
 	expect(reduceReversed<number>((acc, val) => acc * val)([1, 2, 3])).toBe(6);
 
-	expect(reduceReversed<number, string>(concat)([1, 2, 3])).toBe('321');
-	expect(reduceReversed<number, string>(concat, '')([1, 2, 3])).toBe('321');
-	expect(reduceReversed<number, string>(concat, 'abc')([1, 2, 3])).toBe('abc321');
+	expect(reduceReversed(concat)([1, 2, 3])).toBe('321');
+	expect(reduceReversed(concat, '')([1, 2, 3])).toBe('321');
+	expect(reduceReversed(concat, 'abc')([1, 2, 3])).toBe('abc321');
 });

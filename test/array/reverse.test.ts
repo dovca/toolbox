@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {reverse} from '../../src/array';
+import {reverse} from '../../src';
 
 test('reverse', () => {
 	expect(reverse([])).toEqual([]);

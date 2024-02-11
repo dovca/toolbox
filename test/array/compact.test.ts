@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {compact} from '../../src/array';
+import {compact} from '../../src';
 
 test('compact', () => {
 	expect(compact([1, 'foo', {}, []])).toEqual([1, 'foo', {}, []]);

@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {pop} from '../../src/array';
+import {pop} from '../../src';
 
 test('pop', () => {
 	expect(pop([])).toEqual([]);
