@@ -7,6 +7,7 @@
     "test": "test"
   },
   "files": ["src"],
+  "homepage": "https://github.com/dovca/ts-fns",
   "module": "src/index.ts",
   "packageManager": "bun",
   "scripts": {
