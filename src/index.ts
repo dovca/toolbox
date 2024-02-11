@@ -4,9 +4,9 @@
 
 export * from "./array/index";
 export * from "./bool/index";
-export * from "./conflicting/index";
 export * from "./function/index";
 export * from "./misc/index";
+export * from "./multi/index";
 export * from "./number/index";
 export * from "./object/index";
 export * from "./predicate/index";
