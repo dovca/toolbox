@@ -1,5 +1,3 @@
-import type {ToString} from 'type-fest/source/internal';
-
 export type Fn<R, P1 = R> = (p1: P1) => R;
 export type Fn2<R, P1 = R, P2 = P1> = (p1: P1, p2: P2) => R;
 export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = (p1: P1, p2: P2, p3: P3) => R;
@@ -11,17 +9,16 @@ export type FnT4<R, T extends [any, any, any, any]> = (...args: T) => R;
 export type FnT5<R, T extends [any, any, any, any, any]> = (...args: T) => R;
 
 export type IterationResult<T> = [T, number, ReadonlyArray<T>];
-
 export type IterationCallback<R, T> = FnT3<R, IterationResult<T>>;
-
 export type MyIterator<T> = Generator<IterationResult<T>>;
 
 export type JoinMarker = '___join___';
 
 export type Predicate<T> = Fn<boolean, T>;
-export type IndexedPredicate<T> = Fn2<boolean, T, number>;
 export type Comparator<T, R = boolean> = Fn2<R, T>;
 export type Arrayifier<T> = Fn<T[], T>;
+
+export type ToString<T> = T extends string | number ? `${T}` : never;
 
 export type Dictionary<T> = Record<string, T>;
 export type StringKeys<T extends object> = ToString<keyof T>;
