@@ -1,9 +1,10 @@
 {
-  "name": "@dovca/functions",
+  "name": "@dovca/ts-fns",
   "version": "0.0.0",
-  "description": "",
+  "description": "A set of TypeScript functions for common tasks.",
   "main": "index.js",
   "directories": {
+    "lib": "src",
     "test": "test"
   },
   "files": ["src"],
@@ -16,7 +17,7 @@
     "prepare": "husky"
   },
   "author": "david@ovcacik.xyz",
-  "license": "ISC",
+  "license": "LGPL-3.0-or-later",
   "devDependencies": {
     "@types/bun": "^1.0.2",
     "husky": "^9.0.10",
