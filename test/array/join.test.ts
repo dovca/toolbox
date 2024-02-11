@@ -8,5 +8,5 @@ test('join', () => {
 	expect(join(',')([1])).toBe('1');
 	expect(join()([1, 2, 3])).toBe('123');
 	expect(join(',')([1, 2, 3])).toBe('1,2,3');
-	expect(join()([undefined])).toBe('undefined');
+	expect(join()([undefined])).toBe('');
 });

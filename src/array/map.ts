@@ -1,15 +1,8 @@
 import type {Fn, Fn3, IterationCallback} from '../types';
 import {forwardIterator} from './utils/iterators';
-import {values} from '../object/values';
 
 export function map<I, O = I>(mapper: IterationCallback<O, I>): Fn<O[], ReadonlyArray<I>> {
-	return (values) => {
-		const result: O[] = Array.from({length: values.length});
-		for (const [value, index, array] of forwardIterator(values)) {
-			result[index] = mapper(value, index, array);
-		}
-		return result;
-	};
+	return (values) => values.map(mapper);
 }
 
 export function mapWithPrevInput<I, O = I>(mapper: Fn3<O, [I, I | undefined], number, ReadonlyArray<I>>): Fn<O[], ReadonlyArray<I>> {
