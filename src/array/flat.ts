@@ -1,7 +1,7 @@
 import type {Fn} from '../types/types';
 import {forwardIterator} from './utils/iterators';
 
-export function flat<T extends ReadonlyArray<any>, D extends number = 1>(depth: D = 1 as D): Fn<T, FlatArray<T, D>[]> {
+export function flat<T extends ReadonlyArray<any>, D extends number = 1>(depth: D = 1 as D): Fn<FlatArray<T, D>[], T> {
 	return (values) => {
 		const result: T[] = [];
 		for (const [value] of forwardIterator(values)) {

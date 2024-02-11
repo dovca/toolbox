@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {arrayify} from '../../src/array';
+import {arrayify} from '../../src/misc/arrayify';
 
 test('arrayify non-array', () => {
 	const value = {foo: 'bar'};

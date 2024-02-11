@@ -1,6 +1,7 @@
-import type {Fn, FnT2} from '../types/types';
+import type {Fn, Fn2} from '../types/types';
+import {gather, type Gather2} from '../function/gather';
 
-export function zipWith<A, I, R>(zipper: FnT2<[I | undefined, A | undefined], R>): Fn<A[], Fn<I[], R[]>> {
+export function zipWith<A, I, R>(zipper: Fn2<R, I | undefined, A | undefined>): Fn<Fn<R[], I[]>, A[]> {
 	return (argValues) => (inputValues) => {
 		const length = Math.max(inputValues.length, argValues.length);
 		const result: R[] = Array.from({length});
@@ -11,5 +12,5 @@ export function zipWith<A, I, R>(zipper: FnT2<[I | undefined, A | undefined], R>
 	}
 }
 
-export const zip: <I, V>(values: V[]) => (input: I[]) => [I | undefined, V | undefined][] = zipWith((a, b) => [a, b]);
+export const zip: <A, I>(values: A[]) => (input: I[]) => [I | undefined, A | undefined][] = zipWith(gather as Gather2);
 

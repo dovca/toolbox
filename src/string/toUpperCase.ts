@@ -1,5 +1,5 @@
-import type {Fn} from '../types/types';
+import {upperCase} from 'string-ts';
 
-export function toUpperCase(str: string): string {
-	return str.toUpperCase();
+export function toUpperCase<T extends string>(str: T): Uppercase<T> {
+	return upperCase(str) as Uppercase<T>;
 }

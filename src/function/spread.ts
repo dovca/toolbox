@@ -1,10 +1,10 @@
 import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types/types';
 
-export function spread<A, R>(fn: Fn<A, R>): Fn<A, R>;
-export function spread<A, B, R>(fn: Fn2<A, B, R>): Fn<[A, B], R>;
-export function spread<A, B, C, R>(fn: Fn3<A, B, C, R>): Fn<[A, B, C], R>;
-export function spread<A, B, C, D, R>(fn: Fn4<A, B, C, D, R>): Fn<[A, B, C, D], R>;
-export function spread<A, B, C, D, E, R>(fn: Fn5<A, B, C, D, E, R>): Fn<[A, B, C, D, E], R>;
-export function spread<R>(fn: (...args: any[]) => R): (args: any[]) => R {
+export function spread<R, A>(fn: Fn<R, A>): Fn<R, A>;
+export function spread<R, A, B>(fn: Fn2<R, A, B>): Fn<R, [A, B]>;
+export function spread<R, A, B, C>(fn: Fn3<R, A, B, C>): Fn<R, [A, B, C]>;
+export function spread<R, A, B, C, D>(fn: Fn4<R, A, B, C, D>): Fn<R, [A, B, C, D]>;
+export function spread<R, A, B, C, D, E>(fn: Fn5<R, A, B, C, D, E>): Fn<R, [A, B, C, D, E]>;
+export function spread<R>(fn: (...args: any[]) => R): Fn<R, any[]> {
 	return (args) => fn(...args);
 }

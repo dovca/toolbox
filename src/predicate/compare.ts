@@ -1,11 +1,14 @@
-import type {Comparator, Fn, Predicate} from '../types/types';
+import type {Comparator, Fn, Fn2, Predicate} from '../types/types';
 
 export function compare<T>(predicate: Predicate<T>): Predicate<T> {
 	return (input) => predicate(input);
 }
 
-export function comparator<T>(comp: Comparator<T>): Fn<T, Predicate<T>> {
-	return (input) => (other) => comp(input, other);
+export function comparator<T>(predicate: Comparator<T>): Fn<Predicate<T>, T>;
+export function comparator<R, T>(comp: Comparator<T, R>): Fn<Fn<R, T>, T>;
+export function comparator<R, T, U>(comp: Fn2<R, T, U>): Fn<Fn<R, T>, U>;
+export function comparator<R, T, U = T>(comp: Fn2<R, T, U>): Fn<Fn<R, T>, U> {
+	return (other) => (input) => comp(input, other);
 }
 
 export const isEqual: <T>(value: T) => Predicate<T> = comparator((input, value) => input === value);

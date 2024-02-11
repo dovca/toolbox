@@ -1,7 +1,7 @@
 import type {Fn, IterationCallback} from '../types/types';
 import {forwardIterator} from './utils/iterators';
 
-export function chunkWith<T>(mapper: IterationCallback<T, any>): Fn<T[], T[][]> {
+export function chunkWith<T>(mapper: IterationCallback<any, T>): Fn<T[][], T[]> {
 	return (values) => {
 		let group: T[] = [];
 		let mapperResult: any = undefined;

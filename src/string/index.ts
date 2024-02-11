@@ -1,6 +1,6 @@
 export {charAt} from './charAt';
 export {charCodeAt} from './charCodeAt';
-export {concat} from './concat';
+export {append, prepend} from './concat';
 export {endsWith} from './endsWith';
 export {fromCharCode} from './fromCharCode';
 export {includes} from './includes';

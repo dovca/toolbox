@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {isOdd} from '../../src/number/isOdd';
+import {isOdd} from '../../src/predicate/isOdd';
 
 test('isOdd', () => {
 	expect(isOdd(0)).toBe(false);

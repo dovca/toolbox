@@ -1,10 +1,9 @@
 import {expect, test} from 'bun:test';
 import {pipe} from '../../src/function/pipe';
-import {multiply} from '../../src/number/multiply';
-import {increment} from '../../src/number/increment';
+import {multiply, increment, square} from '../../src/number/arithmetic';
 import {fromCharCode, toLowerCase} from '../../src/string';
-import {square} from '../../src/number/square';
-import {arrayify, push, reverse} from '../../src/array';
+import {push, reverse} from '../../src/array';
+import {arrayify} from '../../src/misc/arrayify';
 
 test('pipe 0 functions', () => {
 	const piped = pipe();

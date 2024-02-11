@@ -1,7 +1,7 @@
 import type {Fn, FnT3, IterationResult, MyIterator} from '../types/types';
 import {backwardIterator, reversedIterator, forwardIterator} from './utils/iterators';
 
-function findIndexFactory<T>(generator: Fn<ReadonlyArray<T>, MyIterator<T>>): Fn<FnT3<IterationResult<T>, boolean>, Fn<ReadonlyArray<T>, number>> {
+function findIndexFactory<T>(generator: Fn<MyIterator<T>, ReadonlyArray<T>>): Fn<Fn<number, ReadonlyArray<T>>, FnT3<boolean, IterationResult<T>>> {
 	return (matcher) => (values) => {
 		for (const [value, index, array] of generator(values)) {
 			if (matcher(value, index, array)) {
