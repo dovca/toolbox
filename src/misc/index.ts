@@ -5,4 +5,3 @@
 export * from "./arrayify";
 export * from "./flow";
 export * from "./log";
-export * from "./raise";
