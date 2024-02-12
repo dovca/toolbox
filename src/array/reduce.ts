@@ -6,7 +6,7 @@ type Reduce = <A, V = A>(
 	start?: A | undefined,
 ) => Fn<A, ReadonlyArray<V>>
 
-export function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>): (
+function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>): (
 	reducer: Fn3<A, A | V, V, number>,
 	start?: A | undefined,
 ) => Fn<A, ReadonlyArray<V>> {
@@ -31,8 +31,17 @@ export function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArr
 	};
 }
 
+/**
+ * Reduces a flowing array to a single value.
+ */
 export const reduce: Reduce = reduceFactory(forwardIterator);
 
+/**
+ * Reduces a flowing array to a single value, iterating from right to left.
+ */
 export const reduceRight: Reduce = reduceFactory(backwardIterator);
 
+/**
+ * Reduces a flowing array to a single value, iterating from right to left, with index counting from right as well.
+ */
 export const reduceReversed: Reduce = reduceFactory(reversedIterator);

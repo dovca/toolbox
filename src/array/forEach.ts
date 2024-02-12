@@ -11,6 +11,16 @@ function forEachFactory<T>(generator: Fn<MyIterator<T>, ReadonlyArray<T>>): Fn<F
 	}
 }
 
+/**
+ * Iterates over the flowing array, calling a callback for each value.
+ * @param callback The callback to call for each value.
+ * @returns Produces the original array.
+ */
 export const forEach = forEachFactory(forwardIterator);
 
+/**
+ * Iterates over the flowing array in reverse, calling a callback for each value.
+ * @param callback The callback to call for each value.
+ * @returns Produces the original array.
+ */
 export const forEachReversed = forEachFactory(reversedIterator);

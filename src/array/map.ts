@@ -1,10 +1,21 @@
 import type {Fn, Fn3, IterationCallback} from '../types';
 import {forwardIterator} from './utils/iterators';
 
+/**
+ * Maps a flowing array.
+ * @param mapper The function to transform each value with.
+ * @returns Produces a new array of mapped values.
+ */
 export function map<I, O = I>(mapper: IterationCallback<O, I>): Fn<O[], ReadonlyArray<I>> {
 	return (values) => values.map(mapper);
 }
 
+/**
+ * Maps a flowing array.
+ * @param mapper The function to transform each value with. The first parameter is a
+ * couple of the current input value and the previous input value.
+ * @returns Produces a new array of mapped values.
+ */
 export function mapWithPrevInput<I, O = I>(mapper: Fn3<O, [I, I | undefined], number, ReadonlyArray<I>>): Fn<O[], ReadonlyArray<I>> {
 	return (values) => {
 		const result: O[] = Array.from({length: values.length});
@@ -17,6 +28,12 @@ export function mapWithPrevInput<I, O = I>(mapper: Fn3<O, [I, I | undefined], nu
 	};
 }
 
+/**
+ * Maps a flowing array.
+ * @param mapper The function to transform each value with. The first parameter is a
+ * couple of the current input value and the previous output value.
+ * @returns Produces a new array of mapped values.
+ */
 export function mapWithPrevOutput<I, O = I>(mapper: Fn3<O, [I, O | undefined], number, ReadonlyArray<I>>): Fn<O[], ReadonlyArray<I>> {
 	return (values) => {
 		const result: O[] = Array.from({length: values.length});

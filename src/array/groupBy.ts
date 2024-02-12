@@ -1,6 +1,10 @@
 import type {Dictionary, Fn} from '../types';
 import {isNullish} from '../predicate/isNullish';
 
+/**
+ * Groups the values of an array by a key.
+ * @param identification
+ */
 export function groupBy<T>(identification: Fn<string | number, T>): Fn<Dictionary<T[]>, T[]>;
 export function groupBy<K extends string, T extends { [k in K]?: any }>(identification: K): Fn<Dictionary<T[]>, T[]>;
 export function groupBy<T>(identification: string | Fn<string | number, T>): Fn<Dictionary<T[]>, T[]> {
