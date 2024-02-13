@@ -4,4 +4,5 @@
 
 export * from "./arrayify";
 export * from "./flow";
+export * from "./identity";
 export * from "./log";
