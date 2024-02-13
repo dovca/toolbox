@@ -1,24 +1,15 @@
-import type {Dictionary, Fn} from '../types';
-import {isNullish} from '../predicate/isNullish';
+import type {Fn} from '../types';
 
 /**
  * Groups the values of an array by a key.
- * @param identification
+ * @param keyer The function to produce the key.
+ * @returns Produces a new object of keyed arrays.
  */
-export function groupBy<T>(identification: Fn<string | number, T>): Fn<Dictionary<T[]>, T[]>;
-export function groupBy<K extends string, T extends { [k in K]?: any }>(identification: K): Fn<Dictionary<T[]>, T[]>;
-export function groupBy<T>(identification: string | Fn<string | number, T>): Fn<Dictionary<T[]>, T[]> {
+export function groupBy<T, K extends string | number>(keyer: Fn<K, T>): Fn<Record<K, T[]>, T[]> {
 	return (values) => {
-		const result: Dictionary<T[]> = {};
+		const result: Record<K, T[]> = {} as Record<K, T[]>;
 		for (const value of values) {
-			if (isNullish(value) && typeof identification !== 'function') {
-				throw new TypeError('groupBy: value is nullish and identification is not a function.');
-			}
-			const id = String(
-				typeof identification === 'function'
-					? identification(value)
-					: value[identification as keyof T]
-			);
+			const id = keyer(value);
 			if (id in result) {
 				result[id].push(value);
 			} else {
