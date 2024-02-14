@@ -1,13 +1,23 @@
-export type Gather2 = <A, B>(p1: A, p2: B) => [A, B];
-export type Gather3 = <A, B, C>(p1: A, p2: B, p3: C) => [A, B, C];
-export type Gather4 = <A, B, C, D>(p1: A, p2: B, p3: C, p4: D) => [A, B, C, D];
-export type Gather5 = <A, B, C, D, E>(p1: A, p2: B, p3: C, p4: D, p5: E) => [A, B, C, D, E];
+import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
+import {identity} from '../misc';
 
-export function gather<A>(p1: A): [A];
-export function gather<A, B>(p1: A, p2: B): [A, B];
-export function gather<A, B, C>(p1: A, p2: B, p3: C): [A, B, C];
-export function gather<A, B, C, D>(p1: A, p2: B, p3: C, p4: D): [A, B, C, D];
-export function gather<A, B, C, D, E>(p1: A, p2: B, p3: C, p4: D, p5: E): [A, B, C, D, E];
-export function gather(...args: any[]): any[] {
-	return args;
+/**
+ * Gathers a set of arguments and passes them to a function as a tuple.
+ * @param fn The function to gather the arguments for. Defaults to the identity function.
+ * @returns The result of the function.
+ */
+export function gather(): Fn<[], void>;
+export function gather<A>(): Fn<[A], A>;
+export function gather<R, A>(fn: Fn<R, [A]>): Fn<R, A>;
+export function gather<A, B>(): Fn2<[A, B], A, B>;
+export function gather<R, A, B>(fn: Fn<R, [A, B]>): Fn2<R, A, B>;
+export function gather<A, B, C>(): Fn3<[A, B, C], A, B, C>;
+export function gather<R, A, B, C>(fn: Fn<R, [A, B, C]>): Fn3<R, A, B, C>;
+export function gather<A, B, C, D>(): Fn4<[A, B, C, D], A, B, C, D>;
+export function gather<R, A, B, C, D>(fn: Fn<R, [A, B, C, D]>): Fn4<R, A, B, C, D>;
+export function gather<A, B, C, D, E>(): Fn5<[A, B, C, D, E], A, B, C, D, E>;
+export function gather<R, A, B, C, D, E>(fn: Fn<R, [A, B, C, D, E]>): Fn5<R, A, B, C, D, E>;
+export function gather<R>(fn?: (args: any[]) => R): Fn<R, any[]>;
+export function gather<R>(fn: Fn<R, any> = identity): (...args: any[]) => R {
+	return (...args) => fn(args);
 }

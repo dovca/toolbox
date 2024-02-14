@@ -1,4 +1,4 @@
-import {gather, type Gather2} from '../function';
+import {gather} from '../function';
 import type {Fn, Fn2} from '../types';
 
 /**
@@ -24,5 +24,5 @@ export function zipWith<A, I, R>(zipper: Fn2<R, I | undefined, A | undefined>): 
  * @param values The values to combine with the input.
  * @returns Produces a new array of tuples.
  */
-export const zip: <I, A>(values: A[]) => (input: I[]) => [I | undefined, A | undefined][] = zipWith(gather as Gather2);
+export const zip: <I, A>(values: A[]) => (input: I[]) => [I | undefined, A | undefined][] = zipWith(gather());
 

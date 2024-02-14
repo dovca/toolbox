@@ -26,6 +26,7 @@ export * from "./neighbors";
 export * from "./pop";
 export * from "./push";
 export * from "./reduce";
+export * from "./reject";
 export * from "./reverse";
 export * from "./shift";
 export * from "./some";
