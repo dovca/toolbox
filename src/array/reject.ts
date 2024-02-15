@@ -1,5 +1,5 @@
 import type {Fn, IterationCallback} from '../types';
-import {not} from '../bool';
+import {not} from '../boolean';
 import {funnel} from '../function/funnel';
 
 /**

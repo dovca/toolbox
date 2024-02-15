@@ -3,7 +3,7 @@
  */
 
 export * from "./array/index";
-export * from "./bool/index";
+export * from "./boolean/index";
 export * from "./convert/index";
 export * from "./function/index";
 export * from "./misc/index";

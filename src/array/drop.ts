@@ -1,6 +1,6 @@
 import type {Fn, IterationCallback, IterationResult, MyIterator} from '../types';
 import {funnel} from '../function';
-import {not} from '../bool';
+import {not} from '../boolean';
 import {identity} from '../misc';
 import {backwardIterator, forwardIterator, reversedIterator} from './utils';
 import {push} from './push';
