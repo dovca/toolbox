@@ -5,6 +5,7 @@
 export * from "./curry";
 export * from "./funnel";
 export * from "./gather";
+export * from "./invoke";
 export * from "./pipe";
 export * from "./repeat";
 export * from "./spread";

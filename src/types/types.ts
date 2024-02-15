@@ -30,6 +30,7 @@ export type ToString<T> = T extends string | number ? `${T}` : never;
 export type Dictionary<T> = Record<string, T>;
 export type StringKeys<T extends object> = ToString<keyof T>;
 export type Values<T extends object> = T[keyof T];
+export type Nullish<T> = T | null | undefined;
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;
