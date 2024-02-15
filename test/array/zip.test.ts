@@ -3,7 +3,7 @@ import {zip, zipWith} from '../../src';
 
 test('zip', () => {
 	expect(zip([])([])).toEqual([]);
-	expect(zip<undefined, number>([1, 2, 3])([])).toEqual([[undefined, 1], [undefined, 2], [undefined, 3]]);
+	expect(zip([1, 2, 3])([])).toEqual([[undefined, 1], [undefined, 2], [undefined, 3]]);
 	expect(zip<number, undefined>([])([1, 2, 3])).toEqual([[1, undefined], [2, undefined], [3, undefined]]);
 	expect(zip([1, 2, 3])(['a', 'b', 'c'])).toEqual([['a', 1], ['b', 2], ['c', 3]]);
 });

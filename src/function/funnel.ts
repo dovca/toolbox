@@ -52,6 +52,6 @@ export function funnel<A extends T5, B, C, D, E, F, G, H, I>(f1: FnT5<B, A>, f2:
 /**
  * Works just like `pipe`, but allows an n-ary function to be passed as the first argument.
  */
-export function funnel(first: (...args: any[]) => any, ...rest: ((arg: any) => any)[]) {
+export function funnel(first: (...args: any[]) => any, ...rest: ((arg: any) => any)[]): Fn<any> {
 	return gather(pipe(spread(first), ...rest));
 }

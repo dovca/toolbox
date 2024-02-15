@@ -8,12 +8,12 @@ export function prepend<
 export function prepend<
 	Input extends string,
 	Prefix extends string,
->(prefix: Prefix): Fn<Join<[Prefix, Input]>, Input>;
+	WithJoinMarker extends true,
+>(prefix: Prefix): Fn<Join<[Prefix, Input], JoinMarker>, Input>;
 export function prepend<
 	Input extends string,
 	Prefix extends string,
-	WithJoinMarker extends true,
->(prefix: Prefix): Fn<Join<[Prefix, Input], JoinMarker>, Input>;
+>(prefix: Prefix): Fn<Join<[Prefix, Input]>, Input>;
 export function prepend(prefix?: string): Fn<string> {
 	return (input) => (prefix ?? input) + input;
 }

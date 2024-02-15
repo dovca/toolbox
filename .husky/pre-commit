@@ -1,1 +1,2 @@
+tsc --noEmit
 bun test
