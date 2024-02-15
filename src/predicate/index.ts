@@ -13,3 +13,4 @@ export * from "./isOdd";
 export * from "./isOneOf";
 export * from "./isString";
 export * from "./isTruthy";
+export * from "./isValidIndex";
