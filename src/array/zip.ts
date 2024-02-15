@@ -1,5 +1,5 @@
 import {gather} from '../function';
-import type {Fn, Fn2} from '../types';
+import type {Fn, Fn2, Maybe} from '../types';
 import {identity} from '../misc';
 
 /**
@@ -7,7 +7,7 @@ import {identity} from '../misc';
  * @param zipper A function that combines the flowing values with argument values.
  * @returns Produces a new array.
  */
-export function zipWith<A, I, R>(zipper: Fn2<R, I | undefined, A | undefined>): Fn<Fn<R[], I[]>, A[]> {
+export function zipWith<A, I, R>(zipper: Fn2<R, Maybe<I>, Maybe<A>>): Fn<Fn<R[], I[]>, A[]> {
 	return (argValues) => (inputValues) => {
 		const length = Math.max(inputValues.length, argValues.length);
 		const result: R[] = Array.from({length});
@@ -25,7 +25,7 @@ export function zipWith<A, I, R>(zipper: Fn2<R, I | undefined, A | undefined>): 
  * @param values The values to combine with the input.
  * @returns Produces a new array of tuples.
  */
-export function zip<I, A>(values: A[]): Fn<[I | undefined, A | undefined][], I[]> {
-	return zipWith(gather<[I | undefined, A | undefined], I | undefined, A | undefined>(identity))(values);
+export function zip<I, A>(values: A[]): Fn<[Maybe<I>, Maybe<A>][], I[]> {
+	return zipWith(gather<[Maybe<I>, Maybe<A>], Maybe<I>, Maybe<A>>(identity))(values);
 }
 

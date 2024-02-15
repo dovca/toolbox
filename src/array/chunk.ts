@@ -1,4 +1,4 @@
-import type {Fn, IterationCallback} from '../types';
+import type {Fn, IterationCallback, Maybe} from '../types';
 import {forwardIterator} from './utils';
 
 /**
@@ -7,11 +7,11 @@ import {forwardIterator} from './utils';
  * @param mapper The function to determine the chunk boundaries.
  * @returns Produces an array of chunks.
  */
-export function chunkWith<T, M = any>(mapper: IterationCallback<M, T>): Fn<T[][], T[]> {
+export function chunkWith<T, M = any>(mapper: IterationCallback<M, T>): Fn<T[][], ReadonlyArray<T>> {
 	return (values) => {
 		let group: T[] = [];
-		let mapperResult: M | undefined = undefined;
-		let lastMapperResult: M | undefined = undefined;
+		let mapperResult: Maybe<M> = undefined;
+		let lastMapperResult: Maybe<M> = undefined;
 		const result: T[][] = [];
 
 		function closeChunk(g: T[]) {
