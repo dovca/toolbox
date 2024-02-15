@@ -1,12 +1,19 @@
+export type T1 = [any];
+export type T2 = [any, any];
+export type T3 = [any, any, any];
+export type T4 = [any, any, any, any];
+export type T5 = [any, any, any, any, any];
+
 export type Fn<R, P1 = R> = (p1: P1) => R;
 export type Fn2<R, P1 = R, P2 = P1> = (p1: P1, p2: P2) => R;
 export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = (p1: P1, p2: P2, p3: P3) => R;
 export type Fn4<R, P1 = R, P2 = P1, P3 = P2, P4 = P3> = (p1: P1, p2: P2, p3: P3, p4: P4) => R;
 export type Fn5<R, P1 = R, P2 = P1, P3 = P2, P4 = P3, P5 = P4> = (p1: P1, p2: P2, p3: P3, p4: P4, p5: P5) => R;
-export type FnT2<R, T extends [any, any]> = (...args: T) => R;
-export type FnT3<R, T extends [any, any, any]> = (...args: T) => R;
-export type FnT4<R, T extends [any, any, any, any]> = (...args: T) => R;
-export type FnT5<R, T extends [any, any, any, any, any]> = (...args: T) => R;
+export type FnT1<R, T extends T1> = (...args: T) => R;
+export type FnT2<R, T extends T2> = (...args: T) => R;
+export type FnT3<R, T extends T3> = (...args: T) => R;
+export type FnT4<R, T extends T4> = (...args: T) => R;
+export type FnT5<R, T extends T5> = (...args: T) => R;
 
 export type IterationResult<T> = [T, number, ReadonlyArray<T>];
 export type IterationCallback<R, T> = FnT3<R, IterationResult<T>>;

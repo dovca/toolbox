@@ -3,6 +3,7 @@
  */
 
 export * from "./curry";
+export * from "./funnel";
 export * from "./gather";
 export * from "./pipe";
 export * from "./repeat";
