@@ -19,7 +19,7 @@ export type IterationResult<T> = [T, number, ReadonlyArray<T>];
 export type IterationCallback<R, T> = FnT3<R, IterationResult<T>>;
 export type MyIterator<T> = Generator<IterationResult<T>>;
 
-export type JoinMarker = '___join___';
+export type JoinMarker = '‍‍‍';
 
 export type Predicate<T> = Fn<boolean, T>;
 export type Comparator<T, R = boolean> = Fn2<R, T>;
