@@ -43,7 +43,7 @@ export function chunkWith<T>(mapper: IterationCallback<any, T>): Fn<T[][], T[]> 
  * @param key The property to determine the chunk boundaries.
  * @returns Produces an array of chunks.
  */
-export const chunkBy = <K extends string, T extends { [k in K]?: any }>(key: K) => chunkWith<T>((value) => value[key]);
+export const chunkBy = <T extends object>(key: keyof T) => chunkWith<T>((value) => value[key]);
 
 /**
  * Splits a flowing array into same-sized chunks. The last chunk may be smaller than the specified size.
