@@ -4,6 +4,7 @@
 
 export * from "./array/index";
 export * from "./bool/index";
+export * from "./convert/index";
 export * from "./function/index";
 export * from "./misc/index";
 export * from "./multi/index";

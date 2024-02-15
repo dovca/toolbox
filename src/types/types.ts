@@ -1,8 +1,8 @@
-export type T1 = [any];
-export type T2 = [any, any];
-export type T3 = [any, any, any];
-export type T4 = [any, any, any, any];
-export type T5 = [any, any, any, any, any];
+export type T1<A = any> = [A];
+export type T2<A = any, B = A> = [A, B];
+export type T3<A = any, B = A, C = B> = [A, B, C];
+export type T4<A = any, B = A, C = B, D = C> = [A, B, C, D];
+export type T5<A = any, B = A, C = B, D = C, E = D> = [A, B, C, D, E];
 
 export type Fn<R, P1 = R> = (p1: P1) => R;
 export type Fn2<R, P1 = R, P2 = P1> = (p1: P1, p2: P2) => R;
@@ -32,4 +32,5 @@ export type StringKeys<T extends object> = ToString<keyof T>;
 export type Values<T extends object> = T[keyof T];
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
+export type Primitive = string | number | boolean | bigint | null | undefined;
 

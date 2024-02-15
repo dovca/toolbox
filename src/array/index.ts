@@ -23,6 +23,7 @@ export * from "./keyBy";
 export * from "./last";
 export * from "./map";
 export * from "./neighbors";
+export * from "./partition";
 export * from "./pop";
 export * from "./push";
 export * from "./reduce";
