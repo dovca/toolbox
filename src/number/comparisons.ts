@@ -1,4 +1,4 @@
-import {comparator, isEqual} from '../predicate/compare';
+import {comparator, isEqual} from '../predicate';
 
 export const isZero = isEqual(0);
 export const isGreaterThan = comparator<number>((input, value) => input > value);

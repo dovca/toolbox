@@ -1,6 +1,6 @@
 import type {Fn, IterationCallback} from '../types';
 import {not} from '../boolean';
-import {funnel} from '../function/funnel';
+import {funnel} from '../function';
 
 /**
  * Rejects values of a flowing array based on a predicate.

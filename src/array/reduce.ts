@@ -1,5 +1,5 @@
 import type {Fn, Fn3, MyIterator} from '../types';
-import {backwardIterator, forwardIterator, reversedIterator} from './utils/iterators';
+import {backwardIterator, forwardIterator, reversedIterator} from './utils';
 
 type Reduce = <A, V = A>(
 	reducer: Fn3<A, A | V, V, number>,

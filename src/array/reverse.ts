@@ -1,4 +1,4 @@
-import {reversedIterator} from './utils/iterators';
+import {reversedIterator} from './utils';
 
 /**
  * Reverses a flowing array.

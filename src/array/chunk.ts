@@ -1,5 +1,5 @@
 import type {Fn, IterationCallback} from '../types';
-import {forwardIterator} from './utils/iterators';
+import {forwardIterator} from './utils';
 
 /**
  * Split a flowing array into chunks based on the result of the mapper function. A chunk boundary is created between
@@ -7,11 +7,11 @@ import {forwardIterator} from './utils/iterators';
  * @param mapper The function to determine the chunk boundaries.
  * @returns Produces an array of chunks.
  */
-export function chunkWith<T>(mapper: IterationCallback<any, T>): Fn<T[][], T[]> {
+export function chunkWith<T, M = any>(mapper: IterationCallback<M, T>): Fn<T[][], T[]> {
 	return (values) => {
 		let group: T[] = [];
-		let mapperResult: any = undefined;
-		let lastMapperResult: any = undefined;
+		let mapperResult: M | undefined = undefined;
+		let lastMapperResult: M | undefined = undefined;
 		const result: T[][] = [];
 
 		function closeChunk(g: T[]) {

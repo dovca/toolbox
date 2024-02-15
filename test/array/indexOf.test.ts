@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {indexOf, lastIndexOf} from '../../src';
+import {indexOf} from '../../src';
 
 test('indexOf', () => {
 	expect(indexOf(0)([])).toBe(-1);

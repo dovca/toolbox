@@ -1,5 +1,5 @@
 import {filter} from './filter';
-import {isTruthy} from '../predicate/isTruthy';
+import {isTruthy} from '../predicate';
 import type {Falsy} from '../types';
 
 /**

@@ -1,4 +1,4 @@
-import type {Fn, Predicate} from '../types';
+import type {Predicate} from '../types';
 
 export function endsWith(str: string): Predicate<string> {
 	return (input) => input.endsWith(str);

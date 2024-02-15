@@ -1,5 +1,5 @@
-import {pipe} from '../function/pipe';
+import {pipe} from '../function';
 import {isFalsy} from './isFalsy';
-import {not} from '../boolean/not';
+import {not} from '../boolean';
 
 export const isTruthy = pipe<unknown, boolean, boolean>(isFalsy, not);
