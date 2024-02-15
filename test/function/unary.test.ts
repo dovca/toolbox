@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {unary} from '../../src/function/unary';
+import {unary} from '../../src';
 
 test('unary', () => {
 	const fn = (a: number, b?: number, c?: number) => a + (b ?? 0) + (c ?? 0);

@@ -9,3 +9,4 @@ export * from "./invoke";
 export * from "./pipe";
 export * from "./repeat";
 export * from "./spread";
+export * from "./unary";

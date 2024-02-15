@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {pickValues} from '../../src/object/pickValues';
+import {pickValues} from '../../src';
 
 type Obj = {
 	a: number,

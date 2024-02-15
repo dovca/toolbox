@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {funnel} from '../../src/function/funnel';
+import {funnel} from '../../src';
 
 test('funnel', () => {
 	expect(funnel(
