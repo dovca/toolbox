@@ -1,6 +1,10 @@
 import type {Join} from 'string-ts';
 import type {Fn, JoinMarker} from '../types';
 
+export function append(): Fn<string>;
+export function append<
+	Input extends string = string,
+>(): Fn<Join<[Input, Input]>, Input>;
 export function append<
 	Input extends string,
 	Suffix extends string,
@@ -10,9 +14,6 @@ export function append<
 	Input extends string,
 	Suffix extends string,
 >(suffix: Suffix): Fn<Join<[Input, Suffix]>, Input>;
-export function append<
-	Input extends string,
-	Suffix extends string,
->(suffix: Suffix): Fn<Join<[Input, Suffix]>, Input> {
-	return (input) => (input + suffix) as Join<[Input, Suffix]>;
+export function append(suffix?: string): Fn<string> {
+	return (input) => input + (suffix ?? input);
 }

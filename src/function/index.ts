@@ -5,4 +5,5 @@
 export * from "./curry";
 export * from "./gather";
 export * from "./pipe";
+export * from "./repeat";
 export * from "./spread";
