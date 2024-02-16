@@ -10,9 +10,11 @@ function stringSlice<T extends string, S extends number = 0, E extends number = 
 	return (input) => typedSlice(input, start, end);
 }
 
-export function slice<T>(start?: number, end?: number): Fn<T[], ReadonlyArray<T>>;
-export function slice<T extends string, S extends number = 0, E extends number = -1>(start?: S, end?: E): Fn<Slice<T, S, E>, T>;
-export function slice(start?: number, end?: number): Fn<unknown[], ReadonlyArray<unknown>> | Fn<string> {
+export function slice<T extends string>(): Fn<Slice<T, 0, -1>, T>;
+export function slice<T extends string, S extends number>(start: S): Fn<Slice<T, S, -1>, T>;
+export function slice<T extends string, S extends number, E extends number>(start: S, end: E): Fn<Slice<T, S, E>, T>;
+export function slice<T extends any[]>(start?: number, end?: number): Fn<T>;
+export function slice(start?: number, end?: number): Fn<unknown[]> | Fn<string> {
 	return ((input: unknown) => {
 		if (typeof input === 'string') {
 			return stringSlice(start, end)(input);

@@ -1,5 +1,5 @@
-import type {Fn} from '../types';
+import type {Fn, Maybe, Many} from '../types';
 
-export function localeCompare(other: string): Fn<number, string> {
-  return (input) => input.localeCompare(other);
+export function localeCompare(locales: Maybe<Many<string>>, options?: Intl.CollatorOptions): Fn<Fn<number, string>, string> {
+	return (other) => (input) => other.localeCompare(input, locales, options);
 }

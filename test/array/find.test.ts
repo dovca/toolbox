@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {find, findLast} from '../../src';
+import {find, findLast, findReversed} from '../../src';
 
 const positive = (x: number) => x > 0;
 
@@ -17,4 +17,12 @@ test('findLast', () => {
 	expect<number | undefined>(findLast(positive)([1])).toBe(1);
 	expect<number | undefined>(findLast(positive)([0, 0, 0, 1, 2, 0, 0])).toBe(2);
 	expect<number | undefined>(findLast<number>((x, i) => x > i)([0, 1, 2, 4, 3, 7])).toBe(7);
+})
+
+test('findReversed', () => {
+	expect<number | undefined>(findReversed(positive)([])).toBe(undefined);
+	expect<number | undefined>(findReversed(positive)([0])).toBe(undefined);
+	expect<number | undefined>(findReversed(positive)([1])).toBe(1);
+	expect<number | undefined>(findReversed(positive)([0, 0, 0, 1, 2, 0, 0])).toBe(2);
+	expect<number | undefined>(findReversed<number>((x, i) => x < i)([0, 1, 2, 4, 3, 7])).toBe(2);
 })

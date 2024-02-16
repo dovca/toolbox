@@ -19,5 +19,3 @@ export * from "./substring";
 export * from "./toLocaleLowerCase";
 export * from "./toLocaleUpperCase";
 export * from "./trim";
-export * from "./trimEnd";
-export * from "./trimStart";

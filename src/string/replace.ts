@@ -2,7 +2,7 @@ import type {Fn} from '../types';
 
 export function replace(
 	searchValue: string | RegExp,
-	replaceValue: string,
+	replaceValue?: string,
 ): Fn<string>;
 export function replace(
 	searchValue: string | RegExp,
@@ -10,7 +10,7 @@ export function replace(
 ): Fn<string>;
 export function replace(
 	searchValue: string | RegExp,
-	replaceValue: string | ((substring: string, ...args: any[]) => string),
+	replaceValue: string | ((substring: string, ...args: any[]) => string) = '',
 ): Fn<string> {
 	// @ts-ignore
 	return (input) => input.replace(searchValue, replaceValue);

@@ -1,3 +1,1 @@
-export function trim(str: string): string {
-	return str.trim();
-}
+export {trim, trimStart, trimEnd} from 'string-ts';

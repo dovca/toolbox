@@ -22,7 +22,9 @@ export type MyIterator<T> = Generator<IterationResult<T>>;
 export type JoinMarker = '‍‍‍';
 
 export type Predicate<T> = Fn<boolean, T>;
-export type Comparator<T, R = boolean> = Fn2<R, T>;
+export type Comparator<T, R> = Fn2<R, T>;
+export type Equalizer<T> = Comparator<T, boolean>;
+export type Sorter<T> = Comparator<T, number>;
 export type Arrayifier<T> = Fn<T[], T>;
 
 export type ToString<T> = T extends string | number ? `${T}` : never;
@@ -32,6 +34,7 @@ export type StringKeys<T extends object> = ToString<keyof T>;
 export type Values<T extends object> = T[keyof T];
 export type Nullish<T> = T | null | undefined;
 export type Maybe<T> = T | undefined;
+export type Many<T> = T | T[];
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;

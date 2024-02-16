@@ -1,3 +1,5 @@
-export function toLocaleLowerCase(str: string): string {
-	return str.toLocaleLowerCase();
+import type {Fn, Many, Maybe} from '../types';
+
+export function toLocaleLowerCase(locales: Maybe<Many<string>>): Fn<string> {
+	return (input) => input.toLocaleLowerCase(locales);
 }

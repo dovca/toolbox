@@ -3,4 +3,5 @@
  */
 
 export * from "./toNormalizedIndex";
+export * from "./toRegex";
 export * from "./toString";
