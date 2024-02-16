@@ -1,7 +1,9 @@
 import type {Fn} from '../types';
+import {remove} from '../array';
 
-export function indexOf(searchValue: string, position?: number): Fn<number, string>;
+export function indexOf(searchValue: string, position?: number): Fn<number, string | ReadonlyArray<string>>;
 export function indexOf<T>(searchValue: T, position?: number): Fn<number, T[]>;
 export function indexOf(searchValue: any, position?: number): Fn<number, any> {
-	return (input) => input.indexOf(searchValue, position);
+	const args = remove(undefined)([searchValue, position]);
+	return (input) => input.indexOf.apply(input, args);
 }

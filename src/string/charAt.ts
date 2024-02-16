@@ -1,9 +1,9 @@
 import type {Fn} from '../types';
 import {isValidIndex} from '../predicate';
-import {toNormalizedIndex} from '../convert';
+import {modulo} from '../number';
 
 export function charAt(index: number): Fn<string> {
 	return (input) => isValidIndex(index)(input)
-		? input.charAt(toNormalizedIndex(index)(input.length))
+		? input.charAt(modulo(input.length)(index))
 		: '';
 }
