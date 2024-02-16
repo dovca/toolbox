@@ -29,7 +29,7 @@ export * from "./pop";
 export * from "./product";
 export * from "./push";
 export * from "./reduce";
-export * from "./remove.test";
+export * from "./remove";
 export * from "./reverse";
 export * from "./shift";
 export * from "./some";
