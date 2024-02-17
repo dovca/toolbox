@@ -1,12 +1,13 @@
 import type {Fn, Fn3, Maybe, MyIterator} from '../types';
 import {backwardIterator, forwardIterator, reversedIterator} from './utils';
+import {max} from '../number';
 
 type Reduce = <A, V = A>(
 	reducer: Fn3<A, A | V, V, number>,
 	start?: Maybe<A>,
 ) => Fn<A, ReadonlyArray<V>>
 
-function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>): (
+function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>, maxIterations?: number): (
 	reducer: Fn3<A, A | V, V, number>,
 	start?: Maybe<A>,
 ) => Fn<A, ReadonlyArray<V>> {
@@ -14,6 +15,8 @@ function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>)
 		if (values.length === 0 && start === undefined) {
 			throw new TypeError('Reduce of empty array with no initial value');
 		}
+
+		maxIterations ??= values.length;
 
 		let acc: Maybe<A | V> = start;
 		let skippedFirst = false;
@@ -25,6 +28,10 @@ function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>)
 				continue;
 			}
 			acc = reducer(acc!, value, index);
+
+			if (!--maxIterations) {
+				break;
+			}
 		}
 
 		return acc as A;
@@ -45,3 +52,7 @@ export const reduceRight: Reduce = reduceFactory(backwardIterator);
  * Reduces a flowing array to a single value, iterating from right to left, with index counting from right as well.
  */
 export const reduceReversed: Reduce = reduceFactory(reversedIterator);
+
+export function reduceAtMost(maxIterations: number): Reduce {
+	return reduceFactory(forwardIterator, maxIterations);
+}

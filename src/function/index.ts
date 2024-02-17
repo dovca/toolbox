@@ -10,4 +10,6 @@ export * from "./pipe";
 export * from "./repeat";
 export * from "./spread";
 export * from "./unary";
+export * from "./uncurry";
 export * from "./unwrap";
+export * from "./wrap";
