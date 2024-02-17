@@ -1,4 +1,6 @@
 import type {Predicate} from '../types';
+import {call} from '../function';
+import {every} from './every';
 
 /**
  * Produces `true` iff all the given predicates pass with the flowing value.
@@ -6,5 +8,5 @@ import type {Predicate} from '../types';
  * @returns Produces a boolean.
  */
 export function all<T>(...predicates: Predicate<T>[]): Predicate<T> {
-	return (value) => predicates.every((predicate) => predicate(value));
+	return (value) => every(call(value))(predicates);
 }

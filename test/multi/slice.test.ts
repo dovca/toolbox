@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {slice} from '../../src';
+import {head, slice, tail} from '../../src';
 
 test('slice: string', () => {
 	expect(slice()('')).toBe('');
@@ -18,4 +18,22 @@ test('slice: array', () => {
 	expect(slice<number[]>(1, -1)([1, 2, 3])).toEqual([2]);
 	expect(slice<number[]>(10)([1, 2, 3])).toEqual([]);
 	expect(slice<string[]>(1, 3)(['a', 'b', 'c', 'd'])).toEqual(['b', 'c']);
+});
+
+test('head', () => {
+	expect(head()('')).toBe('');
+	expect(head()('hello')).toBe('h');
+	expect(head(2)('hello')).toBe('he');
+	expect(head<number[]>()([])).toEqual([])
+	expect(head<number[]>()([1, 2, 3])).toEqual([1])
+	expect(head<number[]>(2)([1, 2, 3])).toEqual([1, 2])
+});
+
+test('tail', () => {
+	expect(tail()('')).toBe('');
+	expect(tail()('hello')).toBe('o');
+	expect(tail(2)('hello')).toBe('lo');
+	expect(tail<number[]>()([])).toEqual([])
+	expect(tail<number[]>()([1, 2, 3])).toEqual([3])
+	expect(tail<number[]>(2)([1, 2, 3])).toEqual([2, 3])
 });

@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {Fn, Negative} from '../types';
 import {type Slice, slice as typedSlice} from 'string-ts';
 import {isArray} from '../predicate';
 
@@ -14,7 +14,7 @@ export function slice<T extends string>(): Fn<Slice<T, 0, -1>, T>;
 export function slice<T extends string, S extends number>(start: S): Fn<Slice<T, S, -1>, T>;
 export function slice<T extends string, S extends number, E extends number>(start: S, end: E): Fn<Slice<T, S, E>, T>;
 export function slice<T extends any[]>(start?: number, end?: number): Fn<T>;
-export function slice(start?: number, end?: number): Fn<unknown[]> | Fn<string> {
+export function slice<T>(start?: number, end?: number): Fn<unknown[]> | Fn<string> {
 	return ((input: unknown) => {
 		if (typeof input === 'string') {
 			return stringSlice(start, end)(input);
@@ -24,4 +24,16 @@ export function slice(start?: number, end?: number): Fn<unknown[]> | Fn<string> 
 			throw new Error(`slice: Expected input to be a string or an array. Got ${typeof input}.`);
 		}
 	}) as Fn<unknown[], ReadonlyArray<unknown>> | Fn<string>;
+}
+
+export function head<T extends string, N extends number>(count?: N): Fn<Slice<T, 0, N>, T>;
+export function head<T extends any[]>(count?: number): Fn<T>;
+export function head(count: number = 1): Fn<string> | Fn<unknown[]> {
+	return (input: any) => slice(0, count)(input);
+}
+
+export function tail<T extends string, N extends number>(count?: N): Fn<Slice<T, Negative<N>>, T>;
+export function tail<T extends any[]>(count?: number): Fn<T>;
+export function tail(count: number = 1): Fn<string> | Fn<unknown[]> {
+	return (input: any) => slice(-count)(input);
 }

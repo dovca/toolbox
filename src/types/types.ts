@@ -28,6 +28,13 @@ export type Sorter<T> = Comparator<T, number>;
 export type Arrayifier<T> = Fn<T[], T>;
 
 export type ToString<T> = T extends string | number ? `${T}` : never;
+export type Negative<T extends number> = number extends T
+	? number
+	: `${T}` extends `-${infer R extends number}`
+		? R
+		: `-${T}` extends `${infer S extends number}`
+			? S
+			: never;
 
 export type Dictionary<T> = Record<string, T>;
 export type StringKeys<T extends object> = ToString<keyof T>;
@@ -38,4 +45,3 @@ export type Many<T> = T | T[];
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;
-

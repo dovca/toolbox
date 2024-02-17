@@ -1,5 +1,6 @@
 import type {Fn, IterationCallback, Maybe} from '../types';
 import {forwardIterator} from './utils';
+import {property} from '../object';
 
 /**
  * Split a flowing array into chunks based on the result of the mapper function. A chunk boundary is created between
@@ -43,7 +44,7 @@ export function chunkWith<T, M = any>(mapper: IterationCallback<M, T>): Fn<T[][]
  * @param key The property to determine the chunk boundaries.
  * @returns Produces an array of chunks.
  */
-export const chunkBy = <T extends object>(key: keyof T) => chunkWith<T>((value) => value[key]);
+export const chunkBy = <T extends object>(key: keyof T) => chunkWith<T>(property(key));
 
 /**
  * Splits a flowing array into same-sized chunks. The last chunk may be smaller than the specified size.

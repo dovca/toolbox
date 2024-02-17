@@ -2,9 +2,9 @@ import type {Fn} from '../types';
 
 /**
  * Appends a new value to the flowing array.
- * @param value The value to append.
+ * @param values The values to append.
  * @returns Produces a new array.
  */
-export function push<T, TValue = T>(value: TValue): Fn<(T | TValue)[], ReadonlyArray<T>> {
-	return (values) => [...values, value];
+export function push<I, P = I>(...values: P[]): Fn<(I | P)[], ReadonlyArray<I>> {
+	return (input) => [...input, ...values];
 }

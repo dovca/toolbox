@@ -1,7 +1,9 @@
+import type {Fn} from '../types';
+
 /**
  * Returns a new array with the last value removed.
- * @param array
+ * @param count The number of values to remove from the end of the array. Defaults to 1.
  */
-export function pop<T>(array: ReadonlyArray<T>): T[] {
-	return array.slice(0, -1);
+export function pop<T>(count = 1): Fn<T[], ReadonlyArray<T>> {
+	return (values) => values.slice(0, -count);
 }

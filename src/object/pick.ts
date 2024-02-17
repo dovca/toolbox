@@ -15,4 +15,4 @@ export function pickBy<T extends object>(picker: Predicate<keyof T>): Fn<Partial
 	};
 }
 
-export const pick = <T extends object>(...keys: (keyof T)[]) => pickBy(isOneOf(keys));
+export const pick = <T extends object>(...keys: (keyof T)[]) => pickBy(isOneOf(...keys));
