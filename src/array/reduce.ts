@@ -1,6 +1,5 @@
 import type {Fn, Fn3, Maybe, MyIterator} from '../types';
 import {backwardIterator, forwardIterator, reversedIterator} from './utils';
-import {max} from '../number';
 
 type Reduce = <A, V = A>(
 	reducer: Fn3<A, A | V, V, number>,
@@ -16,10 +15,9 @@ function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>,
 			throw new TypeError('Reduce of empty array with no initial value');
 		}
 
-		maxIterations ??= values.length;
-
 		let acc: Maybe<A | V> = start;
 		let skippedFirst = false;
+		let iterations = maxIterations ?? values.length;
 
 		for (const [value, index] of generator(values)) {
 			if (start === undefined && !skippedFirst) {
@@ -27,11 +25,12 @@ function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>,
 				skippedFirst = true;
 				continue;
 			}
-			acc = reducer(acc!, value, index);
 
-			if (!--maxIterations) {
+			if (iterations-- <= 0) {
 				break;
 			}
+
+			acc = reducer(acc!, value, index);
 		}
 
 		return acc as A;
