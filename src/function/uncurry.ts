@@ -1,6 +1,7 @@
 import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
 import {gather} from './gather';
 import {run} from './run';
+import {reduce} from '../array';
 
 export function uncurry<R>(fn: Fn<R, void>): Fn<R, void>;
 export function uncurry<R, A, B, C, D, E>(fn: Fn<Fn<Fn<Fn<Fn<R, E>, D>, C>, B>, A>): Fn5<R, A, B, C, D, E>;
@@ -11,6 +12,6 @@ export function uncurry<R, A>(fn: Fn<R, A>): Fn<R, A>;
 export function uncurry(fn: Fn<any>): (...args: any[]) => any;
 export function uncurry(fn: Fn<any>): (...args: any[]) => any {
 	return (...args) => args.length
-		? args.reduce(gather(run), fn)
+		? reduce(gather(run<any, any>), fn)(args)
 		: (fn as Fn<any, void>)();
 }
