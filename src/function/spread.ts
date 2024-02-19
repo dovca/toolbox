@@ -1,5 +1,8 @@
 import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
 
+/**
+ * Spread the flowing array of values as arguments for the given function.
+ */
 export function spread<R, A>(fn: Fn<R, A>): Fn<R, A>;
 export function spread<R, A, B>(fn: Fn2<R, A, B>): Fn<R, [A, B]>;
 export function spread<R, A, B, C>(fn: Fn3<R, A, B, C>): Fn<R, [A, B, C]>;

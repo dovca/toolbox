@@ -39,6 +39,10 @@ interface FnB5<R, A, B, C, D, E> {
 	(a: A, b: B, c: C, d: D, e: E): Fn<R, void>;
 }
 
+/**
+ * Binds the flowing values as arguments to the function
+ * @param fn The function to bind the arguments to
+ */
 export function bind<R>(fn: Fn<R, void>): FnB0<R>;
 export function bind<R, A>(fn: Fn<R, A>): FnB1<R, A>;
 export function bind<R, A, B>(fn: Fn2<R, A, B>): FnB2<R, A, B>;

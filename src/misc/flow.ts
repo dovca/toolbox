@@ -1,5 +1,8 @@
 import type {Fn} from '../types';
 
+/**
+ * Constructs something similar to a pipe function, but the first argument being the initial value to be passed through.
+ */
 export function flow<V>(value: V): V;
 export function flow<V, A>(value: V, ...fns: [Fn<A, V>]): A;
 export function flow<V, A, B>(value: V, ...fns: [Fn<A, V>, Fn<B, A>]): B;

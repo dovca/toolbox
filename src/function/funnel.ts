@@ -4,6 +4,9 @@ import {spread} from './spread';
 
 import type {Fn, FnT1, FnT2, FnT3, FnT4, FnT5, T1, T2, T3, T4, T5} from '../types';
 
+/**
+ * Works just like `pipe`, but allows an n-ary function to be passed as the first argument.
+ */
 export function funnel<A extends T1, B>(f1: FnT1<B, A>): FnT1<B, A>;
 export function funnel<A extends T1, B, C>(f1: FnT1<B, A>, f2: Fn<C, B>): FnT1<C, A>;
 export function funnel<A extends T1, B, C, D>(f1: FnT1<B, A>, f2: Fn<C, B>, f3: Fn<D, C>): FnT1<D, A>;
@@ -49,9 +52,6 @@ export function funnel<A extends T5, B, C, D, E, F, G>(f1: FnT5<B, A>, f2: Fn<C,
 export function funnel<A extends T5, B, C, D, E, F, G, H>(f1: FnT5<B, A>, f2: Fn<C, B>, f3: Fn<D, C>, f4: Fn<E, D>, f5: Fn<F, E>, f6: Fn<G, F>, f7: Fn<H, G>): FnT5<H, A>;
 export function funnel<A extends T5, B, C, D, E, F, G, H, I>(f1: FnT5<B, A>, f2: Fn<C, B>, f3: Fn<D, C>, f4: Fn<E, D>, f5: Fn<F, E>, f6: Fn<G, F>, f7: Fn<H, G>, f8: Fn<I, H>): FnT5<I, A>;
 
-/**
- * Works just like `pipe`, but allows an n-ary function to be passed as the first argument.
- */
 export function funnel(first: (...args: any[]) => any, ...rest: ((arg: any) => any)[]): Fn<any> {
 	return gather(pipe(spread(first), ...rest));
 }

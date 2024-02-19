@@ -4,7 +4,7 @@ import {property} from '../object';
 
 /**
  * Split a flowing array into chunks based on the result of the mapper function. A chunk boundary is created between
- * two elements if the result of the mapper function differs. This method is similar to run-length encoding.
+ * two elements if the result of the mapper function differs. This method is similar to command-length encoding.
  * @param mapper The function to determine the chunk boundaries.
  * @returns Produces an array of chunks.
  */

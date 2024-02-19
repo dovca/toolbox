@@ -4,15 +4,20 @@ import {not} from '../boolean';
 import {isOneOf} from '../predicate';
 
 /**
- * Rejects values of a flowing array based on a predicate.
- * @param predicate The predicate to reject the values with.
- * @returns Produces a new array of values that fail the predicate.
+ * Removes values of a flowing array based on a predicate.
+ * @param predicate The predicate to remove the values with.
+ * @returns Produces a new array without values that pass the predicate.
  */
 export function removeWith<T>(predicate: IterationCallback<boolean, T>): Fn<T[], ReadonlyArray<T>> {
 	const filter = funnel(predicate, not);
 	return (values) => values.filter(filter);
 }
 
+/**
+ * Removes values of a flowing array based on value equality.
+ * @param values The values to remove from the array.
+ * @returns Produces a new array of the original values without the provided values.
+ */
 export function removeAll<T>(...values: ReadonlyArray<T>): Fn<T[], ReadonlyArray<T>> {
 	return removeWith(isOneOf(...values));
 }

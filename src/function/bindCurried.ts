@@ -40,6 +40,10 @@ interface FnBC5<R, A, B, C, D, E> {
 	(a: A, b: B, c: C, d: D, e: E): Fn<R, void>;
 }
 
+/**
+ * Binds the flowing values as arguments to the given curried function
+ * @param fn The curried function to bind the values to
+ */
 export function bindCurried<R>(fn: Fn<R, void>): FnBC0<R>;
 export function bindCurried<R, A, B, C, D, E>(fn: Fn<Fn<Fn<Fn<Fn<R, E>, D>, C>, B>, A>): FnBC5<R, A, B, C, D, E>;
 export function bindCurried<R, A, B, C, D>(fn: Fn<Fn<Fn<Fn<R, D>, C>, B>, A>): FnBC4<R, A, B, C, D>;

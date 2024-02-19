@@ -1,5 +1,9 @@
 import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
 
+/**
+ * Curries the given function.
+ * @param fn
+ */
 export function curry<R>(fn: Fn<R, void>): Fn<R, void>;
 export function curry<R, P1>(fn: Fn<R, P1>): Fn<R, P1>;
 export function curry<R, P1, P2>(fn: Fn2<R, P1, P2>): Fn<Fn<R, P2>, P1>;
