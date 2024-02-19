@@ -10,6 +10,7 @@ export * from "./funnel";
 export * from "./gather";
 export * from "./pipe";
 export * from "./repeat";
+export * from "./run";
 export * from "./spread";
 export * from "./unary";
 export * from "./uncurry";
