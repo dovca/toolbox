@@ -17,7 +17,7 @@ export * from "./first";
 export * from "./flat";
 export * from "./flatMap";
 export * from "./forEach";
-export * from "./groupBy";
+export * from "./group";
 export * from "./grow";
 export * from "./join";
 export * from "./keyBy";

@@ -42,6 +42,7 @@ export type Values<T extends object> = T[keyof T];
 export type Nullish<T> = T | null | undefined;
 export type Maybe<T> = T | undefined;
 export type Many<T> = T | T[];
+export type ConditionalKeys<T extends object, C> = {[K in keyof T]: T[K] extends C ? K : never}[keyof T];
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;
