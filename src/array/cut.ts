@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {First, Fn, WithoutFirst} from '../types';
 
 /**
  * Splits an array into two arrays at a specific position.
@@ -7,4 +7,8 @@ import type {Fn} from '../types';
  */
 export function cut<T>(position: number): Fn<[T[], T[]], ReadonlyArray<T>> {
 	return (values) => [values.slice(0, position), values.slice(position)];
+}
+
+export function headAndRest<T extends any[]>(values: T): [First<T>, WithoutFirst<T>] {
+	return [values[0], values.slice(1) as WithoutFirst<T>];
 }

@@ -13,3 +13,4 @@ export * from "./object/index";
 export * from "./predicate/index";
 export * from "./string/index";
 export * from "./types/index";
+export * from "./utils/index";

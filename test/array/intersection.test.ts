@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {intersection, intersectionWith} from '../../src/array/intersection';
+import {intersection, intersectionWith} from '../../src';
 
 test('intersection', () => {
 	expect(intersection([])([])).toEqual([]);
