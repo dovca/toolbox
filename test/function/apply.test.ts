@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {apply} from '../../src/function/apply';
+import {apply} from '../../src';
 
 test('apply', () => {
 	expect(apply(() => 0)([])).toBe(0);
