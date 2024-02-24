@@ -1,5 +1,5 @@
 import type {First, WithoutFirst} from '../types';
-import {headAndRest} from '../array';
+import {decapitate} from '../multi';
 
 export class MultiMap<K extends any[], V> {
 	#map: Map<First<K>, MultiMap<WithoutFirst<K>, V>>;
@@ -11,7 +11,7 @@ export class MultiMap<K extends any[], V> {
 
 	set(keys: K, value: V) {
 		if (keys.length > 0) {
-			const [currentKey, nextKeys] = headAndRest(keys);
+			const [currentKey, nextKeys] = decapitate(keys);
 			const current = this.#map.get(currentKey);
 			if (current) {
 				current.set(nextKeys, value);
@@ -29,7 +29,7 @@ export class MultiMap<K extends any[], V> {
 
 	get(keys: K): V | undefined {
 		if (keys.length > 0) {
-			const [currentKey, nextKeys] = headAndRest(keys);
+			const [currentKey, nextKeys] = decapitate(keys);
 			const current = this.#map.get(currentKey);
 			return current?.get(nextKeys);
 		}
@@ -39,7 +39,7 @@ export class MultiMap<K extends any[], V> {
 
 	has(keys: K): boolean {
 		if (keys.length > 0) {
-			const [currentKey, nextKeys] = headAndRest(keys);
+			const [currentKey, nextKeys] = decapitate(keys);
 			const current = this.#map.get(currentKey);
 			return current?.has(nextKeys) ?? false;
 		}
@@ -49,7 +49,7 @@ export class MultiMap<K extends any[], V> {
 
 	delete(keys: K): boolean {
 		if (keys.length > 0) {
-			const [currentKey, nextKeys] = headAndRest(keys);
+			const [currentKey, nextKeys] = decapitate(keys);
 			const current = this.#map.get(currentKey);
 			return current?.delete(nextKeys) ?? false;
 		}
