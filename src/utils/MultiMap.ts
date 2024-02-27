@@ -1,7 +1,7 @@
 import type {First, WithoutFirst} from '../types';
 import {decapitate} from '../multi';
 
-export class MultiMap<K extends any[], V> {
+export class MultiMap<K extends readonly any[], V> {
 	#map: Map<First<K>, MultiMap<WithoutFirst<K>, V>>;
 	#rootValue: V | undefined = undefined;
 

@@ -13,7 +13,7 @@ function stringSlice<T extends string, S extends number = 0, E extends number = 
 export function slice<T extends string>(): Fn<Slice<T, 0, -1>, T>;
 export function slice<T extends string, S extends number>(start: S): Fn<Slice<T, S, -1>, T>;
 export function slice<T extends string, S extends number, E extends number>(start: S, end: E): Fn<Slice<T, S, E>, T>;
-export function slice<T extends any[]>(start?: number, end?: number): Fn<T>;
+export function slice<T extends readonly any[]>(start?: number, end?: number): Fn<T>;
 export function slice<T>(start?: number, end?: number): Fn<unknown[]> | Fn<string> {
 	return ((input: unknown) => {
 		if (typeof input === 'string') {
@@ -27,7 +27,7 @@ export function slice<T>(start?: number, end?: number): Fn<unknown[]> | Fn<strin
 }
 
 export function head<T extends string, N extends number>(count?: N): Fn<Slice<T, 0, N>, T>;
-export function head<T extends any[]>(count?: number): Fn<T>;
+export function head<T extends readonly any[]>(count?: number): Fn<T>;
 export function head(count: number = 1): Fn<string> | Fn<unknown[]> {
 	return (input: any) => slice(0, count)(input);
 }

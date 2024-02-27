@@ -9,7 +9,7 @@ export type Fn2<R, P1 = R, P2 = P1> = (p1: P1, p2: P2) => R;
 export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = (p1: P1, p2: P2, p3: P3) => R;
 export type Fn4<R, P1 = R, P2 = P1, P3 = P2, P4 = P3> = (p1: P1, p2: P2, p3: P3, p4: P4) => R;
 export type Fn5<R, P1 = R, P2 = P1, P3 = P2, P4 = P3, P5 = P4> = (p1: P1, p2: P2, p3: P3, p4: P4, p5: P5) => R;
-export type FnN<R, P extends any[]> = (...args: P) => R;
+export type FnN<R, P extends readonly any[]> = (...args: P) => R;
 export type FnT1<R, T extends T1> = (...args: T) => R;
 export type FnT2<R, T extends T2> = (...args: T) => R;
 export type FnT3<R, T extends T3> = (...args: T) => R;

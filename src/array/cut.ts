@@ -1,4 +1,4 @@
-import type {First, Fn, WithoutFirst} from '../types';
+import type {Fn} from '../types';
 
 /**
  * Splits an array into two arrays at a specific position.
