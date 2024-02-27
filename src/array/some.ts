@@ -5,6 +5,6 @@ import type {IterationCallback, Predicate} from '../types';
  * @param predicate A function to test for each element.
  * @returns Produces a boolean.
  */
-export function some<T>(predicate: IterationCallback<boolean, T>): Predicate<ReadonlyArray<T>> {
+export function some<T>(predicate: IterationCallback<boolean, T>): Predicate<readonly T[]> {
 	return (values) => values.some(predicate);
 }

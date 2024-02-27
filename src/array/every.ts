@@ -5,6 +5,6 @@ import type {Predicate} from '../types';
  * @param predicate The predicate to check.
  * @returns Produces a boolean.
  */
-export function every<T>(predicate: Predicate<T>): Predicate<ReadonlyArray<T>> {
+export function every<T>(predicate: Predicate<T>): Predicate<readonly T[]> {
 	  return (values) => values.every(predicate);
 }

@@ -4,12 +4,12 @@ import {backwardIterator, forwardIterator, reversedIterator} from './utils';
 type Reduce = <A, V = A>(
 	reducer: Fn3<A, A | V, V, number>,
 	start?: Maybe<A>,
-) => Fn<A, ReadonlyArray<V>>
+) => Fn<A, readonly V[]>
 
-function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, ReadonlyArray<V>>, maxIterations?: number): (
+function reduceFactory<A, V = A>(generator: Fn<MyIterator<V>, readonly V[]>, maxIterations?: number): (
 	reducer: Fn3<A, A | V, V, number>,
 	start?: Maybe<A>,
-) => Fn<A, ReadonlyArray<V>> {
+) => Fn<A, readonly V[]> {
 	return (reducer, start) => (values) => {
 		if (values.length === 0 && start === undefined) {
 			throw new TypeError('Reduce of empty array with no initial value');

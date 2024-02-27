@@ -2,7 +2,7 @@ import type {First, Fn, Negative, WithoutFirst} from '../types';
 import {type Slice, slice as typedSlice} from 'string-ts';
 import {isArray} from '../predicate';
 
-function arraySlice<T>(start?: number, end?: number): Fn<T[], ReadonlyArray<T>> {
+function arraySlice<T>(start?: number, end?: number): Fn<T[], readonly T[]> {
 	return (values) => values.slice(start, end);
 }
 
@@ -23,7 +23,7 @@ export function slice<T>(start?: number, end?: number): Fn<unknown[]> | Fn<strin
 		} else {
 			throw new Error(`slice: Expected input to be a string or an array. Got ${typeof input}.`);
 		}
-	}) as Fn<unknown[], ReadonlyArray<unknown>> | Fn<string>;
+	}) as Fn<unknown[], readonly unknown[]> | Fn<string>;
 }
 
 export function head<T extends string, N extends number>(count?: N): Fn<Slice<T, 0, N>, T>;

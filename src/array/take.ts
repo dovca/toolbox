@@ -7,10 +7,10 @@ import {push} from './push';
 import {unshift} from './unshift';
 
 function takeFactory<T>(
-	iterator: Fn<MyIterator<T>, ReadonlyArray<T>>,
-	mutator: Fn<Fn<T[], ReadonlyArray<any>>, T> = push,
+	iterator: Fn<MyIterator<T>, readonly T[]>,
+	mutator: Fn<Fn<T[], readonly any[]>, T> = push,
 	predicateModifier: Fn<boolean> = identity,
-): Fn<Fn<T[], ReadonlyArray<T>>, IterationCallback<boolean, T>> {
+): Fn<Fn<T[], readonly T[]>, IterationCallback<boolean, T>> {
 	return (predicate) => {
 		const finalPredicate = funnel<IterationResult<T>, boolean, boolean>(predicate, predicateModifier);
 

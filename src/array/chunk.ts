@@ -8,7 +8,7 @@ import {property} from '../object';
  * @param mapper The function to determine the chunk boundaries.
  * @returns Produces an array of chunks.
  */
-export function chunkWith<T, M = any>(mapper: IterationCallback<M, T>): Fn<T[][], ReadonlyArray<T>> {
+export function chunkWith<T, M = any>(mapper: IterationCallback<M, T>): Fn<T[][], readonly T[]> {
 	return (values) => {
 		let group: T[] = [];
 		let mapperResult: Maybe<M> = undefined;

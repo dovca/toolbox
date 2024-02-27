@@ -1,8 +1,8 @@
 import type {Fn, IterationCallback, MyIterator} from '../types';
 import {forwardIterator, reversedIterator} from './utils';
 
-function forEachFactory<T>(generator: Fn<MyIterator<T>, ReadonlyArray<T>>): Fn<Fn<ReadonlyArray<T>>, IterationCallback<void, T>>;
-function forEachFactory<T>(generator: Fn<MyIterator<T>, ReadonlyArray<T>>): Fn<Fn<T[] | ReadonlyArray<T>>, IterationCallback<void, T>> {
+function forEachFactory<T>(generator: Fn<MyIterator<T>, readonly T[]>): Fn<Fn<readonly T[]>, IterationCallback<void, T>>;
+function forEachFactory<T>(generator: Fn<MyIterator<T>, readonly T[]>): Fn<Fn<T[] | readonly T[]>, IterationCallback<void, T>> {
 	return (callback) => (values) => {
 		for (const result of generator(values)) {
 			callback(...result);

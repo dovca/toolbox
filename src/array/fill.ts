@@ -7,6 +7,6 @@ import type {Fn} from '../types';
  * @param end The end index to fill the array to. Defaults to -1.
  * @returns Produces a new array with some positions filled with the given value.
  */
-export function fill<T>(value: T, start?: number, end?: number): Fn<T[], ReadonlyArray<T>> {
+export function fill<T>(value: T, start?: number, end?: number): Fn<T[], readonly T[]> {
 	return (array) => array.slice().fill(value, start, end);
 }

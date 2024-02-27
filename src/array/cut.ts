@@ -5,6 +5,6 @@ import type {Fn} from '../types';
  * @param position The position to split the array at.
  * @returns A couple of arrays that made up the original arrays.
  */
-export function cut<T>(position: number): Fn<[T[], T[]], ReadonlyArray<T>> {
+export function cut<T>(position: number): Fn<[T[], T[]], readonly T[]> {
 	return (values) => [values.slice(0, position), values.slice(position)];
 }

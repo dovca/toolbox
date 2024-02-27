@@ -8,9 +8,9 @@ import {identity} from '../misc';
  * @param mapper The function to transform the last value with.
  * @returns Produces a new array.
  */
-export function grow<T>(mapper?: Fn<T>): Fn<T[], ReadonlyArray<T>>;
-export function grow<T, U = T>(mapper: Fn<U, T>): Fn<(T | U)[], ReadonlyArray<T>>;
-export function grow<T>(mapper: Fn<T> = identity<T>): Fn<T[], ReadonlyArray<T>> {
+export function grow<T>(mapper?: Fn<T>): Fn<T[], readonly T[]>;
+export function grow<T, U = T>(mapper: Fn<U, T>): Fn<(T | U)[], readonly T[]>;
+export function grow<T>(mapper: Fn<T> = identity<T>): Fn<T[], readonly T[]> {
 	return (values) => values.length
 		? [...values, mapper(last(values)!)]
 		: [];

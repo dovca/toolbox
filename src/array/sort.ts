@@ -5,6 +5,6 @@ import type {Comparator, Fn} from '../types';
  * @param comparator A function that defines the sort order.
  * @returns Produces a new sorted array.
  */
-export function sort<T>(comparator: Comparator<T, number>): Fn<T[], ReadonlyArray<T>> {
+export function sort<T>(comparator: Comparator<T, number>): Fn<T[], readonly T[]> {
 	return (values) => values.toSorted(comparator);
 }

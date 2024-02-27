@@ -16,7 +16,7 @@ export type FnT3<R, T extends T3> = (...args: T) => R;
 export type FnT4<R, T extends T4> = (...args: T) => R;
 export type FnT5<R, T extends T5> = (...args: T) => R;
 
-export type IterationResult<T> = [T, number, ReadonlyArray<T>];
+export type IterationResult<T> = [T, number, readonly T[]];
 export type IterationCallback<R, T> = FnT3<R, IterationResult<T>>;
 export type MyIterator<T> = Generator<IterationResult<T>>;
 

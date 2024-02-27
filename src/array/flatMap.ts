@@ -5,6 +5,6 @@ import type {Fn, IterationCallback} from '../types';
  * @param mapper The function to transform each value with.
  * @returns Produces a new array of mapped and flattened values.
  */
-export function flatMap<I, O>(mapper: IterationCallback<O | O[], I>): Fn<O[], ReadonlyArray<I>> {
+export function flatMap<I, O>(mapper: IterationCallback<O | O[], I>): Fn<O[], readonly I[]> {
 	return (values) => values.flatMap(mapper);
 }

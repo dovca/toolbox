@@ -1,7 +1,7 @@
 import type {Fn, FnT3, IterationResult, Maybe, MyIterator} from '../types';
 import {backwardIterator, reversedIterator, forwardIterator} from './utils';
 
-export function findFactory<T>(generator: Fn<MyIterator<T>, ReadonlyArray<T>>): Fn<Fn<Maybe<T>, ReadonlyArray<T>>, FnT3<boolean, IterationResult<T>>> {
+export function findFactory<T>(generator: Fn<MyIterator<T>, readonly T[]>): Fn<Fn<Maybe<T>, readonly T[]>, FnT3<boolean, IterationResult<T>>> {
 	return (matcher) => (values) => {
 		for (const [value, ...rest] of generator(values)) {
 			if (matcher(value, ...rest)) {

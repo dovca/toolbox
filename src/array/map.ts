@@ -6,7 +6,7 @@ import {forwardIterator} from './utils';
  * @param mapper The function to transform each value with.
  * @returns Produces a new array of mapped values.
  */
-export function map<I, O = I>(mapper: IterationCallback<O, I>): Fn<O[], ReadonlyArray<I>> {
+export function map<I, O = I>(mapper: IterationCallback<O, I>): Fn<O[], readonly I[]> {
 	return (values) => values.map(mapper);
 }
 
@@ -16,7 +16,7 @@ export function map<I, O = I>(mapper: IterationCallback<O, I>): Fn<O[], Readonly
  * couple of the current input value and the previous input value.
  * @returns Produces a new array of mapped values.
  */
-export function mapWithPrevInput<I, O = I>(mapper: Fn3<O, [I, Maybe<I>], number, ReadonlyArray<I>>): Fn<O[], ReadonlyArray<I>> {
+export function mapWithPrevInput<I, O = I>(mapper: Fn3<O, [I, Maybe<I>], number, readonly I[]>): Fn<O[], readonly I[]> {
 	return (values) => {
 		const result: O[] = Array.from({length: values.length});
 		let previous: Maybe<I> = undefined;
@@ -34,7 +34,7 @@ export function mapWithPrevInput<I, O = I>(mapper: Fn3<O, [I, Maybe<I>], number,
  * couple of the current input value and the previous output value.
  * @returns Produces a new array of mapped values.
  */
-export function mapWithPrevOutput<I, O = I>(mapper: Fn3<O, [I, Maybe<O>], number, ReadonlyArray<I>>): Fn<O[], ReadonlyArray<I>> {
+export function mapWithPrevOutput<I, O = I>(mapper: Fn3<O, [I, Maybe<O>], number, readonly I[]>): Fn<O[], readonly I[]> {
 	return (values) => {
 		const result: O[] = Array.from({length: values.length});
 		let previous: Maybe<O> = undefined;

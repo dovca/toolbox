@@ -7,4 +7,4 @@ import type {Falsy} from '../types';
  * @param values The array to compact.
  * @returns The compacted array.
  */
-export const compact: <T>(values: ReadonlyArray<T>) => Exclude<T, Falsy>[] = filter(isTruthy);
+export const compact: <T>(values: readonly T[]) => Exclude<T, Falsy>[] = filter(isTruthy);

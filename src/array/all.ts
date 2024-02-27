@@ -7,6 +7,6 @@ import {every} from './every';
  * @param predicates The predicates to check.
  * @returns Produces a boolean.
  */
-export function all<T>(...predicates: Predicate<T>[]): Predicate<T> {
+export function all<T>(...predicates: readonly Predicate<T>[]): Predicate<T> {
 	return (value) => every(call(value))(predicates);
 }

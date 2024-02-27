@@ -5,10 +5,10 @@ import type {Dictionary, Fn} from '../types';
  * @param key The key to use for the dictionary.
  * @returns Produces a new dictionary.
  */
-export function keyBy<T>(key: Fn<string | number, T>): Fn<Dictionary<T>, ReadonlyArray<T>>;
-export function keyBy<K extends string, T extends { [k in K]: string | number }>(key: K): Fn<Partial<Record<T[K], T>>, ReadonlyArray<T>>;
-export function keyBy<T extends object, K extends keyof T>(key: K): Fn<Partial<Record<T[K] & (string | number), T>>, ReadonlyArray<T>>;
-export function keyBy<T>(key: keyof T | Fn<string | number, T>): Fn<Dictionary<T>, ReadonlyArray<T>> {
+export function keyBy<T>(key: Fn<string | number, T>): Fn<Dictionary<T>, readonly T[]>;
+export function keyBy<K extends string, T extends { [k in K]: string | number }>(key: K): Fn<Partial<Record<T[K], T>>, readonly T[]>;
+export function keyBy<T extends object, K extends keyof T>(key: K): Fn<Partial<Record<T[K] & (string | number), T>>, readonly T[]>;
+export function keyBy<T>(key: keyof T | Fn<string | number, T>): Fn<Dictionary<T>, readonly T[]> {
 	return (values) => {
 		const result: Dictionary<T> = {};
 		for (const value of values) {

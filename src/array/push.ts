@@ -5,6 +5,6 @@ import type {Fn} from '../types';
  * @param values The values to append.
  * @returns Produces a new array.
  */
-export function push<I, P = I>(...values: P[]): Fn<(I | P)[], ReadonlyArray<I>> {
+export function push<I, P = I>(...values: P[]): Fn<(I | P)[], readonly I[]> {
 	return (input) => [...input, ...values];
 }
