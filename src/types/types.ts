@@ -43,10 +43,10 @@ export type Values<T extends object> = T[keyof T];
 export type Nullish<T> = T | null | undefined;
 export type Maybe<T> = T | undefined;
 export type Many<T> = T | T[];
-export type ConditionalKeys<T extends object, C> = {[K in keyof T]: T[K] extends C ? K : never}[keyof T];
+export type ConditionalKeys<T extends object, C> = { [K in keyof T]: T[K] extends C ? K : never }[keyof T];
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;
 
-export type First<T extends any[]> = T extends [infer F, ...any] ? F : never;
-export type WithoutFirst<T extends any[]> = T extends [any, ...infer R] ? R : never;
+export type First<T extends readonly any[]> = T extends readonly [infer F, ...any[]] ? F : T extends readonly (infer E)[] ? E : unknown
+export type WithoutFirst<T extends readonly any[]> = T extends readonly [any, ...infer R] ? R : T;

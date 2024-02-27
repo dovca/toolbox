@@ -42,7 +42,9 @@ test('decapitate', () => {
 	expect(decapitate('')).toEqual(['', '']);
 	expect(decapitate('a')).toEqual(['a', '']);
 	expect(decapitate('hello')).toEqual(['h', 'ello']);
-	expect<[unknown, unknown[]]>(decapitate([])).toEqual([undefined, []]);
-	expect<[number, number[]]>(decapitate([1])).toEqual([1, []]);
-	expect<[number, number[]]>(decapitate([1, 2, 3])).toEqual([1, [2, 3]]);
+	expect(decapitate<unknown[]>([])).toEqual([undefined, []]);
+	expect(decapitate([1])).toEqual([1, []]);
+	expect(decapitate([1, 2, 3] as const)).toEqual([1, [2, 3]]);
+	expect(decapitate([1, 2, 3, 4, 5])).toEqual([1, [2, 3, 4, 5]]);
 });
+

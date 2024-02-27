@@ -33,14 +33,14 @@ export function head(count: number = 1): Fn<string> | Fn<unknown[]> {
 }
 
 export function tail<T extends string, N extends number>(count?: N): Fn<Slice<T, Negative<N>>, T>;
-export function tail<T extends any[]>(count?: number): Fn<T>;
+export function tail<T extends readonly any[]>(count?: number): Fn<T>;
 export function tail(count: number = 1): Fn<string> | Fn<unknown[]> {
 	return (input: any) => slice(-count)(input);
 }
 
 export function decapitate<T extends string>(value: T): [Slice<T, 0, 1>, Slice<T, 1>];
-export function decapitate<T extends any[]>(values: T): [First<T>, WithoutFirst<T>];
-export function decapitate<T extends string | any[]>(values: T): [string, string] | [any, any[]] {
+export function decapitate<T extends readonly any[]>(values: T): [First<T>, WithoutFirst<T>];
+export function decapitate<T extends string | readonly any[]>(values: T): [string, string] | [any, any[]] {
 	return typeof values === 'string'
 		? [values.slice(0, 1), values.slice(1)]
 		: [values[0], values.slice(1)];
