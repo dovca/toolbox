@@ -7,6 +7,7 @@ export * from "./any";
 export * from "./chunk";
 export * from "./compact";
 export * from "./cut";
+export * from "./difference";
 export * from "./drop";
 export * from "./every";
 export * from "./fill";
