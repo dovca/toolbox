@@ -4,7 +4,9 @@ export type T3<A = any, B = A, C = B> = [A, B, C];
 export type T4<A = any, B = A, C = B, D = C> = [A, B, C, D];
 export type T5<A = any, B = A, C = B, D = C, E = D> = [A, B, C, D, E];
 
+export type Fn0<R> = () => R;
 export type Fn<R, P1 = R> = (p1: P1) => R;
+export type Fn1<R, P1 = R> = Fn<R, P1>;
 export type Fn2<R, P1 = R, P2 = P1> = (p1: P1, p2: P2) => R;
 export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = (p1: P1, p2: P2, p3: P3) => R;
 export type Fn4<R, P1 = R, P2 = P1, P3 = P2, P4 = P3> = (p1: P1, p2: P2, p3: P3, p4: P4) => R;
