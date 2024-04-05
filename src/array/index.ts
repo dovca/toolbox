@@ -4,8 +4,10 @@
 
 export * from "./all";
 export * from "./any";
+export * from "./at";
 export * from "./chunk";
 export * from "./compact";
+export * from "./count";
 export * from "./cut";
 export * from "./difference";
 export * from "./drop";
@@ -34,6 +36,7 @@ export * from "./reduce";
 export * from "./remove";
 export * from "./reverse";
 export * from "./shift";
+export * from "./shuffle";
 export * from "./some";
 export * from "./sort";
 export * from "./sum";
