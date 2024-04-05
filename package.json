@@ -1,6 +1,6 @@
 {
   "name": "@dovca/ts-fns",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A set of TypeScript functions for common tasks.",
   "main": "index.js",
   "directories": {
