@@ -1,6 +1,12 @@
 import {expect, test} from 'bun:test';
 import {ascending, descending, identity, length, sort} from '../../src';
 
+test('sort: default', () => {
+	expect(sort()([])).toEqual([]);
+	expect(sort()([3, 10, 2, 1])).toEqual([1, 2, 3, 10]);
+	expect(sort()(['d', 'c', 'b', 'a'])).toEqual(['a', 'b', 'c', 'd']);
+})
+
 test('sort: custom', () => {
 	expect(sort(() => -1)([])).toEqual([]);
 	expect(sort<number>((a, b) => a - b)([3, 10, 2, 1])).toEqual([1, 2, 3, 10]);
