@@ -52,3 +52,4 @@ export type Primitive = string | number | boolean | bigint | null | undefined;
 
 export type First<T extends readonly any[]> = T extends readonly [infer F, ...any[]] ? F : T extends readonly (infer E)[] ? E : unknown
 export type WithoutFirst<T extends readonly any[]> = T extends readonly [any, ...infer R] ? R : T;
+export type Last<T extends readonly any[]> = T extends readonly [...infer _, infer L] ? L : T extends readonly (infer E)[] ? E : unknown;

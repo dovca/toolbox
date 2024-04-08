@@ -2,20 +2,22 @@
   "name": "@dovca/ts-fns",
   "version": "0.0.4",
   "description": "A set of TypeScript functions for common tasks.",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "directories": {
     "lib": "src",
     "test": "test"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "homepage": "https://github.com/dovca/ts-fns",
-  "module": "src/index.ts",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "packageManager": "bun",
   "scripts": {
     "test": "bun test --bail",
     "generate-barrels": "barrelsby --delete -d ./src -l all",
+    "prepublish": "tsc",
     "prepare": "husky"
   },
   "author": "david@ovcacik.xyz",

@@ -1,7 +1,8 @@
 import type {Fn, Sorter} from '../../types';
 
 export function descending<T extends string | number>(): Sorter<T>;
-export function descending<T>(mapper: Fn<string, T> | Fn<number, T>): Sorter<T>;
+export function descending<T>(mapper: Fn<number, T>): Sorter<T>;
+export function descending<T>(mapper: Fn<string, T>): Sorter<T>;
 export function descending<T>(mapper?: Fn<string, T> | Fn<number, T>): Sorter<T> {
 	return (a, b) => {
 		const mappedA = mapper?.(a) ?? a;

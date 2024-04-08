@@ -1,7 +1,7 @@
 import type {Fn} from '../types';
 import {identity} from '../misc';
 
-export function countWith<T extends string | number>(
+export function countWith<T>(
 	mapper: Fn<string | number, T>,
 ): Fn<Record<string | number, number>, readonly T[]> {
 	return (values) => values.reduce((acc, value) => {
@@ -11,6 +11,6 @@ export function countWith<T extends string | number>(
 	}, {} as Record<string | number, number>);
 }
 
-export function count<T extends string | number>(values: readonly T[]) {
+export function count<T extends string | number>(values: readonly T[]): Record<T, number> {
 	return countWith(identity)(values);
 }

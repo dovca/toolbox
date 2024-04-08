@@ -6,5 +6,5 @@ import type {Comparator, Fn} from '../types';
  * @returns Produces a new sorted array.
  */
 export function sort<T>(comparator: Comparator<T, number>): Fn<T[], readonly T[]> {
-	return (values) => values.toSorted(comparator);
+	return (values) => values.slice().sort(comparator);
 }
