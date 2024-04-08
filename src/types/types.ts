@@ -46,6 +46,9 @@ export type Nullish<T> = T | null | undefined;
 export type Maybe<T> = T | undefined;
 export type Many<T> = T | T[];
 export type ConditionalKeys<T extends object, C> = { [K in keyof T]: T[K] extends C ? K : never }[keyof T];
+export type Override<A extends object, B extends object> = Omit<A, keyof B> & {
+	[K in keyof B as B[K] extends never | void ? never : K]: B[K]
+}
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;
