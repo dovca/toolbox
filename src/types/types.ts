@@ -48,7 +48,8 @@ export type Many<T> = T | T[];
 export type ConditionalKeys<T extends object, C> = { [K in keyof T]: T[K] extends C ? K : never }[keyof T];
 export type Override<A extends object, B extends object> = Omit<A, keyof B> & {
 	[K in keyof B as B[K] extends never | void ? never : K]: B[K]
-}
+};
+export type Transpose<T extends Record<string, string | number>> = Record<Values<T>, keyof T>;
 
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;
@@ -56,3 +57,4 @@ export type Primitive = string | number | boolean | bigint | null | undefined;
 export type First<T extends readonly any[]> = T extends readonly [infer F, ...any[]] ? F : T extends readonly (infer E)[] ? E : unknown
 export type WithoutFirst<T extends readonly any[]> = T extends readonly [any, ...infer R] ? R : T;
 export type Last<T extends readonly any[]> = T extends readonly [...infer _, infer L] ? L : T extends readonly (infer E)[] ? E : unknown;
+export type Reverse<T extends readonly any[]> = T extends readonly [infer F, ...infer R] ? [...Reverse<R>, F] : T;
