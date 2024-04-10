@@ -1,4 +1,4 @@
-import {type Join, toUpperCase} from 'string-ts';
+import {type Join} from 'string-ts';
 import type {Dictionary, Fn, Fn2, JoinMarker, ToString, StringKeys, Values} from '../types';
 import {entries} from './entries';
 
