@@ -9,4 +9,5 @@ export * from "./flow";
 export * from "./identity";
 export * from "./log";
 export * from "./noop";
+export * from "./seq";
 export * from "./sorter/index";
