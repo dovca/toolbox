@@ -1,4 +1,4 @@
-import {reversedIterator} from './utils';
+import {reversedIterator} from '../iterators';
 import type {Reverse} from '../types';
 
 /**

@@ -20,7 +20,8 @@ export type FnT5<R, T extends T5> = (...args: T) => R;
 
 export type IterationResult<T> = [T, number, readonly T[]];
 export type IterationCallback<R, T> = FnT3<R, IterationResult<T>>;
-export type MyIterator<T> = Generator<IterationResult<T>>;
+export type MyGeneratorFunction<T> = Fn<MyGenerator<T>, readonly T[]>;
+export type MyGenerator<T> = Generator<IterationResult<T>>;
 
 export type JoinMarker = '‍‍‍';
 

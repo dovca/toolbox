@@ -1,5 +1,5 @@
 import type {Fn, IterationCallback, Maybe} from '../types';
-import {forwardIterator} from './utils';
+import {forwardIterator} from '../iterators';
 import {property} from '../object';
 
 /**

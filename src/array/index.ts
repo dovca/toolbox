@@ -45,4 +45,3 @@ export * from "./union";
 export * from "./unique";
 export * from "./unshift";
 export * from "./zip";
-export * from "./utils/index";

@@ -6,6 +6,7 @@ export * from "./array/index";
 export * from "./boolean/index";
 export * from "./convert/index";
 export * from "./function/index";
+export * from "./iterators/index";
 export * from "./misc/index";
 export * from "./multi/index";
 export * from "./number/index";

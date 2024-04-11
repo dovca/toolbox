@@ -1,13 +1,13 @@
-import type {Fn, IterationCallback, IterationResult, MyIterator} from '../types';
+import type {Fn, IterationCallback, IterationResult, MyGeneratorFunction} from '../types';
 import {funnel} from '../function';
 import {not} from '../boolean';
 import {identity} from '../misc';
-import {backwardIterator, forwardIterator, reversedIterator} from './utils';
+import {backwardIterator, forwardIterator, reversedIterator} from '../iterators';
 import {push} from './push';
 import {unshift} from './unshift';
 
 function dropFactory<T>(
-	iterator: Fn<MyIterator<T>, readonly T[]>,
+	iterator: MyGeneratorFunction<T>,
 	mutator: Fn<Fn<T[], readonly any[]>, T> = push,
 	predicateModifier: Fn<boolean> = not,
 ): Fn<Fn<T[], readonly T[]>, IterationCallback<boolean, T>> {
