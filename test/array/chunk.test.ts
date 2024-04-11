@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {chunk, chunkBy} from '../../src';
+import {chunk, chunkBy, chunkWith, isLessThan, isOdd, length} from '../../src';
 
 test('chunk', () => {
 	expect(chunk(3)([])).toEqual([]);
@@ -8,6 +8,13 @@ test('chunk', () => {
 	expect(chunk(3)([1, 2, 3])).toEqual([[1, 2, 3]]);
 	expect(chunk(3)([1, 2, 3, 4])).toEqual([[1, 2, 3], [4]]);
 	expect(chunk(3)([1, 2, 3, 4, 5, 6, 7, 8, 9])).toEqual([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+});
+
+test('chunkWith', () => {
+	expect(chunkWith(isOdd)([])).toEqual([]);
+	expect(chunkWith(isOdd)([1, 3, 5, 2, 4, 6, 7])).toEqual([[1, 3, 5], [2, 4, 6], [7]]);
+	expect(chunkWith(isLessThan(3))([1, 2, 3, 4, 5])).toEqual([[1, 2], [3, 4, 5]]);
+	expect(chunkWith(length)(['abc', 'foo', 'hello']))
 });
 
 test('chunkBy', () => {
