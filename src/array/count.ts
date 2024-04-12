@@ -1,6 +1,5 @@
 import type {Fn} from '../types';
 import {identity} from '../misc';
-import {values} from '../object';
 
 /**
  * Maps the flowing values to new results and counts the occurrences of each result.
