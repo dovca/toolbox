@@ -15,9 +15,10 @@
   "types": "./dist/index.d.ts",
   "packageManager": "bun",
   "scripts": {
+    "build": "tsup",
     "test": "bun test --bail",
     "generate-barrels": "barrelsby --delete -d ./src -l all",
-    "prepublish": "tsup",
+    "prepublishOnly": "bun run build",
     "prepare": "husky"
   },
   "tsup": {
