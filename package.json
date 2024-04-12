@@ -1,6 +1,6 @@
 {
   "name": "@dovca/ts-fns",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A set of TypeScript functions for common tasks.",
   "main": "./dist/index.js",
   "directories": {
@@ -21,11 +21,16 @@
     "prepare": "husky"
   },
   "tsup": {
-    "entry": ["src/index.ts"],
+    "entry": [
+      "src/index.ts"
+    ],
     "sourcemap": true,
     "clean": true,
     "minify": true,
-    "format": ["cjs", "esm"],
+    "format": [
+      "cjs",
+      "esm"
+    ],
     "dts": true
   },
   "author": "david@ovcacik.xyz",
