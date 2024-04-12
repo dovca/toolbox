@@ -1,4 +1,5 @@
 import type {Comparator, Equalizer, Fn, Fn2, Predicate} from '../types';
+import {sameValueZero} from '../utils/sameValueZero';
 
 export function compare<T>(predicate: Predicate<T>): Predicate<T> {
 	return (input) => predicate(input);
@@ -11,5 +12,5 @@ export function comparator<R, T, U = T>(comp: Fn2<R, T, U>): Fn<Fn<R, T>, U> {
 	return (other) => (input) => comp(input, other);
 }
 
-export const isEqual: <T>(value: T) => Predicate<T> = comparator((input, value) => input === value);
-export const isNotEqual: <T>(value: T) => Predicate<T> = comparator((input, value) => input !== value);
+export const isEqual: <T>(value: T) => Predicate<T> = comparator((input, value) => sameValueZero(input, value));
+export const isNotEqual: <T>(value: T) => Predicate<T> = comparator((input, value) => !sameValueZero(input, value));

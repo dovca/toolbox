@@ -1,6 +1,7 @@
 import type {Equalizer, Fn} from '../types';
 import {isOneOf} from '../predicate';
 import {memoize} from '../function';
+import {sameValueZero} from '../utils';
 
 export function intersection<T>(other: readonly T[]): Fn<T[], readonly T[]> {
 	return (input) => input.filter(isOneOf(...other));
@@ -13,5 +14,5 @@ export function intersectionWith<T>(comparator: Equalizer<T>): Fn<Fn<T[], readon
 
 export function intersectionBy<T, M>(mapper: Fn<M, T>): Fn<Fn<T[], readonly T[]>, readonly T[]> {
 	const memMapper = memoize(mapper);
-	return intersectionWith((i, o) => memMapper(i) === memMapper(o));
+	return intersectionWith((i, o) => sameValueZero(memMapper(i), memMapper(o)));
 }

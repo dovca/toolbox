@@ -3,3 +3,4 @@
  */
 
 export * from "./MultiMap";
+export * from "./sameValueZero";
