@@ -11,25 +11,34 @@
     "dist"
   ],
   "homepage": "https://github.com/dovca/ts-fns",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "packageManager": "bun",
   "scripts": {
     "test": "bun test --bail",
     "generate-barrels": "barrelsby --delete -d ./src -l all",
-    "prepublish": "tsc",
+    "prepublish": "tsup",
     "prepare": "husky"
+  },
+  "tsup": {
+    "entry": ["src/index.ts"],
+    "sourcemap": true,
+    "clean": true,
+    "minify": true,
+    "format": ["cjs", "esm"],
+    "dts": true
   },
   "author": "david@ovcacik.xyz",
   "license": "LGPL-3.0-or-later",
   "devDependencies": {
     "@types/bun": "^1.0.2",
-    "husky": "^9.0.10",
     "barrelsby": "^2.8.1",
     "bun": "^1.0.23",
+    "husky": "^9.0.10",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "string-ts": "^2.0.0"
+    "string-ts": "^2.0.0",
+    "tsup": "^8.0.2"
   }
 }
