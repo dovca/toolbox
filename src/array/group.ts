@@ -2,9 +2,14 @@ import type {ConditionalKeys, Fn} from '../types';
 import {property} from '../object';
 
 /**
- * Groups the values of an array by a key.
+ * Groups the values of an array by a key. The elements in groups are in the same relative order as they appear
+ * in the original array.
  * @param keyer The function to produce the key.
  * @returns Produces a new object of keyed arrays.
+ * @example
+ * ```typescript
+ * groupWith(round)([1.1, 1.2, 1.8, 2.2]); // {1: [1.1, 1.2], 2: [1.8, 2.2]}
+ * ```
  */
 export function groupWith<T, K extends string | number>(keyer: Fn<K, T>): Fn<Partial<Record<K, T[]>>, T[]> {
 	return (values) => {
@@ -21,6 +26,16 @@ export function groupWith<T, K extends string | number>(keyer: Fn<K, T>): Fn<Par
 	}
 }
 
+/**
+ * Groups the object values of an array by a key. The elements in groups are in the same relative order as they appear
+ * in the original array.
+ * @param key The key to group by.
+ * @returns Produces a new object of keyed arrays.
+ * @example
+ * ```typescript
+ * groupBy('id')([{id: 1}, {id: 2}, {id: 1}]); // {1: [{id: 1}, {id: 1}], 2: [{id: 2}]}
+ * ```
+ */
 export function groupBy<T extends object>(key: ConditionalKeys<T, string | number | boolean> & (string | number)) {
 	return groupWith(property(key) as Fn<string | number, T>);
 }

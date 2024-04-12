@@ -8,7 +8,7 @@ import {values} from '../object';
  * @returns Produces an object where keys are the mapped values and values are the number of occurrences.
  * @example
  * ```typescript
- * countWith(round)([1.1, 1.2, 1.3, 1.6, 1.8]); // => {'1': 3, '2': 2}
+ * countWith(round)([1.1, 1.2, 1.3, 1.6, 1.8]); // => {1: 3, 2: 2}
  * ```
  */
 export function countWith<T>(
