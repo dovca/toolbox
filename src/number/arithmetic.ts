@@ -53,6 +53,7 @@ export const decrement = subtract(1)
 export const square = multiply();
 export const negative = multiply(-1);
 export const reciprocal = divide(1);
+export const parity = modulo(2);
 export const abs = Math.abs;
 export const ceil = Math.ceil;
 export const floor = Math.floor;

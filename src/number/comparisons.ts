@@ -1,15 +1,22 @@
 import {comparator, isEqual} from '../predicate';
 import {negate} from '../function';
-import {modulo} from './arithmetic';
+import {parity} from './arithmetic';
+import type {Equalizer} from '../types';
 
+export const operatorLessThan: Equalizer<number> = (a, b) => a < b;
+export const operatorLessThanOrEqual: Equalizer<number> = (a, b) => a <= b;
+export const operatorGreaterThan: Equalizer<number> = (a, b) => a > b;
+export const operatorGreaterThanOrEqual: Equalizer<number> = (a, b) => a >= b;
 export const isZero = isEqual(0);
-export const isGreaterThan = comparator<number>((input, value) => input > value);
-export const isGreaterThanOrEqual = comparator<number>((input, value) => input >= value);
-export const isLessThan = comparator<number>((input, value) => input < value);
-export const isLessThanOrEqual = comparator<number>((input, value) => input <= value);
+export const isGreaterThan = comparator(operatorGreaterThan);
+export const isGreaterThanOrEqual = comparator(operatorGreaterThanOrEqual);
+export const isLessThan = comparator(operatorLessThan);
+export const isLessThanOrEqual = comparator(operatorLessThanOrEqual);
 export const isPositive = isGreaterThan(0);
 export const isNegative = isLessThan(0);
 export const isNonPositive = isLessThanOrEqual(0);
 export const isNonNegative = isGreaterThanOrEqual(0);
-export const isOdd = (value: number) => modulo(2)(value) === 1;
+export const isOdd = (value: number) => parity(value) === 1;
 export const isEven = negate(isOdd);
+export const isInteger = Number.isInteger;
+export const isFinite = Number.isFinite;
