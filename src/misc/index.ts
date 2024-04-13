@@ -3,6 +3,7 @@
  */
 
 export * from "./arrayify";
+export * from "./binaryOperation";
 export * from "./constant";
 export * from "./fallback";
 export * from "./flow";

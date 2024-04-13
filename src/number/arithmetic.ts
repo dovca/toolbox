@@ -1,8 +1,5 @@
 import type {Fn, Fn2, Maybe} from '../types';
-
-export function binaryOperation<T extends number>(operation: Fn2<T>): (num?: Maybe<T>) => Fn<T> {
-	return (b) => (a) => operation(a, b ?? a);
-}
+import {binaryOperation} from '../misc';
 
 function unsafeBinaryOperation<T extends number>(operation: Fn2<T, Maybe<T>>): Fn<Fn<T, Maybe<T>>, Maybe<T>> {
 	return (b) => (a) => operation(a, b);
