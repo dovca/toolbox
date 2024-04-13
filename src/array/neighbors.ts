@@ -3,6 +3,10 @@
  * If the input array has less than two elements, an empty array is returned.
  * @param values The array to get the neighbors of.
  * @returns An array of tuples containing two adjacent elements from the input array.
+ * @example
+ * ```typescript
+ * neighbors([1, 2, 3, 4]); // [[1, 2], [2, 3], [3, 4]]
+ * ```
  */
 export function neighbors<T>(values: readonly T[]): [T, T][] {
 	const result: [T, T][] = Array.from({length: values.length - 1});

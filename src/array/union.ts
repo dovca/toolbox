@@ -1,18 +1,28 @@
 import type {Equalizer, Fn} from '../types';
-import {removeAll, removeWith} from './remove';
-import {memoize} from '../function';
-import {sameValueZero} from '../utils';
+import {discard} from './discard';
+import {differenceWith} from './difference';
 
+/**
+ * Creates an array of unique elements from the flowing array and the given.
+ * @param other The array to combine with.
+ * @returns Produces a new array.
+ * @example
+ * ```typescript
+ * union([1, 2, 3])([3, 4, 5]); // [3, 4, 5, 1, 2]
+ * ```
+ */
 export function union<T>(other: readonly T[]): Fn<T[], readonly T[]> {
-	return (input) => input.concat(removeAll<T>(...input)(other));
+	return (input) => input.concat(discard(...input)(other));
 }
 
+/** Factory that creates new union functions with a custom comparator.
+ * @param comparator A function that compares two elements and returns a boolean signaling if they are equal.
+ * @returns Returns a custom union function.
+ * @example
+ * ```typescript
+ * unionWith(round)([1.1, 2.2, 3.3])([2, 3, 4]); // [2, 3, 4, 1.1]
+ * ```
+ */
 export function unionWith<T>(comparator: Equalizer<T>): Fn<Fn<T[], readonly T[]>, readonly T[]> {
-	const memComparator = memoize(comparator);
-	return (other) => (input) => input.concat(removeWith<T>((o) => input.some((i) => memComparator(i, o)))(other));
-}
-
-export function unionBy<T, M>(mapper: Fn<M, T>): Fn<Fn<T[], readonly T[]>, readonly T[]> {
-	const memMapper = memoize(mapper);
-	return unionWith((i, o) => sameValueZero(memMapper(i), memMapper(o)));
+	return (other) => (input) => input.concat(differenceWith(comparator)(input)(other));
 }

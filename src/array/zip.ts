@@ -3,11 +3,18 @@ import type {Fn, Fn2, Maybe} from '../types';
 import {identity} from '../misc';
 
 /**
- * Combines two arrays into a single array. Each new value is produced by the zipper function.
+ * Combines two arrays into a single array. Each new value is produced by the zipper function. In case the arrays are of
+ * different lengths, the result will be the length of the longer array and the zipper function will receive `undefined`
+ * for missing values.
  * @param zipper A function that combines the flowing values with argument values.
  * @returns Produces a new array.
+ * @example
+ * ```typescript
+ * zipWith((a, b) => a + b)([1, 2, 3])([4, 5, 6]); // [5, 7, 9]
+ * zipWith(safeOperatorPlus)([1, 2, 3])([4]); // [5, 2, 3]
+ * ```
  */
-export function zipWith<A, I, R>(zipper: Fn2<R, Maybe<I>, Maybe<A>>): Fn<Fn<R[], I[]>, A[]> {
+export function zipWith<A, I, R>(zipper: Fn2<R, Maybe<I>, Maybe<A>>): Fn<Fn<R[], readonly I[]>, readonly A[]> {
 	return (argValues) => (inputValues) => {
 		const length = Math.max(inputValues.length, argValues.length);
 		const result: R[] = Array.from({length});
@@ -25,7 +32,7 @@ export function zipWith<A, I, R>(zipper: Fn2<R, Maybe<I>, Maybe<A>>): Fn<Fn<R[],
  * @param values The values to combine with the input.
  * @returns Produces a new array of tuples.
  */
-export function zip<I, A>(values: A[]): Fn<[Maybe<I>, Maybe<A>][], I[]> {
+export function zip<I, A>(values: readonly A[]): Fn<[Maybe<I>, Maybe<A>][], readonly I[]> {
 	return zipWith(gather<[Maybe<I>, Maybe<A>], Maybe<I>, Maybe<A>>(identity))(values);
 }
 

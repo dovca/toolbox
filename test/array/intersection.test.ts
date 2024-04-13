@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {intersection, intersectionBy, intersectionWith} from '../../src';
+import {equalizeWith, intersection, intersectionWith, length} from '../../src';
 
 test('intersection', () => {
 	expect(intersection([])([])).toEqual([]);
@@ -11,24 +11,11 @@ test('intersection', () => {
 });
 
 test('intersectionWith', () => {
-	const equalLength = (a: string, b: string) => a.length === b.length
-	const intersect = intersectionWith(equalLength);
+	const intersect = intersectionWith(equalizeWith(length<string>));
 
 	expect(intersect([])([])).toEqual([]);
 	expect(intersect(['a'])([])).toEqual([]);
 	expect(intersect([])(['a'])).toEqual([]);
 	expect(intersect(['a'])(['b'])).toEqual(['b']);
 	expect(intersect(['a', 'aa', 'aaa'])(['dddd', 'ccc', 'bb'])).toEqual(['ccc', 'bb']);
-});
-
-test('intersectionBy', () => {
-	const firstChar = (s: string) => s.charAt(0);
-	const intersect = intersectionBy(firstChar);
-
-	expect(intersect([])([])).toEqual([]);
-	expect(intersect(['a'])([])).toEqual([]);
-	expect(intersect([])(['a'])).toEqual([]);
-	expect(intersect(['a'])(['b'])).toEqual([]);
-	expect(intersect(['a', 'aa', 'aaa'])(['dddd', 'ccc', 'bb'])).toEqual([]);
-	expect(intersect(['a', 'dd', 'eee'])(['ccc', 'bb', 'a', 'aa'])).toEqual(['a', 'aa']);
 });

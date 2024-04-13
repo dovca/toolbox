@@ -39,19 +39,38 @@ function reduceFactory<A, V = A>(generator: MyGeneratorFunction<V>, maxIteration
 
 /**
  * Reduces a flowing array to a single value.
+ * @example
+ * ```typescript
+ * reduce(concat)(['a', 'b', 'c']); // 'abc'
+ * ```
  */
 export const reduce: Reduce = reduceFactory(forwardIterator);
 
 /**
  * Reduces a flowing array to a single value, iterating from right to left.
+ * @example
+ * ```typescript
+ * reduceRight(concat)(['a', 'b', 'c']); // 'cba'
+ * ```
  */
 export const reduceRight: Reduce = reduceFactory(backwardIterator);
 
 /**
  * Reduces a flowing array to a single value, iterating from right to left, with index counting from right as well.
+ * @example
+ * ```typescript
+ * reduceReversed(concat)(['a', 'b', 'c']); // 'cba'
+ * ```
  */
 export const reduceReversed: Reduce = reduceFactory(reversedIterator);
 
+/**
+ * Reduces a flowing array to a single value, with a maximum number of iterations.
+ * @example
+ * ```typescript
+ * reduceAtMost(2)(concat)(['a', 'b', 'c']); // 'ab'
+ * ```
+ */
 export function reduceAtMost(maxIterations: number): Reduce {
 	return reduceFactory(forwardIterator, maxIterations);
 }

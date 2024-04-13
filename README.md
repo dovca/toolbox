@@ -63,7 +63,7 @@ lastLoose, length, localeCompare, log, lowerCase, map, mapEntries, mapKeys, mapV
 mapWithPrevInput, mapWithPrevOutput, match, max, memoize, min, modulo, multiply, negative,
 neighbors, noop, not, omit, or, partition, pascalCase, pick, pickBy, pickValues, pipe, pop, pow,
 prepend, product, property, push, reciprocal, reduce, reduceAtMost, reduceReversed, reduceRight,
-removeAll, removeWith, repeat, replace, reverse, reversedIterator, round, search, seq, shift,
+discard, remove, repeat, replace, reverse, reversedIterator, round, search, seq, shift,
 shuffle, sign, slice, snakeCase, some, sort, split, spread, sqrt, square, startsWith, substring,
 subtract, subtractFrom, sum, tail, takeRightUntil, takeRightWhile, takeUntil, takeUntilReversed,
 takeWhile, takeWhileReversed, toLocaleLowerCase, toLocaleUpperCase, toPairs, toRegex, toString,

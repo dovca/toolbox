@@ -10,6 +10,7 @@ export * from "./curry";
 export * from "./funnel";
 export * from "./gather";
 export * from "./memoize";
+export * from "./negate";
 export * from "./pipe";
 export * from "./repeat";
 export * from "./spread";

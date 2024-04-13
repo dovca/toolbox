@@ -11,7 +11,7 @@ import {property} from '../object';
  * groupWith(round)([1.1, 1.2, 1.8, 2.2]); // {1: [1.1, 1.2], 2: [1.8, 2.2]}
  * ```
  */
-export function groupWith<T, K extends string | number>(keyer: Fn<K, T>): Fn<Partial<Record<K, T[]>>, T[]> {
+export function groupWith<T, K extends string | number>(keyer: Fn<K, T>): Fn<Partial<Record<K, T[]>>, readonly T[]> {
 	return (values) => {
 		const result: Record<K, T[]> = {} as Record<K, T[]>;
 		for (const value of values) {

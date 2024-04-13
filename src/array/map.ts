@@ -5,6 +5,10 @@ import {forwardIterator} from '../iterators';
  * Maps a flowing array.
  * @param mapper The function to transform each value with.
  * @returns Produces a new array of mapped values.
+ * @example
+ * ```typescript
+ * map(double)([1, 2, 3]); // [2, 4, 6]
+ * ```
  */
 export function map<I, O = I>(mapper: IterationCallback<O, I>): Fn<O[], readonly I[]> {
 	return (values) => values.map(mapper);
@@ -15,6 +19,10 @@ export function map<I, O = I>(mapper: IterationCallback<O, I>): Fn<O[], readonly
  * @param mapper The function to transform each value with. The first parameter is a
  * couple of the current input value and the previous input value.
  * @returns Produces a new array of mapped values.
+ * @example
+ * ```typescript
+ * mapWithPrevInput<number>(([v, p]) => [p, v])([1, 2, 3]); // [[undefined, 1], [1, 2], [2, 3]]
+ * ```
  */
 export function mapWithPrevInput<I, O = I>(mapper: Fn3<O, [I, Maybe<I>], number, readonly I[]>): Fn<O[], readonly I[]> {
 	return (values) => {
@@ -33,6 +41,10 @@ export function mapWithPrevInput<I, O = I>(mapper: Fn3<O, [I, Maybe<I>], number,
  * @param mapper The function to transform each value with. The first parameter is a
  * couple of the current input value and the previous output value.
  * @returns Produces a new array of mapped values.
+ * @example
+ * ```typescript
+ * mapWithPrevOutput<number>(([v, p]) => v + (p || 0))([1, 2, 3]); // [1, 3, 6]
+ * ```
  */
 export function mapWithPrevOutput<I, O = I>(mapper: Fn3<O, [I, Maybe<O>], number, readonly I[]>): Fn<O[], readonly I[]> {
 	return (values) => {
