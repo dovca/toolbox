@@ -42,7 +42,7 @@
     "bun": "^1.0.23",
     "husky": "^9.0.10",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "latest"
   },
   "dependencies": {
     "string-ts": "^2.0.0"

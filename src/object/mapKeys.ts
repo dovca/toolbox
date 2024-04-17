@@ -26,12 +26,12 @@ export function mapKeys<T extends object, Suffix extends string>(
 export function mapKeys<
 	I extends object,
 	O extends Dictionary<Values<I>> = Dictionary<Values<I>>
->(mapper: Fn2<keyof O, keyof I, Values<I>>): Fn<O, I>;
+>(mapper: Fn2<StringKeys<O>, StringKeys<I>, Values<I>>): Fn<O, I>;
 
 export function mapKeys<
 	I extends object,
 	O extends Dictionary<Values<I>> = Dictionary<Values<I>>
->(mapper: Fn2<keyof O, keyof I, Values<I>>): Fn<O, I> {
+>(mapper: Fn2<StringKeys<O>, StringKeys<I>, Values<I>>): Fn<O, I> {
 	return (obj) => {
 		const result = {} as O;
 		for (const [key, value] of entries(obj)) {
