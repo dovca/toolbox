@@ -1,4 +1,4 @@
-import type {Last} from '../types';
+import type {AnyArray, Last} from '../types';
 
 /**
  * Returns the last element of an array. If the array is empty, undefined is returned.
@@ -9,7 +9,7 @@ import type {Last} from '../types';
  * last([1, 2, 3]); // 3 typed as (number | undefined)
  * ```
  */
-export function last<T extends readonly any[]>(array: T): Last<T> | undefined {
+export function last<T extends AnyArray>(array: T): Last<T> | undefined {
 	return array[array.length - 1];
 }
 
@@ -23,4 +23,4 @@ export function last<T extends readonly any[]>(array: T): Last<T> | undefined {
  * lastLoose([1, 2, 3]); // 3 typed as number
  * ```
  */
-export const lastLoose = last as <T extends readonly any[]>(array: T) => Last<T>;
+export const lastLoose = last as <T extends AnyArray>(array: T) => Last<T>;

@@ -1,9 +1,19 @@
-import type {Primitive} from '../types';
+import type {ToString} from '../types';
 
 /**
- * Converts a flowing primitive value to a string.
- * @param value
+ * Returns an empty string.
  */
-export function toString<T extends Primitive>(value: T): `${T}` {
-	return String(value) as `${T}`;
+export function toString(): '';
+
+/**
+ * Converts a value to a string.
+ * @param value The value to convert.
+ * @returns The string representation of the value.
+ */
+export function toString<T>(value: T): ToString<T>;
+
+export function toString(value?: any) {
+	return String(value);
 }
+
+const s = toString({})

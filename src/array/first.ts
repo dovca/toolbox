@@ -1,4 +1,4 @@
-import type {First} from '../types';
+import type {AnyArray, First} from '../types';
 
 /**
  * Returns the first element of an array. If the array is empty, undefined is returned.
@@ -9,7 +9,7 @@ import type {First} from '../types';
  * first([1, 2, 3]); // 1 typed as (number | undefined)
  * ```
  */
-export function first<T extends readonly any[]>(arr: T): First<T> | undefined {
+export function first<T extends AnyArray>(arr: T): First<T> | undefined {
 	return arr[0];
 }
 
@@ -23,4 +23,4 @@ export function first<T extends readonly any[]>(arr: T): First<T> | undefined {
  * firstLoose([1, 2, 3]); // 1 typed as number
  * ```
  */
-export const firstLoose = first as <T extends readonly any[]>(arr: T) => First<T>;
+export const firstLoose = first as <T extends AnyArray>(arr: T) => First<T>;

@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {AnyArray, Fn} from '../types';
 
 /**
  * Flattens a flowing array.
@@ -9,6 +9,6 @@ import type {Fn} from '../types';
  * flat()([[1, 2], [3, 4]]); // [1, 2, 3, 4]
  * ```
  */
-export function flat<T extends readonly any[], D extends number = 1>(depth: D = 1 as D): Fn<FlatArray<T, D>[], T> {
+export function flat<T extends AnyArray, D extends number = 1>(depth: D = 1 as D): Fn<FlatArray<T, D>[], T> {
 	return (values) => values.flat(depth);
 }

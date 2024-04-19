@@ -1,4 +1,4 @@
-import type {Fn, IterationCallback, IterationResult, MyGeneratorFunction} from '../types';
+import type {AnyArray, Fn, IterationCallback, IterationResult, MyGeneratorFunction} from '../types';
 import {funnel} from '../function';
 import {not} from '../boolean';
 import {identity} from '../misc';
@@ -8,7 +8,7 @@ import {unshift} from './unshift';
 
 function takeFactory<T>(
 	iterator: MyGeneratorFunction<T>,
-	mutator: Fn<Fn<T[], readonly any[]>, T> = push,
+	mutator: Fn<Fn<T[], AnyArray>, T> = push,
 	predicateModifier: Fn<boolean> = identity,
 ): Fn<Fn<T[], readonly T[]>, IterationCallback<boolean, T>> {
 	return (predicate) => {

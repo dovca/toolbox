@@ -1,5 +1,5 @@
 import {reversedIterator} from '../iterators';
-import type {Reverse} from '../types';
+import type {AnyArray, Reverse} from '../types';
 
 /**
  * Reverses the given array.
@@ -9,7 +9,7 @@ import type {Reverse} from '../types';
  * reverse([1, 2, 3]); // [3, 2, 1]
  * ```
  */
-export function reverse<T extends readonly any[]>(values: T): Reverse<T> {
+export function reverse<T extends AnyArray>(values: T): Reverse<T> {
 	const result = Array.from({length: values.length});
 	for (const [value, index] of reversedIterator(values)) {
 		result[index] = value;
