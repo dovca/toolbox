@@ -15,5 +15,3 @@ export function toString<T>(value: T): ToString<T>;
 export function toString(value?: any) {
 	return String(value);
 }
-
-const s = toString({})
