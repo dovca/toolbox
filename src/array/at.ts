@@ -1,6 +1,8 @@
-import type {Fn} from '../types';
 import {modulo} from '../number';
 import {isValidIndex} from '../predicate';
+
+type Extractor = <T>(values: readonly T[]) => T;
+type MultiExtractor = <T>(values: readonly T[]) => readonly T[];
 
 /**
  * Produces the value at the given index of the flowing array.
@@ -11,12 +13,19 @@ import {isValidIndex} from '../predicate';
  * ```typescript
  * at(1)([1, 2, 3]); // 2
  * at(-1)([1, 2, 3]); // 3
+ * at(1, -1)([1, 2, 3]); // [2, 3]
  * ```
  */
-export function at<T>(index: number): Fn<T, readonly T[]>;
-export function at<T extends undefined>(index: number): Fn<T | undefined, readonly T[]>;
-export function at<T>(index: number): Fn<T | undefined, readonly T[]> {
-	return (values) => isValidIndex(index)(values)
-		? values[modulo(values.length)(index)]
-		: undefined;
+export function at(index: number): Extractor;
+export function at(...indices: readonly number[]): MultiExtractor;
+export function at(...indices: number[]): Extractor | MultiExtractor {
+	return (values) => {
+		const result = indices.map((index) => (
+			isValidIndex(index)(values)
+				? values[modulo(values.length)(index)]
+				: undefined
+		));
+
+		return (indices.length === 1 ? result[0] : result) as any;
+	}
 }

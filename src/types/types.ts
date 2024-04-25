@@ -136,3 +136,5 @@ export type ToString<T> =
 								? ToString<S> // String({toString: () => 'a'}) -> 'a'
 								: string // String({a: 1}) -> '[object Object]'
 						: string;
+
+export type ToArray<T> = T extends AnyArray ? T : [T];

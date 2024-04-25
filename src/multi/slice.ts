@@ -18,7 +18,7 @@ export function slice<T>(start?: number, end?: number): Fn<unknown[]> | Fn<strin
 	return ((input: unknown) => {
 		if (typeof input === 'string') {
 			return stringSlice(start, end)(input);
-		} else if (isArray<unknown>(input)) {
+		} else if (isArray(input)) {
 			return arraySlice(start, end)(input);
 		} else {
 			throw new Error(`slice: Expected input to be a string or an array. Got ${typeof input}.`);

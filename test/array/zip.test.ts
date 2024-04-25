@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {zip, zipWith} from '../../src';
+import {zip, zipObject, zipWith} from '../../src';
 
 test('zip', () => {
 	expect(zip([])([])).toEqual([]);
@@ -17,3 +17,11 @@ test('zipWith', () => {
 	expect(zipWithSum([])([1, 2, 3])).toEqual([1, 2, 3]);
 	expect(zipWithSum([1, 2, 3])([1, 2, 3])).toEqual([2, 4, 6]);
 });
+
+test('zipObject', () => {
+	expect(zipObject([], [])).toEqual({});
+	expect(zipObject(['a'], [])).toEqual({a: undefined});
+	expect(zipObject(['a'], [2])).toEqual({a: 2});
+	expect(zipObject(['a', 'b'], [2])).toEqual({a: 2, b: undefined});
+	expect(zipObject(['a', 'b'], [2, 3])).toEqual({a: 2, b: 3});
+})

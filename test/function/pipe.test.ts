@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {arrayify, fromCharCode, increment, multiply, pipe, push, square, reverse, lowerCase} from '../../src';
+import {toArray, fromCharCode, increment, multiply, pipe, push, square, reverse, lowerCase} from '../../src';
 
 test('pipe 0 functions', () => {
 	const piped = pipe();
@@ -32,7 +32,7 @@ test('pipe functions of different argument types', () => {
 		increment,
 		fromCharCode,
 		lowerCase,
-		arrayify,
+		toArray,
 		push('b'),
 		reverse,
 	);

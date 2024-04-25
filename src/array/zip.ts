@@ -1,6 +1,7 @@
 import {gather} from '../function';
 import type {Fn, Fn2, Maybe} from '../types';
 import {identity} from '../misc';
+import {forwardIterator} from '../iterators';
 
 /**
  * Combines two arrays into a single array. Each new value is produced by the zipper function. In case the arrays are of
@@ -34,5 +35,13 @@ export function zipWith<A, I, R>(zipper: Fn2<R, Maybe<I>, Maybe<A>>): Fn<Fn<R[],
  */
 export function zip<I, A>(values: readonly A[]): Fn<[Maybe<I>, Maybe<A>][], readonly I[]> {
 	return zipWith(gather<[Maybe<I>, Maybe<A>], Maybe<I>, Maybe<A>>(identity))(values);
+}
+
+export function zipObject<K extends string | number, V>(keys: readonly K[], values: readonly V[]) {
+	const result: Record<K, V> = {} as any;
+	for (const [key, index] of forwardIterator(keys)) {
+		result[key] = values[index];
+	}
+	return result;
 }
 
