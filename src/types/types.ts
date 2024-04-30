@@ -74,6 +74,20 @@ export type IsNullish<T> =
 			? true
 			: false;
 
+export type IsEmpty<T> = T extends '' | null | undefined
+	? true
+	: T extends AnyArray
+		? T extends readonly []
+			? true // The array is definitely empty
+			: number extends T['length']
+				? boolean // Can't determine if the array is empty because it can have some items at runtime
+				: false // The array is definitely a non-empty tuple
+		: T extends object
+			? keyof T extends never
+				? true // The object is definitely empty, it has no keys
+				: false // The object is definitely not empty, it has at least one key
+			: boolean; // We just don't know
+
 export type EmptySet = readonly [];
 export type AnyArray = readonly any[];
 export type Falsy = false | 0 | '' | null | undefined | 0n;

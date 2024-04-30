@@ -4,6 +4,7 @@
 
 export * from "./compare";
 export * from "./isArray";
+export * from "./isEmpty";
 export * from "./isFalsy";
 export * from "./isNotNullish";
 export * from "./isNotOneOf";
