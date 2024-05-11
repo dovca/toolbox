@@ -1,6 +1,6 @@
+import type {AnyFunction} from '../types';
+
 /**
  * Does and returns nothing.
  */
-export function noop(..._: any[]): undefined {
-	return;
-}
+export const noop: AnyFunction = () => {};

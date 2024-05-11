@@ -18,7 +18,8 @@ function dropFactory<T>(
 			let keepRest = false;
 			let result: T[] = [];
 			for (const [value, index, array] of iterator(values)) {
-				if (keepRest ||= finalPredicate(value, index, array)) {
+				keepRest ||= finalPredicate(value, index, array);
+				if (keepRest) {
 					result = mutator(value)(result);
 				}
 			}

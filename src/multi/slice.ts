@@ -1,4 +1,4 @@
-import type {First, Fn, Negative, WithoutFirst} from '../types';
+import type {First, Fn, Negative, Shift} from '../types';
 import {type Slice, slice as typedSlice} from 'string-ts';
 import {isArray} from '../predicate';
 
@@ -14,7 +14,7 @@ export function slice<T extends string>(): Fn<Slice<T, 0, -1>, T>;
 export function slice<T extends string, S extends number>(start: S): Fn<Slice<T, S, -1>, T>;
 export function slice<T extends string, S extends number, E extends number>(start: S, end: E): Fn<Slice<T, S, E>, T>;
 export function slice<T extends readonly any[]>(start?: number, end?: number): Fn<T>;
-export function slice<T>(start?: number, end?: number): Fn<unknown[]> | Fn<string> {
+export function slice(start?: number, end?: number): Fn<unknown[]> | Fn<string> {
 	return ((input: unknown) => {
 		if (typeof input === 'string') {
 			return stringSlice(start, end)(input);
@@ -39,7 +39,7 @@ export function tail(count: number = 1): Fn<string> | Fn<unknown[]> {
 }
 
 export function decapitate<T extends string>(value: T): [Slice<T, 0, 1>, Slice<T, 1>];
-export function decapitate<T extends readonly any[]>(values: T): [First<T>, WithoutFirst<T>];
+export function decapitate<T extends readonly any[]>(values: T): [First<T>, Shift<T>];
 export function decapitate<T extends string | readonly any[]>(values: T): [string, string] | [any, any[]] {
 	return typeof values === 'string'
 		? [values.slice(0, 1), values.slice(1)]

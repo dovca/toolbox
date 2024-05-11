@@ -12,6 +12,5 @@ export function replace(
 	searchValue: string | RegExp,
 	replaceValue: string | ((substring: string, ...args: any[]) => string) = '',
 ): Fn<string> {
-	// @ts-ignore
-	return (input) => input.replace(searchValue, replaceValue);
+	return (input) => input.replace(searchValue, replaceValue as any);
 }

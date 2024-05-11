@@ -1,6 +1,10 @@
-import type {Fn} from '../types';
 import {remove} from './remove';
 import {isOneOf} from '../predicate';
+import type {AnyArray, IsTuple, Discard} from '../types';
+
+export type Discarder<D> = <V extends AnyArray>(input: V) => IsTuple<V> extends true
+	? Discard<V, D>
+	: readonly Exclude<V[number], D>[];
 
 /**
  * Removes values of a flowing array based on value equality using SameValueZero.
@@ -11,6 +15,6 @@ import {isOneOf} from '../predicate';
  * discard(2, 3, 5)([1, 2, 3, 4]); // [1, 4]
  * ```
  */
-export function discard<T>(...values: readonly T[]): Fn<T[], readonly T[]> {
-	return remove(isOneOf(...values));
+export function discard<V>(...values: readonly V[]): Discarder<V> {
+	return remove(isOneOf(...values)) as any;
 }

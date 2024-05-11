@@ -1,4 +1,4 @@
-import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
+import type {AnyArray, Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
 
 interface FnB0<R> {
 	(): Fn<R, void>;
@@ -49,6 +49,6 @@ export function bind<R, A, B>(fn: Fn2<R, A, B>): FnB2<R, A, B>;
 export function bind<R, A, B, C>(fn: Fn3<R, A, B, C>): FnB3<R, A, B, C>;
 export function bind<R, A, B, C, D>(fn: Fn4<R, A, B, C, D>): FnB4<R, A, B, C, D>;
 export function bind<R, A, B, C, D, E>(fn: Fn5<R, A, B, C, D, E>): FnB5<R, A, B, C, D, E>;
-export function bind(fn: (...args: any[]) => any): (...args: any[]) => Fn<any> {
+export function bind(fn: (...args: AnyArray) => any): (...args: AnyArray) => Fn<any> {
 	return (...args) => fn.bind(null, ...args);
 }

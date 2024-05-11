@@ -1,4 +1,4 @@
-import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
+import type {AnyFunction, Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
 
 /**
  * Treats the given values as a function and its arguments and calls it.
@@ -11,6 +11,6 @@ export function command<R, A, B, C>(args: [Fn3<R, A, B, C>, A, B, C]): R;
 export function command<R, A, B, C, D>(args: [Fn4<R, A, B, C, D>, A, B, C, D]): R;
 export function command<R, A, B, C, D, E>(args: [Fn5<R, A, B, C, D, E>, A, B, C, D, E]): R;
 export function command<R>(args: [Fn<R, any[]>, ...any[]]): R;
-export function command([fn, ...args]: [Function, ...any[]]): any {
+export function command([fn, ...args]: [AnyFunction, ...any[]]): any {
 	return fn(...args);
 }

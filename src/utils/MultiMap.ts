@@ -1,8 +1,8 @@
-import type {First, WithoutFirst} from '../types';
+import type {First, Shift} from '../types';
 import {decapitate} from '../multi';
 
 export class MultiMap<K extends readonly any[], V> {
-	#map: Map<First<K>, MultiMap<WithoutFirst<K>, V>>;
+	#map: Map<First<K>, MultiMap<Shift<K>, V>>;
 	#rootValue: V | undefined = undefined;
 
 	constructor() {
@@ -16,7 +16,7 @@ export class MultiMap<K extends readonly any[], V> {
 			if (current) {
 				current.set(nextKeys, value);
 			} else {
-				const next = new MultiMap<WithoutFirst<K>, V>();
+				const next = new MultiMap<Shift<K>, V>();
 				next.set(nextKeys, value);
 				this.#map.set(currentKey, next);
 			}

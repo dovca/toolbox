@@ -34,7 +34,7 @@ export function keyBy<T>(key: keyof T | Fn<string | number, T>): Fn<Dictionary<T
 			const computedKey = String(
 				typeof key === 'function'
 					? key(value)
-					: value[key as keyof T]
+					: value[key]
 			);
 			result[computedKey] = value;
 		}

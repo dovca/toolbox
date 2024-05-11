@@ -8,7 +8,7 @@ export function prepend<
 export function prepend<
 	Input extends string,
 	Prefix extends string,
-	WithJoinMarker extends true,
+	_WithJoinMarker extends true,
 >(prefix: Prefix): Fn<Join<[Prefix, Input], JoinMarker>, Input>;
 export function prepend<
 	Input extends string,

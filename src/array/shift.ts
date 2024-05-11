@@ -1,4 +1,6 @@
-import type {Fn} from '../types';
+import type {AnyArray, Shift} from '../types';
+
+type Shifter<N extends number> = <T extends AnyArray>(input: T) => Shift<T, N>;
 
 /**
  * Returns a new array with the first `count` values removed.
@@ -9,6 +11,6 @@ import type {Fn} from '../types';
  * shift(2)([1, 2, 3, 4, 5]); // [3, 4, 5]
  * ```
  */
-export function shift<T>(count = 1): Fn<T[], readonly T[]> {
-	return (values) => values.slice(count);
+export function shift<N extends number>(count?: N): Shifter<N> {
+	return (values) => values.slice(count ?? 1) as Shift<typeof values, N>;
 }

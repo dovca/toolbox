@@ -8,7 +8,7 @@ export function append<
 export function append<
 	Input extends string,
 	Suffix extends string,
-	WithJoinMarker extends true,
+	_WithJoinMarker extends true,
 >(suffix: Suffix): Fn<Join<[Input, Suffix], JoinMarker>, Input>;
 export function append<
 	Input extends string,

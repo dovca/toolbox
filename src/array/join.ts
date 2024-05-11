@@ -1,4 +1,6 @@
-import type {Fn} from '../types';
+import type {AnyArray, Join} from '../types';
+
+type Joiner<Glue extends string> = <T extends AnyArray>(values: T) => Join<T, Glue>;
 
 /**
  * Joins the values of a flowing array into a string.
@@ -9,6 +11,6 @@ import type {Fn} from '../types';
  * join(', ')([1, 2, 3]); // '1, 2, 3'
  * ```
  */
-export function join<T>(glue = ''): Fn<string, readonly T[]> {
-	  return (values) => values.join(glue);
+export function join<Glue extends string>(glue?: Glue): Joiner<Glue> {
+	  return (values) => values.join(glue ?? '') as Join<typeof values, Glue>;
 }

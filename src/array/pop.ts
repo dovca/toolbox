@@ -1,4 +1,6 @@
-import type {Fn} from '../types';
+import type {AnyArray, Pop} from '../types';
+
+type Popper<N extends number> = <T extends AnyArray>(values: T) => Pop<T, N>;
 
 /**
  * Returns a new array with the last N values removed.
@@ -9,6 +11,6 @@ import type {Fn} from '../types';
  * pop(2)([1, 2, 3, 4, 5]); // [1, 2, 3]
  * ```
  */
-export function pop<T>(count = 1): Fn<T[], readonly T[]> {
-	return (values) => values.slice(0, -count);
+export function pop<N extends number>(count?: N): Popper<N> {
+	return (values) => values.slice(0, -(count ?? 1)) as Pop<typeof values, N>;
 }

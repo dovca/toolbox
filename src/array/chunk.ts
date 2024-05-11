@@ -13,7 +13,7 @@ import {property} from '../object';
  * chunkWith(isLessThan(3))([1, 2, 3, 4, 5]) // [[1, 2], [3, 4, 5]]
  * ```
  */
-export function chunkWith<T, M = any>(mapper: IterationCallback<M, T>): Fn<T[][], readonly T[]> {
+export function chunkWith<T, M = unknown>(mapper: IterationCallback<M, T>): Fn<T[][], readonly T[]> {
 	return (values) => {
 		let group: T[] = [];
 		let mapperResult: Maybe<M> = undefined;
@@ -65,4 +65,3 @@ export const chunkBy = <T extends object>(key: keyof T) => chunkWith<T>(property
  * ```
  */
 export const chunk = <T>(size: number) => chunkWith<T>((_, index) => Math.floor(index / size));
-

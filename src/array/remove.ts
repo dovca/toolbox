@@ -3,6 +3,8 @@ import {filter} from './filter';
 import {funnel} from '../function';
 import {not} from '../boolean';
 
+
+
 /**
  * Removes values of a flowing array based on a predicate.
  * @param predicate The predicate to remove the values with.

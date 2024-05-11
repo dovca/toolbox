@@ -20,12 +20,12 @@ type Omitter<Keys extends string> = {
 	<T extends object>(object: T): OmitForeign<T, Keys>;
 };
 
-function selector<T extends object, P>(picker: Predicate<[StringKeys<T>, Values<T>]>): Fn<Partial<T>, T> {
+function selector<T extends object>(picker: Predicate<[StringKeys<T>, Values<T>]>): Fn<Partial<T>, T> {
 	return (object) => {
 		const result: Partial<T> = {};
 		for (const [key, value] of entries(object)) {
 			if (picker([key, value])) {
-				// @ts-ignore
+				// @ts-expect-error - We know that the keys are correct
 				result[key] = object[key];
 			}
 		}
@@ -38,7 +38,7 @@ export function pickByKeys<T extends object>(picker: Predicate<StringKeys<T>>): 
 }
 
 export function pickByValues<T extends object>(picker: Predicate<Values<T>>): Fn<Partial<T>, T> {
-	return selector(([_, value]) => picker(value));
+	return selector(([, value]) => picker(value));
 }
 
 export function pick<K extends string[]>(...keys: K): Picker<K[number]> {
@@ -50,7 +50,7 @@ export function omitByKeys<T extends object>(picker: Predicate<StringKeys<T>>): 
 }
 
 export function omitByValues<T extends object>(picker: Predicate<Values<T>>): Fn<Partial<T>, T> {
-	return selector(([_, value]) => !picker(value));
+	return selector(([, value]) => !picker(value));
 }
 
 export function omit<K extends string[]>(...keys: K): Omitter<K[number]> {

@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {AnyFunction, Fn} from '../types';
 import {wrap} from './wrap';
 
 interface FnBC0<R> {
@@ -53,6 +53,6 @@ export function bindCurried<R, A>(fn: Fn<R, A>): FnBC1<R, A>;
 export function bindCurried(fn: Fn<any>): (...args: any[]) => any;
 export function bindCurried(fn: Fn<any>): (...args: any[]) => any {
 	return (...args) => args.length
-		? wrap(args.reduce((f, arg) => f(arg), fn))
+		? wrap(args.reduce((f, arg) => (f as AnyFunction)(arg), fn))
 		: fn;
 }
