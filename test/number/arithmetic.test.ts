@@ -1,18 +1,36 @@
 import {expect, test} from 'bun:test';
 import {
 	abs,
-	add, cbrt, ceil, decrement,
+	add,
+	cbrt,
+	ceil,
+	decrement,
 	divide,
 	divideBy,
-	double, floor,
+	double,
+	floor,
+	hypot,
 	increment,
 	max,
 	min,
 	modulo,
-	multiply, negative,
-	pow, reciprocal, round, sign, sqrt, square,
+	multiply,
+	negative,
+	pow,
+	reciprocal,
+	round,
+	safeAdd,
+	safeDivide, safeDivideBy,
+	safeMax, safeMin,
+	safeMultiply,
+	safeSubtract,
+	safeSubtractFrom,
+	sign,
+	sqrt,
+	square,
 	subtract,
-	subtractFrom, trunc
+	subtractFrom,
+	trunc
 } from '../../src';
 
 test('add', () => {
@@ -133,3 +151,65 @@ test('cbrt', () => {
 	expect(cbrt(-8)).toBe(-2);
 	expect(cbrt(0)).toBe(0);
 });
+
+test('hypot', () => {
+	expect(hypot(3)(4)).toBe(5);
+});
+
+test('safeAdd', () => {
+	expect(safeAdd(undefined)(undefined)).toBe(NaN);
+	expect(safeAdd(1)(undefined)).toBe(1);
+	expect(safeAdd(undefined)(1)).toBe(1);
+	expect(safeAdd(1)(3)).toBe(4);
+});
+
+test('safeSubtract', () => {
+	expect(safeSubtract(undefined)(undefined)).toBe(NaN);
+	expect(safeSubtract(1)(undefined)).toBe(-1);
+	expect(safeSubtract(undefined)(1)).toBe(1);
+	expect(safeSubtract(1)(3)).toBe(2);
+});
+
+test('safeSubtractFrom', () => {
+	expect(safeSubtractFrom(undefined)(undefined)).toBe(NaN);
+	expect(safeSubtractFrom(1)(undefined)).toBe(1);
+	expect(safeSubtractFrom(undefined)(1)).toBe(-1);
+	expect(safeSubtractFrom(1)(3)).toBe(-2);
+});
+
+test('safeMulitply', () => {
+	expect(safeMultiply(undefined)(undefined)).toBe(NaN);
+	expect(safeMultiply(1)(undefined)).toBe(1);
+	expect(safeMultiply(undefined)(1)).toBe(1);
+	expect(safeMultiply(2)(3)).toBe(6);
+});
+
+test('safeDivide', () => {
+	expect(safeDivide(undefined)(undefined)).toBe(NaN);
+	expect(safeDivide(1)(undefined)).toBe(1);
+	expect(safeDivide(undefined)(1)).toBe(1);
+	expect(safeDivide(6)(3)).toBe(2);
+});
+
+test('safeDivideBy', () => {
+	expect(safeDivideBy(undefined)(undefined)).toBe(NaN);
+	expect(safeDivideBy(1)(undefined)).toBe(1);
+	expect(safeDivideBy(undefined)(1)).toBe(1);
+	expect(safeDivideBy(2)(6)).toBe(3);
+});
+
+test('safeMax', () => {
+	expect(safeMax(undefined)(undefined)).toBe(NaN);
+	expect(safeMax(1)(undefined)).toBe(1);
+	expect(safeMax(undefined)(1)).toBe(1);
+	expect(safeMax(1)(3)).toBe(3);
+});
+
+test('safeMin', () => {
+	expect(safeMin(undefined)(undefined)).toBe(NaN);
+	expect(safeMin(1)(undefined)).toBe(1);
+	expect(safeMin(undefined)(1)).toBe(1);
+	expect(safeMin(1)(3)).toBe(1);
+});
+
+

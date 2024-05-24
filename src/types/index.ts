@@ -4,6 +4,5 @@
 
 export * from "./array";
 export * from "./convert";
-export * from "./number";
 export * from "./predicate";
 export * from "./utils";

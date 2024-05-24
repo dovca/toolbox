@@ -6,7 +6,9 @@ function unsafeBinaryOperation<T extends number>(operation: Fn2<T, Maybe<T>>): F
 }
 
 function safeOperator<T extends number>(operation: Fn2<T>, fallback: T): Fn2<T, Maybe<T>> {
-	return (a, b) => operation(a ?? fallback, b ?? fallback);
+	return (a, b) => a === undefined && b === undefined
+		? NaN as T
+		: operation(a ?? fallback, b ?? fallback);
 }
 
 export const operatorPlus: Fn2<number> = (a, b) => a + b;

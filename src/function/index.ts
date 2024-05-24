@@ -13,7 +13,7 @@ export * from "./memoize";
 export * from "./negate";
 export * from "./nthArg";
 export * from "./pipe";
-export * from "./reduceWhile";
+export * from "./transformWhile";
 export * from "./repeat";
 export * from "./spread";
 export * from "./unary";

@@ -1,5 +1,5 @@
 import {expect, test} from 'bun:test';
-import {at, type Maybe} from '../../src';
+import {at, atLoose, type Maybe} from '../../src';
 
 test('at: single index', () => {
 	expect(at(0)([])).toBe(undefined);
@@ -17,4 +17,12 @@ test('at: multiple indices', () => {
 	expect(at(0, 1)([1, 2])).toEqual([1, 2]);
 	expect(at(1, -1)([1, 2, 3])).toEqual([2, 3]);
 	expect(at(2, 1, 0)([1, 2, 3])).toEqual([3, 2, 1]);
+});
+
+test('atLoose: single index', () => {
+	expect(atLoose(1)([1, 2])).toBe(2);
+});
+
+test('atLoose: multiple indices', () => {
+	expect(atLoose(1, 0)([1, 2, 3])).toEqual([2, 1]);
 });

@@ -1,10 +1,11 @@
 import {expect, test} from 'bun:test';
 import {
+	isEven,
 	isGreaterThan,
-	isGreaterThanOrEqual,
+	isGreaterThanOrEqual, isInteger,
 	isLessThan,
 	isLessThanOrEqual,
-	isNegative, isNonNegative, isNonPositive,
+	isNegative, isNonNegative, isNonPositive, isOdd,
 	isPositive,
 	isZero
 } from '../../src';
@@ -60,4 +61,26 @@ test('isNonNegative', () => {
 	expect(isNonNegative(1)).toBe(true);
 	expect(isNonNegative(0)).toBe(true);
 	expect(isNonNegative(-1)).toBe(false);
+});
+
+test('isEven', () => {
+	expect(isEven(2)).toBe(true);
+	expect(isEven(1)).toBe(false);
+});
+
+test('isOdd', () => {
+	expect(isOdd(2)).toBe(false);
+	expect(isOdd(1)).toBe(true);
+});
+
+test('isInteger', () => {
+	expect(isInteger(1)).toBe(true);
+	expect(isInteger(1.1)).toBe(false);
+});
+
+test('isFinite', () => {
+	expect(isFinite(1)).toBe(true);
+	expect(isFinite(Infinity)).toBe(false);
+	expect(isFinite(-Infinity)).toBe(false);
+	expect(isFinite(NaN)).toBe(false);
 });

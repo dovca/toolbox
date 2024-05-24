@@ -1,6 +1,8 @@
 import type {AnyArray, EmptySet, Falsy, Primitive, ReadonlyDeepSingle} from './utils';
+import type {IsTuple, IsTypeLiteral} from './predicate';
 
 export type ToNumber<T> =
+	number extends T ? number :
 	T extends number ? T : // Number(1) -> 1
 		T extends true ? 1 : // Number(true) -> 1
 			T extends false | null | '' | EmptySet ? 0 : // Number(false) -> 0
@@ -21,6 +23,7 @@ export type ToNumber<T> =
 							: number; // Number(undefined) -> NaN
 
 export type ToBoolean<T> =
+	boolean extends T ? boolean :
 	T extends boolean ? T :
 		T extends Falsy ? false :
 			// NaN is a number, but it's falsy, and it can't be distinguished from a number type-wise
@@ -29,9 +32,14 @@ export type ToBoolean<T> =
 				true;
 
 export type ToString<T> =
+	// TODO figure out why boolean has to be checked this much explicitly
+	boolean extends T ? string :
 	T extends string ? T :
-		T extends Primitive ? `${T}` :
-			T extends EmptySet ? '' :
+		T extends Primitive
+			? IsTypeLiteral<T> extends true
+				? `${T}`
+				: string
+			: T extends EmptySet ? '' :
 				T extends AnyArray
 					? T extends readonly [infer F, ...infer R]
 						? R extends EmptySet
@@ -50,4 +58,6 @@ export type ToString<T> =
 								: string // String({a: 1}) -> '[object Object]'
 						: string;
 
-export type ToArray<T> = T extends AnyArray ? T : [T];
+export type ToTuple<T> = T extends AnyArray ? IsTuple<T> extends true ? T : [T[number]] : [T];
+
+export type ToArray<T> = T extends AnyArray ? IsTuple<T> extends true ? T[number][] : T : T[];

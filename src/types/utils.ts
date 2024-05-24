@@ -1,5 +1,5 @@
 import type {ToString} from './convert';
-import type {Equals} from './predicate';
+import type {IsNegative} from './predicate';
 
 export type T1<A = any> = [A];
 export type T2<A = any, B = A> = [A, B];
@@ -53,4 +53,22 @@ export type Primitive = string | number | boolean | bigint | null | undefined;
 
 export type ReadonlyDeepSingle<T> = readonly [T | ReadonlyDeepSingle<T>];
 
+export type Negative<T extends number> = number extends T
+	? number
+	: T extends 0
+		? 0
+		: `-${T}` extends `${infer R extends number}`
+			? R
+			: `${T}` extends `-${infer S extends number}`
+				? S
+				: never;
+
 export type Expect<T extends true> = T;
+
+export type TupleOf<T, Length extends number, Result extends AnyArray = []> = number extends Length
+	? T[]
+	: IsNegative<Length> extends true
+		? never
+		: Length extends Result['length']
+			? Result
+			: TupleOf<T, Length, [...Result, T]>;

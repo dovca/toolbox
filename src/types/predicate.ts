@@ -1,4 +1,4 @@
-import type {AnyArray} from './utils';
+import type {AnyArray, Primitive} from './utils';
 import type {Some} from './array';
 
 // Are the types A and B equal?
@@ -26,13 +26,35 @@ export type IsEmpty<T> = T extends '' | null | undefined
 				? boolean // Can't determine if the array is empty because it can have some items at runtime
 				: false // The array is definitely a non-empty tuple
 		: T extends object
-			? keyof T extends never
-				? true // The object is definitely empty, it has no keys
-				: false // The object is definitely not empty, it has at least one key
-			: boolean; // We just don't know
+			? Equals<T, object> extends true
+				? boolean // Can't determine if the object is empty because it can have some properties at runtime
+				: keyof T extends never
+					? true // The object is definitely empty, it has no keys
+					: false // The object is definitely not empty, it has at least one key
+				: boolean; // We just don't know
 
-export type IsTuple<T> = T extends AnyArray
-	? number extends T['length']
-		? false
-		: true
-	: false;
+export type IsTuple<T extends AnyArray> = number extends T['length']
+	? false
+	: true;
+
+export type IsNegative<T extends number> = number extends T
+	? boolean
+	: `${T}` extends `-${number}`
+		? true
+		: false;
+
+export type IsTypeLiteral<T> =
+	// TODO figure out why boolean can't be checked with `Equals<T, boolean>`
+	boolean extends T ? false :
+	T extends Primitive
+		? T extends null | undefined
+			? true
+			: Some<[
+				Equals<T, string>,
+				Equals<T, number>,
+				Equals<T, bigint>,
+				Equals<T, symbol>,
+			]> extends true
+				? false
+				: true
+		: false;

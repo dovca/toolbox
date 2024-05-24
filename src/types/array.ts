@@ -1,21 +1,20 @@
 import type {AnyArray} from './utils';
 import type {ToBoolean, ToString} from './convert';
 import type {Equals, IsTuple} from './predicate';
-import type {Decrement} from './number';
 
-export type Shift<T extends AnyArray, N extends number = 1> = IsTuple<T> extends true
-	? N extends 0
+export type Shift<T extends AnyArray, N extends number = 1, Shifted extends AnyArray = []> = IsTuple<T> extends true
+	? N extends Shifted['length']
 		? T
-		: T extends readonly [infer _, ...infer Rest]
-			? Shift<Rest, Decrement<N>>
+		: T extends readonly [infer Head, ...infer Rest]
+			? Shift<Rest, N, [...Shifted, Head]>
 			: T
 	: T;
 
-export type Pop<T extends AnyArray, N extends number = 1> = IsTuple<T> extends true
-	? N extends 0
+export type Pop<T extends AnyArray, N extends number = 1, Popped extends AnyArray = []> = IsTuple<T> extends true
+	? N extends Popped['length']
 		? T
-		: T extends readonly [...infer Rest, infer _]
-			? Pop<Rest, Decrement<N>>
+		: T extends readonly [...infer Rest, infer Tail]
+			? Pop<Rest, N, [...Popped, Tail]>
 			: T
 	: T;
 
@@ -74,6 +73,54 @@ export type Push<Values extends AnyArray, New> = IsTuple<Values> extends true
 export type Unshift<Values extends AnyArray, New> = IsTuple<Values> extends true
 	? [New, ...Values]
 	: (New | Values[number])[];
+
+export type Take<Values extends AnyArray, N extends number, Result extends AnyArray = []> = IsTuple<Values> extends true
+	? N extends Result['length']
+		? Result
+		: Values extends readonly [infer Head, ...infer Rest]
+			? Take<Rest, N, [...Result, Head]>
+			: Result
+	: Values;
+
+export type TakeRight<Values extends AnyArray, N extends number, Result extends AnyArray = []> = IsTuple<Values> extends true
+	? N extends Result['length']
+		? Result
+		: Values extends readonly [...infer Rest, infer Tail]
+			? TakeRight<Rest, N, [Tail, ...Result]>
+			: Result
+	: Values;
+
+export type TakeWhile<Values extends AnyArray, Predicate> = IsTuple<Values> extends true
+	? Values extends readonly [infer Head, ...infer Rest]
+		? Head extends Predicate
+			? [Head, ...TakeWhile<Rest, Predicate>]
+			: []
+		: [] // Empty tuple
+	: Extract<Values[number], Predicate>[];
+
+export type TakeRightWhile<Values extends AnyArray, Predicate> = IsTuple<Values> extends true
+	? Values extends readonly [...infer Rest, infer Last]
+		? Last extends Predicate
+			? [...TakeRightWhile<Rest, Predicate>, Last]
+			: []
+		: [] // Empty tuple
+	: Extract<Values[number], Predicate>[];
+
+export type DropWhile<Values extends AnyArray, Predicate> = IsTuple<Values> extends true
+	? Values extends readonly [infer Head, ...infer Rest]
+		? Head extends Predicate
+			? DropWhile<Rest, Predicate>
+			: Values
+		: Values // Empty tuple
+	: Exclude<Values[number], Predicate>[];
+
+export type DropRightWhile<Values extends AnyArray, Predicate> = IsTuple<Values> extends true
+	? Values extends readonly [...infer Rest, infer Last]
+		? Last extends Predicate
+			? DropRightWhile<Rest, Predicate>
+			: Values
+		: Values // Empty tuple
+	: Exclude<Values[number], Predicate>[];
 
 export type Nth<T extends AnyArray, N extends number, F = never> = N extends keyof T ? T[N] : F;
 export type First<T extends AnyArray> = T extends readonly [infer F, ...any[]] ? F : T extends readonly (infer E)[] ? E : never;

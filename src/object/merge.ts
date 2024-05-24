@@ -15,7 +15,6 @@ export function merge<New extends object>(newValues: New): <Old extends object>(
 /**
  * Merges the given values into the flowing values using the given resolver function.
  * @param resolver A function to resolve conflicts between old and new values.
- * @param newValues The values to merge into the old values.
  * @returns Produces a new object.
  * @example
  * ```typescript
