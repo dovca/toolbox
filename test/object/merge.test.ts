@@ -7,8 +7,8 @@ test('merge', () => {
 	expect(merge({a: 1})({b: 1})).toEqual({a: 1, b: 1});
 	expect(merge({a: 1})({a: 'foo'})).toEqual({a: 1});
 	expect(merge({a: null})({a: 1})).toEqual({a: null});
-	expect(merge({a: undefined})({a: 1})).toEqual({});
-	expect(merge({a: undefined})({a: undefined})).toEqual({});
+	expect(merge({a: undefined})({a: 1})).toEqual({a: undefined});
+	expect(merge({a: undefined})({a: undefined})).toEqual({a: undefined});
 });
 
 test('mergeWith', () => {
@@ -23,5 +23,5 @@ test('mergeWith', () => {
 
 	const xorMerge = mergeWith(() => undefined);
 
-	expect(xorMerge({a: 1, b: 2})({b: 1, c: 3})).toEqual({a: 1, c: 3});
+	expect(xorMerge({a: 1, b: 2})({b: 1, c: 3})).toEqual({a: 1, b: undefined, c: 3});
 })

@@ -43,6 +43,8 @@ export type ConditionalKeys<T extends object, C> = { [K in keyof T]: T[K] extend
 export type Override<A extends object, B extends object> = Omit<A, keyof B> & {
 	[K in keyof B as B[K] extends never ? never : K]: B[K]
 };
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+export type Prettify<T> = { [K in keyof T]: T[K]; } & unknown;
 export type Transpose<T extends Record<string, string | number>> = Record<Values<T>, keyof T>;
 
 export type EmptySet = readonly [];

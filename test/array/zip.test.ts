@@ -20,8 +20,8 @@ test('zipWith', () => {
 
 test('zipObject', () => {
 	expect(zipObject([], [])).toEqual({});
-	expect(zipObject(['a'], [])).toEqual({a: undefined});
+	expect(zipObject<'a', undefined>(['a'], [])).toEqual({a: undefined});
 	expect(zipObject(['a'], [2])).toEqual({a: 2});
-	expect(zipObject(['a', 'b'], [2])).toEqual({a: 2, b: undefined});
+	expect(zipObject<'a' | 'b', number | undefined>(['a', 'b'], [2])).toEqual({a: 2, b: undefined});
 	expect(zipObject(['a', 'b'], [2, 3])).toEqual({a: 2, b: 3});
 })

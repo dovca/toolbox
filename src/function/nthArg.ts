@@ -2,7 +2,7 @@ import type {Nth} from '../types';
 
 /**
  * Produces the `n`th argument of a flowing function.
- * @param n The index of the argument to get, counting from 1.
+ * @param n The index of the argument to access, counting from 1.
  * @returns Returns a function that takes arguments and returns the `n`th one.
  * @example
  * ```typescript
@@ -16,7 +16,7 @@ export function nthArg<N extends number>(n: N): <A extends readonly any[]>(...ar
 
 /**
  * Produces the `n`th argument of a flowing function.
- * @param n The index of the argument to get, counting from 0.
+ * @param n The index of the argument to access, counting from 0.
  * @returns Returns a function that takes arguments and returns the `n`th one.
  * @example
  * ```typescript

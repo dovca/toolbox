@@ -1,6 +1,6 @@
 import type {Equalizer, Fn} from '../types';
 import {memoize} from '../function';
-import {discard, type Discarder} from './discard';
+import {discard} from './discard';
 import {remove} from './remove';
 
 /**
@@ -12,7 +12,7 @@ import {remove} from './remove';
  * difference([2, 3, 4])([1, 2, 3]); // [1]
  * ```
  */
-export function difference<T>(values: readonly T[]): Discarder<T> {
+export function difference<T>(values: readonly T[]): Fn<T[], readonly T[]> {
 	return discard(...values);
 }
 

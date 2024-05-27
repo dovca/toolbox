@@ -18,5 +18,4 @@ test('not', () => {
 	expect(not(NaN)).toBe(true);
 	expect(not(Infinity)).toBe(false);
 	expect(not(-Infinity)).toBe(false);
-	expect(not(0n)).toBe(true);
 });

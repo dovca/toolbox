@@ -1,6 +1,6 @@
 /**
  * Returns a new array with unique values.
- * @param values The array to get unique values from.
+ * @param values The array to access unique values from.
  * @returns Produces a new array.
  * @example
  * ```typescript

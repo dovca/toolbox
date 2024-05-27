@@ -1,4 +1,4 @@
-import type {AnyArray} from './utils';
+import type {AnyArray, Values} from './utils';
 import type {ToBoolean, ToString} from './convert';
 import type {Equals, IsTuple} from './predicate';
 
@@ -26,27 +26,33 @@ export type Join<Arr extends AnyArray, Glue extends string = ''> = IsTuple<Arr> 
 		: ''
 	: string;
 
-export type Filter<Values extends AnyArray, Predicate> = IsTuple<Values> extends true
-	? Values extends readonly [infer Head, ...infer Rest]
-		? Head extends Predicate
-			? [Head, ...Filter<Rest, Predicate>]
-			: Filter<Rest, Predicate>
-		: []
-	: (Values[number] & Predicate)[];
+export type Filter<Values extends AnyArray, Predicate> =
+	[Predicate] extends [never]
+	? []
+	: IsTuple<Values> extends true
+		? Values extends readonly [infer Head, ...infer Rest]
+			? Head extends Predicate
+				? [Head, ...Filter<Rest, Predicate>]
+				: Filter<Rest, Predicate>
+			: []
+		: (Values[number] & Predicate)[];
 
 export type Discard<
 	Values extends AnyArray,
 	Predicate,
 	Result extends AnyArray = [],
-> = IsTuple<Values> extends true
-	? Values extends readonly [infer Head, ...infer Rest extends AnyArray]
-		? Head extends Predicate
-			? Discard<Rest, Predicate, Result>
-			: Discard<Rest, Predicate, [...Result, Head]>
-		: Result // Empty tuple
-	: Equals<Values[number], Predicate> extends true
-		? []
-		: Exclude<Values[number], Predicate>[];
+> = [Predicate] extends [never]
+	? Values
+	: IsTuple<Values> extends true
+		? Values extends readonly [infer Head, ...infer Rest extends AnyArray] // Take the next value
+			? Head extends Predicate // If the value is assignable to the predicate
+				? Discard<Rest, Predicate, Result> // Discard the value and continue
+				: Discard<Rest, Predicate, [...Result, Head]> // Keep the value and continue
+			: Result // Values are empty, nothing left to discard
+		// Values are an array of unknown length
+		: Equals<Values[number], Predicate> extends true
+			? []
+			: Exclude<Values[number], Predicate>[];
 
 // Is `true` when all elements of the tuple are `true`.
 export type Every<Values extends AnyArray> = IsTuple<Values> extends true

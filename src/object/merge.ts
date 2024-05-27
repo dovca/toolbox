@@ -1,4 +1,4 @@
-import type {Override, StringKeys} from '../types';
+import type {Override, StringKeys, Values} from '../types';
 
 /**
  * Merges the given values into the flowing values.
@@ -25,7 +25,7 @@ export function merge<New extends object>(newValues: New): <Old extends object>(
 export function mergeWith<NewVal>(resolver: (key: string, oldVal: any, newVal: any) => NewVal):
 	<New extends object>(newValues: New) =>
 		<Old extends object>(oldValues: Old) =>
-			Record<StringKeys<Old> | StringKeys<New>, NewVal>
+			Record<StringKeys<Old> | StringKeys<New>, Values<Old> | Values<New> | NewVal>
 {
 	return (newValues) => (oldValues) => {
 		const result: Record<string, any> = {...oldValues};

@@ -1,7 +1,7 @@
 /**
  * Returns an array of tuples where each tuple contains two adjacent elements from the input array.
  * If the input array has less than two elements, an empty array is returned.
- * @param values The array to get the neighbors of.
+ * @param values The array to access the neighbors of.
  * @returns An array of tuples containing two adjacent elements from the input array.
  * @example
  * ```typescript
