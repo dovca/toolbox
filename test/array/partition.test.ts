@@ -1,8 +1,7 @@
 import {expect, test} from 'bun:test';
-import {partition} from '../../src';
+import {isEven, partition} from '../../src';
 
 test('partition', () => {
-	const isEven = (n: number) => n % 2 === 0;
 	const partitionByParity = partition(isEven);
 
 	expect(partitionByParity([])).toEqual([[], []]);

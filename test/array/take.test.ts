@@ -1,5 +1,7 @@
 import {expect, test} from 'bun:test';
 import {
+	isGreaterThan,
+	isLessThan,
 	takeRightUntil,
 	takeRightWhile,
 	takeUntil,
@@ -9,8 +11,8 @@ import {
 } from '../../src';
 
 const values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const smallerFive = (value: number) => value < 5;
-const greaterFive = (value: number) => value > 5
+const smallerFive = isLessThan(5);
+const greaterFive = isGreaterThan(5);
 
 test('takeWhile', () => {
 	expect(takeWhile(smallerFive)([])).toEqual([]);

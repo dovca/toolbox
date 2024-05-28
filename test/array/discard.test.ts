@@ -8,4 +8,5 @@ test('discard', () => {
 	expect(discard(1)([1])).toEqual([]);
 	expect(discard(1)([1, 2, 3])).toEqual([2, 3]);
 	expect(discard(2, 3, 4)([1, 2, 3])).toEqual([1]);
+	expect(discard<number | undefined, undefined>(undefined)([1, 2, undefined, 3, undefined])).toEqual([1, 2, 3]);
 });

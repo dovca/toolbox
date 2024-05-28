@@ -1,5 +1,5 @@
 import {reduce} from './reduce';
-import {operatorStar} from '../number';
+import {operatorStar} from '../lang';
 
 /**
  * Returns the product of all numbers in the array, that is multiplies all numbers together.

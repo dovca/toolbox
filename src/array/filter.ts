@@ -9,6 +9,7 @@ import type {Fn, IterationCallback} from '../types';
  * filter(isOdd)([1, 2, 3, 4, 5]); // [1, 3, 5]
  * ```
  */
+export function filter<I, O extends I>(predicate: (val: I) => val is O): Fn<O[], readonly I[]>;
 export function filter<I, O extends I = I>(predicate: IterationCallback<boolean, I>): Fn<O[], readonly I[]>;
 export function filter<T>(predicate: IterationCallback<boolean, T>): Fn<T[], readonly T[]>;
 export function filter<T>(predicate: IterationCallback<boolean, T>): Fn<T[], readonly T[]> {

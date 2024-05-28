@@ -1,7 +1,5 @@
 import {expect, test} from 'bun:test';
-import {map, mapWithPrevInput, mapWithPrevOutput} from '../../src';
-
-const double = (x: number) => x * 2;
+import {double, map, mapWithPrevInput, mapWithPrevOutput} from '../../src';
 
 test('map', () => {
 	expect(map(double)([])).toEqual([]);

@@ -1,12 +1,8 @@
 import {comparator, isEqual} from '../predicate';
 import {negate} from '../function';
 import {parity} from './arithmetic';
-import type {Equalizer} from '../types';
+import {operatorGreaterThan, operatorGreaterThanOrEqual, operatorLessThan, operatorLessThanOrEqual} from '../lang';
 
-export const operatorLessThan: Equalizer<number> = (a, b) => a < b;
-export const operatorLessThanOrEqual: Equalizer<number> = (a, b) => a <= b;
-export const operatorGreaterThan: Equalizer<number> = (a, b) => a > b;
-export const operatorGreaterThanOrEqual: Equalizer<number> = (a, b) => a >= b;
 export const isZero = isEqual(0);
 export const isGreaterThan = comparator(operatorGreaterThan);
 export const isGreaterThanOrEqual = comparator(operatorGreaterThanOrEqual);

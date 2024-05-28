@@ -1,5 +1,5 @@
 import {reduce} from './reduce';
-import {operatorPlus} from '../number';
+import {operatorPlus} from '../lang';
 
 /**
  * Returns the sum of all elements in the array.

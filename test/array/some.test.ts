@@ -1,11 +1,9 @@
 import {expect, test} from 'bun:test';
-import {some} from '../../src';
-
-const positive = (x: number) => x > 0;
+import {isPositive, some} from '../../src';
 
 test('test', () => {
-	expect(some(positive)([])).toBe(false);
-	expect(some(positive)([0])).toBe(false);
-	expect(some(positive)([0, 0, 0, 1])).toBe(true);
-	expect(some(positive)([1, 2, 3])).toBe(true);
+	expect(some(isPositive)([])).toBe(false);
+	expect(some(isPositive)([0])).toBe(false);
+	expect(some(isPositive)([0, 0, 0, 1])).toBe(true);
+	expect(some(isPositive)([1, 2, 3])).toBe(true);
 });

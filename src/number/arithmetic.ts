@@ -1,29 +1,19 @@
-import type {Fn, Fn2, Maybe} from '../types';
-import {binaryOperation} from '../misc';
-
-function unsafeBinaryOperation<T extends number>(operation: Fn2<T, Maybe<T>>): Fn<Fn<T, Maybe<T>>, Maybe<T>> {
-	return (b) => (a) => operation(a, b);
-}
-
-function safeOperator<T extends number>(operation: Fn2<T>, fallback: T): Fn2<T, Maybe<T>> {
-	return (a, b) => a === undefined && b === undefined
-		? NaN as T
-		: operation(a ?? fallback, b ?? fallback);
-}
-
-export const operatorPlus: Fn2<number> = (a, b) => a + b;
-export const operatorMinus: Fn2<number> = (a, b) => a - b;
-export const operatorStar: Fn2<number> = (a, b) => a * b;
-export const operatorSlash: Fn2<number> = (a, b) => a / b;
-export const operatorPercent: Fn2<number> = (a, b) => ((a % b) + b) % b;
-export const inverseOperatorMinus: Fn2<number> = (a, b) => b - a;
-export const inverseOperatorSlash: Fn2<number> = (a, b) => b / a;
-export const safeOperatorPlus = safeOperator(operatorPlus, 0);
-export const safeOperatorMinus = safeOperator(operatorMinus, 0);
-export const safeOperatorStar = safeOperator(operatorStar, 1);
-export const safeOperatorSlash = safeOperator(operatorSlash, 1);
-export const safeInverseOperatorMinus = safeOperator(inverseOperatorMinus, 0);
-export const safeInverseOperatorSlash = safeOperator(inverseOperatorSlash, 1);
+import {binaryOperation, unsafeBinaryOperation} from '../misc';
+import {
+	inverseOperatorMinus,
+	inverseOperatorSlash,
+	operatorMinus,
+	operatorPercent,
+	operatorPlus,
+	operatorSlash,
+	operatorStar,
+	safeInverseOperatorMinus,
+	safeInverseOperatorSlash, safeOperator,
+	safeOperatorMinus,
+	safeOperatorPlus,
+	safeOperatorSlash,
+	safeOperatorStar
+} from '../lang';
 
 export const add = binaryOperation(operatorPlus);
 export const subtract = binaryOperation(operatorMinus);
