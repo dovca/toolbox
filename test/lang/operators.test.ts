@@ -1,16 +1,16 @@
 import {expect, test} from 'bun:test';
 import {
 	inverseOperatorMinus,
-	inverseOperatorSlash,
+	inverseOperatorSlash, operatorAnd,
 	operatorEqual,
 	operatorGreaterThan,
 	operatorGreaterThanOrEqual,
 	operatorLessThan,
 	operatorLessThanOrEqual,
-	operatorMinus,
+	operatorMinus, operatorOr,
 	operatorPlus,
 	operatorSlash,
-	operatorStar,
+	operatorStar, operatorXor,
 	safeInverseOperatorMinus,
 	safeInverseOperatorSlash,
 	safeOperatorMinus,
@@ -62,6 +62,24 @@ test('operatorStar', () => {
 
 test('operatorSlash', () => {
 	expect(operatorSlash(2, 3)).toBe(0.6666666666666666);
+});
+
+test('operatorAnd', () => {
+	expect(operatorAnd(true, true)).toBe(true);
+	expect(operatorAnd(true, false)).toBe(false);
+	expect(operatorAnd(false, false)).toBe(false);
+});
+
+test('operatorOr', () => {
+	expect(operatorOr(true, true)).toBe(true);
+	expect(operatorOr(true, false)).toBe(true);
+	expect(operatorOr(false, false)).toBe(false);
+});
+
+test('operatorXor', () => {
+	expect(operatorXor(true, true)).toBe(false);
+	expect(operatorXor(true, false)).toBe(true);
+	expect(operatorXor(false, true)).toBe(true);
 });
 
 test('inverseOperatorMinus', () => {
