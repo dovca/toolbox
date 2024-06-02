@@ -1,6 +1,14 @@
 import type {Fn, Fn2, StringKeys, Values} from '../types';
 import {entries} from './entries';
 
+/** Transforms the values of an object.
+ * @param mapper The function that maps the values.
+ * @returns Produces a new object with the mapped values.
+ * @example
+ * ```typescript
+ * mapValues((value) => value * 2)({a: 1, b: 2}); // {a: 2, b: 4}
+ * ```
+ */
 export function mapValues<
 	I extends object,
 	O extends { [k in keyof I]: any} = I,

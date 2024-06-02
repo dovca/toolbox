@@ -1,0 +1,22 @@
+import type {Fn, Maybe, Predicate, StringKeys, Values} from '../types';
+import {entries} from './entries';
+
+/**
+ * Returns the first value whose key satisfies the predicate, or undefined if no such value is found.
+ * @param predicate The predicate to check.
+ * @returns The found key or undefined.
+ * @example
+ * ```typescript
+ * findValue(startsWith('b'))({foo: 2, bar: 3}); // 3
+ * ```
+ */
+export function findValue<T extends object>(predicate: Predicate<StringKeys<T>>): Fn<Maybe<Values<T>>, T> {
+	return (obj) => {
+		for (const [key, value] of entries(obj)) {
+			if (predicate(key)) {
+				return value;
+			}
+		}
+		return undefined;
+	}
+}

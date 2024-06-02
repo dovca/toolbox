@@ -4,6 +4,17 @@ import {splitOnce} from '../string';
 
 type Accessor<Path extends string, Sep extends string> = <Obj>(obj: Obj) => Access<Obj, Path, Sep>;
 
+/**
+ * Access a nested property of an object using a path string.
+ * Elements of arrays can be accessed using their numeric index.
+ * @param path A string that represents the path to the desired property.
+ * @param separator A string that separates the path segments. Default is '.'.
+ * @returns The value of a nested flowing object or undefined if the path is invalid.
+ * @example
+ * ```typescript
+ * access('a.b.0.c')({a: {b: [{c: 1}]}}); // 1
+ * ```
+ */
 export function access<
 	Path extends string,
 	Sep extends string = '.',

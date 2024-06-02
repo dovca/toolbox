@@ -28,6 +28,15 @@ export function mapKeys<
 	O extends Dictionary<Values<I>> = Dictionary<Values<I>>
 >(mapper: Fn2<StringKeys<O>, StringKeys<I>, Values<I>>): Fn<O, I>;
 
+/**
+ * Transforms the keys of an object while keeping the original values.
+ * @param mapper The function that maps the keys.
+ * @returns Produces a new object with the mapped keys.
+ * @example
+ * ```typescript
+ * mapKeys((key) => key.toUpperCase())({a: 1, b: 2}); // {A: 1, B: 2}
+ * ```
+ */
 export function mapKeys<
 	I extends object,
 	O extends Dictionary<Values<I>> = Dictionary<Values<I>>

@@ -7,6 +7,7 @@ export * from "./assign";
 export * from "./deepen";
 export * from "./entries";
 export * from "./findKey";
+export * from "./findValue";
 export * from "./flatten";
 export * from "./fromPairs";
 export * from "./keys";
