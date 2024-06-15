@@ -1,6 +1,16 @@
+[![JSR](https://jsr.io/badges/@dovca/toolbox)](https://jsr.io/@dovca/toolbox) [![JSR Score](https://jsr.io/badges/@dovca/toolbox/score)](https://jsr.io/@dovca/toolbox)
+
 # Toolbox
 
 A set of general-purpose typescript functions for common tasks.
+
+## Installation
+
+The toolbox is available via JSR. To install it, run:
+
+```bash
+npx jsr add @dovca/toolbox
+```
 
 ## Motivation
 
