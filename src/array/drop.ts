@@ -6,6 +6,8 @@ import {backwardIterator, forwardIterator, reversedIterator} from '../iterators'
 import {push} from './push';
 import {unshift} from './unshift';
 
+type DropFn = <T>(predicate: IterationCallback<boolean, T>) => Fn<T[], readonly T[]>;
+
 function dropFactory<T>(
 	iterator: MyGeneratorFunction<T>,
 	mutator: Fn<Fn<T[], AnyArray>, T> = push,
@@ -36,7 +38,7 @@ function dropFactory<T>(
  * dropWhile(isLessThan(3))([1, 2, 3, 4, 5]); // [3, 4, 5]
  * ```
  */
-export const dropWhile = dropFactory(forwardIterator);
+export const dropWhile: DropFn = dropFactory(forwardIterator);
 
 /**
  * Removes elements from the end of a flowing array until the predicate returns false.
@@ -47,7 +49,7 @@ export const dropWhile = dropFactory(forwardIterator);
  * dropRightWhile(isGreaterThan(3))([1, 2, 3, 4, 5]); // [1, 2, 3]
  * ```
  */
-export const dropRightWhile = dropFactory(backwardIterator, unshift);
+export const dropRightWhile: DropFn = dropFactory(backwardIterator, unshift);
 
 /**
  * Removes elements from the end of a flowing array until the predicate returns false.
@@ -58,7 +60,7 @@ export const dropRightWhile = dropFactory(backwardIterator, unshift);
  * dropWhileReversed(isGreaterThan(3))([1, 2, 3, 4, 5]); // [1, 2, 3]
  * ```
  */
-export const dropWhileReversed = dropFactory(reversedIterator, unshift);
+export const dropWhileReversed: DropFn = dropFactory(reversedIterator, unshift);
 
 /**
  * Removes elements from the beginning of a flowing array until the predicate returns true.
@@ -68,7 +70,7 @@ export const dropWhileReversed = dropFactory(reversedIterator, unshift);
  * dropUntil(isGreaterThan(3))([1, 2, 3, 4, 5]); // [4, 5]
  * ```
  */
-export const dropUntil = dropFactory(forwardIterator, undefined, identity);
+export const dropUntil: DropFn = dropFactory(forwardIterator, undefined, identity);
 
 /**
  * Removes elements from the end of a flowing array until the predicate returns true.
@@ -79,7 +81,7 @@ export const dropUntil = dropFactory(forwardIterator, undefined, identity);
  * dropRightUntil(isLessThan(3))([1, 2, 3, 4, 5]); // [1, 2]
  * ```
  */
-export const dropRightUntil = dropFactory(backwardIterator, unshift, identity);
+export const dropRightUntil: DropFn = dropFactory(backwardIterator, unshift, identity);
 
 /**
  * Removes elements from the end of a flowing array until the predicate returns true.
@@ -90,4 +92,4 @@ export const dropRightUntil = dropFactory(backwardIterator, unshift, identity);
  * dropUntilReversed(isLessThan(3))([1, 2, 3, 4, 5]); // [1, 2]
  * ```
  */
-export const dropUntilReversed = dropFactory(reversedIterator, unshift, identity);
+export const dropUntilReversed: DropFn = dropFactory(reversedIterator, unshift, identity);

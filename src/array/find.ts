@@ -1,6 +1,8 @@
 import type {Fn, FnT3, IterationResult, Maybe, MyGeneratorFunction} from '../types';
 import {backwardIterator, reversedIterator, forwardIterator} from '../iterators';
 
+type FindFn = <T>(matcher: FnT3<boolean, IterationResult<T>>) => Fn<Maybe<T>, readonly T[]>;
+
 function findFactory<T>(generator: MyGeneratorFunction<T>): Fn<Fn<Maybe<T>, readonly T[]>, FnT3<boolean, IterationResult<T>>> {
 	return (matcher) => (values) => {
 		for (const [value, ...rest] of generator(values)) {
@@ -20,7 +22,7 @@ function findFactory<T>(generator: MyGeneratorFunction<T>): Fn<Fn<Maybe<T>, read
  * find(isOdd)([2, 3, 4, 5, 6]); // 3
  * ```
  */
-export const find = findFactory(forwardIterator);
+export const find: FindFn = findFactory(forwardIterator);
 
 /**
  * Finds the last value in the flowing array that passes the given predicate.
@@ -31,7 +33,7 @@ export const find = findFactory(forwardIterator);
  * findLast(isOdd)([2, 3, 4, 5, 6]); // 5
  * ```
  */
-export const findLast = findFactory(backwardIterator);
+export const findLast: FindFn = findFactory(backwardIterator);
 
 /**
  * Finds the first value in the flowing array that passes the given predicate.
@@ -42,4 +44,4 @@ export const findLast = findFactory(backwardIterator);
  * findReversed(isOdd)([2, 3, 4, 5, 6]); // 5
  * ```
  */
-export const findReversed = findFactory(reversedIterator);
+export const findReversed: FindFn = findFactory(reversedIterator);

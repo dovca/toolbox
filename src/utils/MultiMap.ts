@@ -9,7 +9,7 @@ export class MultiMap<K extends readonly any[], V> {
 		this.#map = new Map();
 	}
 
-	set(keys: K, value: V) {
+	set(keys: K, value: V): this {
 		if (keys.length > 0) {
 			const [currentKey, nextKeys] = decapitate(keys);
 			const current = this.#map.get(currentKey);
@@ -59,7 +59,7 @@ export class MultiMap<K extends readonly any[], V> {
 		return deleted;
 	}
 
-	clear() {
+	clear(): void {
 		this.#map.clear();
 		this.#rootValue = undefined;
 	}

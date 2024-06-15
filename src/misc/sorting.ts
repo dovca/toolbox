@@ -22,6 +22,6 @@ function sortFactory(sort: Sorter<any> = sorter): SortingAlgorithm {
 	}
 }
 
-export const ascending = sortFactory();
+export const ascending: SortingAlgorithm = sortFactory();
 
-export const descending = sortFactory((a, b) => sorter(b, a));
+export const descending: SortingAlgorithm = sortFactory((a, b) => sorter(b, a));

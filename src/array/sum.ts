@@ -1,5 +1,6 @@
 import {reduce} from './reduce';
 import {operatorPlus} from '../lang';
+import type {Fn} from '../types';
 
 /**
  * Returns the sum of all elements in the array.
@@ -10,4 +11,4 @@ import {operatorPlus} from '../lang';
  * sum([1, 2, 3, 4]); // 10
  * ```
  */
-export const sum = reduce(operatorPlus, 0);
+export const sum: Fn<number, readonly number[]> = reduce(operatorPlus, 0);

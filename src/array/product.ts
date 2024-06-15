@@ -1,5 +1,6 @@
 import {reduce} from './reduce';
 import {operatorStar} from '../lang';
+import type {Fn} from '../types';
 
 /**
  * Returns the product of all numbers in the array, that is multiplies all numbers together.
@@ -9,4 +10,4 @@ import {operatorStar} from '../lang';
  * product([1, 2, 3]); // 6
  * ```
  */
-export const product = reduce(operatorStar, 1);
+export const product: Fn<number, readonly number[]> = reduce(operatorStar, 1);

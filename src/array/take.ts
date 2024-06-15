@@ -6,6 +6,8 @@ import {backwardIterator, forwardIterator, reversedIterator} from '../iterators'
 import {push} from './push';
 import {unshift} from './unshift';
 
+type Take = <T>(callback: IterationCallback<boolean, T>) => Fn<T[], readonly T[]>;
+
 function takeFactory<T>(
 	iterator: MyGeneratorFunction<T>,
 	mutator: Fn<Fn<T[], AnyArray>, T> = push,
@@ -37,7 +39,7 @@ function takeFactory<T>(
  * takeWhile(isLessThan(3))([1, 2, 3, 4]); // [1, 2]
  * ```
  */
-export const takeWhile = takeFactory(forwardIterator);
+export const takeWhile: Take = takeFactory(forwardIterator);
 
 /**
  * Takes values from the end of the array while the predicate returns true. All other values are discarded.
@@ -49,7 +51,7 @@ export const takeWhile = takeFactory(forwardIterator);
  * takeRightWhile(isGreaterThan(2))([1, 2, 3, 4]); // [3, 4]
  * ```
  */
-export const takeRightWhile = takeFactory(backwardIterator, unshift);
+export const takeRightWhile: Take = takeFactory(backwardIterator, unshift);
 
 /**
  * Takes values from the end of the array while the predicate returns true. All other values are discarded.
@@ -61,7 +63,7 @@ export const takeRightWhile = takeFactory(backwardIterator, unshift);
  * takeWhileReversed(isGreaterThan(2))([1, 2, 3, 4]); // [3, 4]
  * ```
  */
-export const takeWhileReversed = takeFactory(reversedIterator);
+export const takeWhileReversed: Take = takeFactory(reversedIterator);
 
 /**
  * Takes values from the beginning of the array until the predicate returns true. All other values are discarded.
@@ -72,7 +74,7 @@ export const takeWhileReversed = takeFactory(reversedIterator);
  * takeUntil(isGreaterThan(2))([1, 2, 3, 4]); // [1, 2]
  * ```
  */
-export const takeUntil = takeFactory(forwardIterator, undefined, not);
+export const takeUntil: Take = takeFactory(forwardIterator, undefined, not);
 
 /**
  * Takes values from the end of the array until the predicate returns true. All other values are discarded.
@@ -84,7 +86,7 @@ export const takeUntil = takeFactory(forwardIterator, undefined, not);
  * takeRightUntil(isLessThan(3))([1, 2, 3, 4]); // [3, 4]
  * ```
  */
-export const takeRightUntil = takeFactory(backwardIterator, unshift, not);
+export const takeRightUntil: Take = takeFactory(backwardIterator, unshift, not);
 
 /**
  * Takes values from the end of the array until the predicate returns true. All other values are discarded.
@@ -96,4 +98,4 @@ export const takeRightUntil = takeFactory(backwardIterator, unshift, not);
  * takeUntilReversed(isLessThan(3))([1, 2, 3, 4]); // [3, 4]
  * ```
  */
-export const takeUntilReversed = takeFactory(reversedIterator, undefined, not);
+export const takeUntilReversed: Take = takeFactory(reversedIterator, undefined, not);

@@ -53,7 +53,9 @@ export function chunkWith<T, M = unknown>(mapper: IterationCallback<M, T>): Fn<T
  * chunkBy('id')([{id: 1}, {id: 1}, {id: 2}]) // [[{id: 1}, {id: 1}], [{id: 2}]]
  * ```
  */
-export const chunkBy = <T extends object>(key: keyof T) => chunkWith<T>(property(key));
+export function chunkBy<T extends object>(key: keyof T): Fn<T[][], readonly T[]> {
+	return chunkWith(property(key));
+}
 
 /**
  * Splits a flowing array into same-sized chunks. The last chunk may be smaller than the specified size.
@@ -64,4 +66,6 @@ export const chunkBy = <T extends object>(key: keyof T) => chunkWith<T>(property
  * chunk(2)([1, 2, 3, 4, 5]) // [[1, 2], [3, 4], [5]]
  * ```
  */
-export const chunk = <T>(size: number) => chunkWith<T>((_, index) => Math.floor(index / size));
+export function chunk<T>(size: number): Fn<T[][], readonly T[]> {
+	return chunkWith((_, index) => Math.floor(index / size));
+}

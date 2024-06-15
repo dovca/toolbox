@@ -1,8 +1,7 @@
 {
-  "name": "@dovca/ts-fns",
-  "version": "0.0.15",
+  "name": "@dovca/toolbox",
+  "version": "0.0.0",
   "description": "A set of TypeScript functions for common tasks.",
-  "main": "./dist/index.js",
   "directories": {
     "lib": "src",
     "test": "test"
@@ -10,29 +9,13 @@
   "files": [
     "dist"
   ],
+  "exports": "./src/index.ts",
   "homepage": "https://github.com/dovca/ts-fns",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "packageManager": "bun",
   "scripts": {
-    "build": "tsup",
     "test": "bun test --bail",
     "generate-barrels": "barrelsby --delete -d ./src -l all",
-    "prepublishOnly": "bun run build",
     "prepare": "husky"
-  },
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "sourcemap": true,
-    "clean": true,
-    "minify": true,
-    "format": [
-      "cjs",
-      "esm"
-    ],
-    "dts": true
   },
   "author": "david@ovcacik.xyz",
   "license": "LGPL-3.0-or-later",
@@ -44,7 +27,6 @@
     "eslint": "^9.2.0",
     "eslint-plugin-expect-type": "^0.4.0",
     "husky": "^9.0.10",
-    "tsup": "^8.0.2",
     "typescript": "latest",
     "typescript-eslint": "^7.8.0"
   },

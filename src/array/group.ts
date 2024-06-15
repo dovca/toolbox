@@ -36,6 +36,6 @@ export function groupWith<T, K extends string | number>(keyer: Fn<K, T>): Fn<Par
  * groupBy('id')([{id: 1}, {id: 2}, {id: 1}]); // {1: [{id: 1}, {id: 1}], 2: [{id: 2}]}
  * ```
  */
-export function groupBy<T extends object>(key: ConditionalKeys<T, string | number | boolean> & (string | number)) {
+export function groupBy<T extends object>(key: ConditionalKeys<T, string | number | boolean> & (string | number)): Fn<Partial<Record<string | number, T[]>>, readonly T[]>{
 	return groupWith(property(key) as Fn<string | number, T>);
 }

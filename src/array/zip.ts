@@ -37,7 +37,7 @@ export function zip<I, A>(values: readonly A[]): Fn<[Maybe<I>, Maybe<A>][], read
 	return zipWith(gather<[Maybe<I>, Maybe<A>], Maybe<I>, Maybe<A>>(identity))(values);
 }
 
-export function zipObject<K extends string | number, V>(keys: readonly K[], values: readonly V[]) {
+export function zipObject<K extends string | number, V>(keys: readonly K[], values: readonly V[]): Record<K, V> {
 	const result: Record<K, V> = {} as any;
 	for (const [key, index] of forwardIterator(keys)) {
 		result[key] = values[index];
