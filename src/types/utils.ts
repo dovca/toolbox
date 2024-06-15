@@ -1,60 +1,103 @@
 import type {ToString} from './convert';
-import type {IsNegative} from './predicate';
 
+/** A single-element tuple. */
 export type T1<A = any> = [A];
+/** A two-element tuple. */
 export type T2<A = any, B = A> = [A, B];
+/** A three-element tuple. */
 export type T3<A = any, B = A, C = B> = [A, B, C];
+/** A four-element tuple. */
 export type T4<A = any, B = A, C = B, D = C> = [A, B, C, D];
+/** A five-element tuple. */
 export type T5<A = any, B = A, C = B, D = C, E = D> = [A, B, C, D, E];
 
+/** A function that takes one parameter. */
 export type Fn<R, P1 = R> = (p1: P1) => R;
+/** A function that takes two parameters. */
 export type Fn2<R, P1 = R, P2 = P1> = (p1: P1, p2: P2) => R;
+/** A function that takes three parameters. */
 export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = (p1: P1, p2: P2, p3: P3) => R;
+/** A function that takes four parameters. */
 export type Fn4<R, P1 = R, P2 = P1, P3 = P2, P4 = P3> = (p1: P1, p2: P2, p3: P3, p4: P4) => R;
+/** A function that takes five parameters. */
 export type Fn5<R, P1 = R, P2 = P1, P3 = P2, P4 = P3, P5 = P4> = (p1: P1, p2: P2, p3: P3, p4: P4, p5: P5) => R;
+/** A function that takes an unknown number of parameters. */
 export type FnN<R, P extends readonly any[] = readonly any[]> = (...args: P) => R;
+/** A function that takes a single parameter specified as a tuple. */
 export type FnT1<R, T extends T1> = (...args: T) => R;
+/** A function that takes two parameters specified as a tuple. */
 export type FnT2<R, T extends T2> = (...args: T) => R;
+/** A function that takes three parameters specified as a tuple. */
 export type FnT3<R, T extends T3> = (...args: T) => R;
+/** A function that takes four parameters specified as a tuple. */
 export type FnT4<R, T extends T4> = (...args: T) => R;
+/** A function that takes five parameters specified as a tuple. */
 export type FnT5<R, T extends T5> = (...args: T) => R;
 
+/** A tuple representing the result of an array iteration: the value, index and the array  */
 export type IterationResult<T> = [T, number, readonly T[]];
+/** A function that is used to iterate over an array. */
 export type IterationCallback<R, T> = FnT3<R, IterationResult<T>>;
-export type MyGeneratorFunction<T> = Fn<MyGenerator<T>, readonly T[]>;
+/** A generator that yields the result of an array iteration. */
 export type MyGenerator<T> = Generator<IterationResult<T>>;
+/** A generator function that iterates over an array. */
+export type MyGeneratorFunction<T> = Fn<MyGenerator<T>, readonly T[]>;
 
+/** Used as an invisible glue to join strings. */
 export type JoinMarker = '‍‍‍';
 
+/** A function that takes one parameter and returns true or false. */
 export type Predicate<T> = Fn<boolean, T>;
+/** A function that takes two parameters of the same type and returns a result. */
 export type Comparator<T, R> = Fn2<R, T>;
+/** A function that takes two parameters of the same type and returns a boolean. */
 export type Equalizer<T> = Comparator<T, boolean>;
+/** A function that takes two parameters of the same type and returns a number indicating their relative order. */
 export type Sorter<T> = Comparator<T, number>;
+/** A function that takes one parameter and returns it as an array. */
 export type Arrayifier<T> = Fn<T[], T>;
 
+/** An object with string keys and values of type T. */
 export type Dictionary<T> = Record<string, T>;
+/** The type of the keys of an object. */
 export type StringKeys<T extends object> = ToString<keyof T>;
+/** The type of the values of an object. */
 export type Values<T extends object> = T[keyof T];
+/** The type T or `null` or `undefined`. */
 export type Nullable<T> = T | null | undefined;
+/** The type T or `undefined`. */
 export type Maybe<T> = T | undefined;
+/** A single value of type T or an array of them. */
 export type Many<T> = T | readonly T[];
+/** A single value of type T or a function that returns it. */
 export type Indirectable<T> = T | (() => T);
+/** The keys of an object that have values of type C. */
 export type ConditionalKeys<T extends object, C> = { [K in keyof T]: T[K] extends C ? K : never }[keyof T];
+/** Override some properties of type A with properties of type B. */
 export type Override<A extends object, B extends object> = Omit<A, keyof B> & {
 	[K in keyof B as B[K] extends never ? never : K]: B[K]
 };
+/** Prettify the type of an object. */
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export type Prettify<T> = { [K in keyof T]: T[K]; } & unknown;
+/** Swap the keys and values of an object. */
 export type Transpose<T extends Record<string, string | number>> = Record<Values<T>, keyof T>;
 
+/** The empty tuple type. */
 export type EmptySet = readonly [];
+/** A general array type. */
 export type AnyArray = readonly any[];
+/** A general function type. */
 export type AnyFunction = (...args: AnyArray) => any;
+/** The type of all falsy values. */
 export type Falsy = false | 0 | '' | null | undefined | 0n;
+/** The type of all primitive values. */
 export type Primitive = string | number | boolean | bigint | null | undefined;
 
+/** A single-element tuple of type containing either type T or itself recursively. */
 export type ReadonlyDeepSingle<T> = readonly [T | ReadonlyDeepSingle<T>];
 
+/** A helper type for getting negative number. */
 export type Negative<T extends number> = number extends T
 	? number
 	: T extends 0
@@ -65,12 +108,5 @@ export type Negative<T extends number> = number extends T
 				? S
 				: never;
 
+/** A helper type for tests. */
 export type Expect<T extends true> = T;
-
-export type TupleOf<T, Length extends number, Result extends AnyArray = []> = number extends Length
-	? T[]
-	: IsNegative<Length> extends true
-		? never
-		: Length extends Result['length']
-			? Result
-			: TupleOf<T, Length, [...Result, T]>;
