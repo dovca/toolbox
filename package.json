@@ -1,16 +1,12 @@
 {
   "name": "@dovca/toolbox",
-  "version": "0.0.16",
-  "description": "A set of TypeScript functions for common tasks.",
+  "version": "0.0.0",
+  "description": "A set of general-purpose typescript functions for common tasks..",
   "directories": {
     "lib": "src",
     "test": "test"
   },
-  "files": [
-    "dist"
-  ],
-  "exports": "./src/index.ts",
-  "homepage": "https://github.com/dovca/ts-fns",
+  "homepage": "https://github.com/dovca/toolbox",
   "packageManager": "bun",
   "scripts": {
     "test": "bun test --bail",
