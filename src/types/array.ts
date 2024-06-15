@@ -1,4 +1,4 @@
-import type {AnyArray, Values} from './utils';
+import type {AnyArray} from './utils';
 import type {ToBoolean, ToString} from './convert';
 import type {Equals, IsTuple} from './predicate';
 
@@ -71,6 +71,19 @@ export type Some<Values extends AnyArray> = IsTuple<Values> extends true
 			: Some<Rest>
 		: false // Empty tuple
 	: boolean;
+
+// Is `true` when at least one element of the tuple is assignable to the `Search` type.
+export type Includes<Values extends AnyArray, Search> = IsTuple<Values> extends true
+	? Values extends readonly [infer Head, ...infer Rest]
+		? [Head] extends [Search]
+			? true
+			: Includes<Rest, Search>
+		: false // Empty tuple
+	: Values extends readonly (infer Element)[]
+		? Element extends Search
+			? true
+			: false
+		: false;
 
 export type Push<Values extends AnyArray, New> = IsTuple<Values> extends true
 	? [...Values, New]
