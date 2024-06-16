@@ -10,6 +10,14 @@ type _Access<Obj, Key extends string> = Obj extends object | AnyArray
 			: undefined
 	: undefined;
 
+/**
+ * Extracts a deeply nested property type from an object type.
+ * @example
+ * ```typescript
+ * type Obj = { a: { b: { c: number } } };
+ * type Result = Access<Obj, 'a.b.c'>; // number
+ * ```
+ */
 export type Access<
 	Obj,
 	Path extends string,
@@ -26,6 +34,14 @@ type _Assign<Obj, Key extends string, Value> = Obj extends object
 		: Prettify<Override<Obj, { [K in Key]: Value }>>
 	: undefined;
 
+/**
+ * Overrides a deeply nested property of an object type with the given value type.
+ * @example
+ * ```typescript
+ * type Obj = { a: { b: { c: number } } };
+ * type Result = Assign<Obj, 'a.b.c', string>; // { a: { b: { c: string } } }
+ * ```
+ */
 export type Assign<
 	Obj extends object | AnyArray,
 	Path extends string,
