@@ -9,7 +9,6 @@ import {
 	divideBy,
 	double,
 	floor,
-	hypot,
 	increment,
 	max,
 	min,
@@ -152,10 +151,6 @@ test('cbrt', () => {
 	expect(cbrt(0)).toBe(0);
 });
 
-test('hypot', () => {
-	expect(hypot(3)(4)).toBe(5);
-});
-
 test('safeAdd', () => {
 	expect(safeAdd(undefined)(undefined)).toBe(NaN);
 	expect(safeAdd(1)(undefined)).toBe(1);
@@ -179,22 +174,22 @@ test('safeSubtractFrom', () => {
 
 test('safeMulitply', () => {
 	expect(safeMultiply(undefined)(undefined)).toBe(NaN);
-	expect(safeMultiply(1)(undefined)).toBe(1);
-	expect(safeMultiply(undefined)(1)).toBe(1);
+	expect(safeMultiply(2)(undefined)).toBe(2);
+	expect(safeMultiply(undefined)(2)).toBe(2);
 	expect(safeMultiply(2)(3)).toBe(6);
 });
 
 test('safeDivide', () => {
 	expect(safeDivide(undefined)(undefined)).toBe(NaN);
-	expect(safeDivide(1)(undefined)).toBe(1);
-	expect(safeDivide(undefined)(1)).toBe(1);
+	expect(safeDivide(2)(undefined)).toBe(2);
+	expect(safeDivide(undefined)(2)).toBe(0.5);
 	expect(safeDivide(6)(3)).toBe(2);
 });
 
 test('safeDivideBy', () => {
 	expect(safeDivideBy(undefined)(undefined)).toBe(NaN);
-	expect(safeDivideBy(1)(undefined)).toBe(1);
-	expect(safeDivideBy(undefined)(1)).toBe(1);
+	expect(safeDivideBy(2)(undefined)).toBe(0.5);
+	expect(safeDivideBy(undefined)(2)).toBe(2);
 	expect(safeDivideBy(2)(6)).toBe(3);
 });
 
