@@ -29,9 +29,11 @@ export type Access<
 	: undefined;
 
 type _Assign<Obj, Key extends string, Value> = Obj extends object
-	? Key extends `${number}`
-		? Value[]
-		: Prettify<Override<Obj, { [K in Key]: Value }>>
+	? Key extends `"${infer UnquotedKey}"`
+		? Prettify<Override<Obj, { [K in UnquotedKey]: Value }>>
+		: Key extends `${number}`
+			? Value[]
+			: Prettify<Override<Obj, { [K in Key]: Value }>>
 	: undefined;
 
 /**

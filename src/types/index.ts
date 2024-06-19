@@ -6,4 +6,5 @@ export * from "./array";
 export * from "./convert";
 export * from "./object";
 export * from "./predicate";
+export * from "./string";
 export * from "./utils";

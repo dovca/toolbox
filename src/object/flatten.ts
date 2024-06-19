@@ -1,8 +1,8 @@
 import {keys} from './keys';
-import {isArray, isObject} from '../predicate';
-import type {AnyArray} from '../types';
+import {isArray, isNumeric, isObject} from '../predicate';
+import {quote} from '../string';
 
-type Flattener = <Obj extends object>(obj: Obj) => object;
+type Flattener = <Obj extends object>(obj: Obj) => Record<string, any>;
 
 /**
  * Flattens a flowing object into a single-depth object.
@@ -15,10 +15,17 @@ type Flattener = <Obj extends object>(obj: Obj) => object;
  * ```
  */
 export function flatten<Sep extends string = '.'>(separator: Sep = '.' as Sep, prefix = ''): Flattener {
-	return (obj) => keys(obj).reduce((acc, k) => ({
-		...acc,
-		...isObject(obj[k as keyof typeof obj]) || isArray(obj[k as keyof typeof obj])
-			? flatten(separator, `${prefix}${k}${separator}`)(obj[k as keyof typeof obj] as object | AnyArray)
-			:{[`${prefix}${k}`]: obj[k as keyof typeof obj]},
-	}), {});
+	return (obj) => keys(obj).reduce((acc, key) => {
+		// Wrap numeric keys of objects in quotes to differentiate them from array indices.
+		const sanitizedKey = isNumeric(key) && isObject(obj) ? quote(key) : key;
+		const nextKey = `${prefix}${sanitizedKey}`;
+		const value = obj[key as keyof typeof obj];
+
+		return {
+			...acc,
+			...isObject(value) || isArray(value)
+				? flatten(separator, `${nextKey}${separator}`)(value)
+				: {[nextKey]: value},
+		};
+	}, {});
 }

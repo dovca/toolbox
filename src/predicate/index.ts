@@ -10,6 +10,7 @@ export * from "./isNotNullish";
 export * from "./isNotOneOf";
 export * from "./isNullish";
 export * from "./isNumber";
+export * from "./isNumeric";
 export * from "./isObject";
 export * from "./isOneOf";
 export * from "./isString";

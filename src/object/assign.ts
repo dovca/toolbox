@@ -1,6 +1,6 @@
 import type {AnyArray, Assign} from '../types';
 import {isArray, isObject} from '../predicate';
-import {splitOnce} from '../string';
+import {splitOnce, unquote} from '../string';
 
 type Assigner<
 	Path extends string,
@@ -43,7 +43,9 @@ export function assign<
 			throw new TypeError('Expected an object or array', {cause: {key, target}});
 		}
 
-		(target as any)[key] = assign(rest, value, separator)((target as any)[key]);
+		const sanitizedKey = unquote(key);
+
+		(target as any)[sanitizedKey] = assign(rest, value, separator)((target as any)[sanitizedKey]);
 		return target as any;
 	}
 }

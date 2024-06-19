@@ -7,4 +7,6 @@ type _Tests = [
 	Expect<Equals<Assign<{}, 'a.b.c', number>, { a: { b: { c: number } } }>>,
 	// eslint-disable-next-line @typescript-eslint/ban-types
 	Expect<Equals<Assign<{}, 'a.b.3.c.d', number>, { a: { b: { c : { d: number } }[] } }>>,
+	// eslint-disable-next-line @typescript-eslint/ban-types
+	Expect<Equals<Assign<[], '0.0', number>, number[][]>>,
 ];
