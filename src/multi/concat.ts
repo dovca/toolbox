@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {Fn} from '../types/utils';
 
 function arrayConcat<T, U = T>(array: U[]): Fn<(T | U)[], readonly T[]> {
 	return (input) => [...input, ...array];

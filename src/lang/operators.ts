@@ -1,4 +1,4 @@
-import type {Equalizer, Fn2, Maybe} from '../types';
+import type {Equalizer, Fn2, Maybe} from '../types/utils';
 
 /**
  * Implements a safe operator that defaults to a fallback value if either operand is `null` or `undefined`.

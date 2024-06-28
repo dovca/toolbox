@@ -1,5 +1,6 @@
-import type {Fn, IterationCallback, MyGeneratorFunction} from '../types';
-import {forwardIterator, reversedIterator} from '../iterators';
+import type {Fn, IterationCallback, MyGeneratorFunction} from '../types/utils';
+import {forwardIterator} from '../iterators/forward';
+import {reversedIterator} from '../iterators/reversed';
 
 type ForEachFn = <T>(callback: IterationCallback<void, T>) => Fn<readonly T[], readonly T[]>;
 

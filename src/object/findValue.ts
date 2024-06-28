@@ -1,4 +1,4 @@
-import type {Fn, Maybe, Predicate, StringKeys, Values} from '../types';
+import type {Fn, Maybe, Predicate, StringKeys, Values} from '../types/utils';
 import {entries} from './entries';
 
 /**

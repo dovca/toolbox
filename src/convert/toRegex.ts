@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {Fn} from '../types/utils';
 
 /**
  * Converts a flowing string into a regular expression.

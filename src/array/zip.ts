@@ -1,7 +1,7 @@
-import {gather} from '../function';
-import type {Fn, Fn2, Maybe} from '../types';
-import {identity} from '../misc';
-import {forwardIterator} from '../iterators';
+import type {Fn, Fn2, Maybe} from '../types/utils';
+import {gather} from '../function/gather';
+import {identity} from '../misc/identity';
+import {forwardIterator} from '../iterators/forward';
 
 /**
  * Combines two arrays into a single array. Each new value is produced by the zipper function. In case the arrays are of

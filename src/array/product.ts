@@ -1,6 +1,6 @@
+import {operatorStar} from '../lang/operators';
+import type {Fn} from '../types/utils';
 import {reduce} from './reduce';
-import {operatorStar} from '../lang';
-import type {Fn} from '../types';
 
 /**
  * Returns the product of all numbers in the array, that is multiplies all numbers together.

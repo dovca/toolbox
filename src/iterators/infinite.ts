@@ -1,4 +1,4 @@
-import type {MyGeneratorFunction} from '../types';
+import type {MyGeneratorFunction} from '../types/utils';
 import {forwardIterator} from './forward';
 
 export function infiniteIterator<T>(generatorFn: MyGeneratorFunction<T> = forwardIterator): MyGeneratorFunction<T> {

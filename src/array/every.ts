@@ -1,4 +1,4 @@
-import type {Predicate} from '../types';
+import type {Predicate} from '../types/utils';
 
 /**
  * Produces `true` iff the given predicate passes with every value of the flowing array.

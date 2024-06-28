@@ -1,4 +1,5 @@
-import type {AnyArray, Last} from '../types';
+import type {AnyArray} from '../types/utils';
+import type {Last} from '../types/array';
 
 /**
  * Returns the last element of an array. If the array is empty, undefined is returned.

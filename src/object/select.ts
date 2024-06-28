@@ -1,5 +1,5 @@
-import type {Fn, Predicate, StringKeys, Values} from '../types';
-import {isOneOf} from '../predicate';
+import type {Fn, Predicate, StringKeys, Values} from '../types/utils';
+import {isOneOf} from '../predicate/isOneOf';
 import {entries} from './entries';
 
 type PickForeign<

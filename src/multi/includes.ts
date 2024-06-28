@@ -1,4 +1,4 @@
-import type {Predicate} from '../types';
+import type {Predicate} from '../types/utils';
 
 export function includes(value: string): Predicate<string>;
 export function includes<T>(value: T): Predicate<readonly T[]>;

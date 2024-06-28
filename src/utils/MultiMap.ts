@@ -1,5 +1,5 @@
-import type {First, Shift} from '../types';
-import {decapitate} from '../multi';
+import type {First, Shift} from '../types/array';
+import {decapitate} from '../multi/slice';
 
 export class MultiMap<K extends readonly any[], V> {
 	#map: Map<First<K>, MultiMap<Shift<K>, V>>;

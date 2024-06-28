@@ -1,4 +1,4 @@
-import type {Dictionary, Fn} from '../types';
+import type {Dictionary, Fn} from '../types/utils';
 
 /**
  * Creates a dictionary from a flowing array, using the specified function to produce a key.

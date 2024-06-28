@@ -1,6 +1,8 @@
 import {keys} from './keys';
-import {isArray, isNumeric, isObject} from '../predicate';
-import {quote} from '../string';
+import {isArray} from '../predicate/isArray';
+import {isNumeric} from '../predicate/isNumeric';
+import {isObject} from '../predicate/isObject';
+import {quote} from '../string/quote';
 
 type Flattener = <Obj extends object>(obj: Obj) => Record<string, any>;
 

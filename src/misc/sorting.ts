@@ -1,4 +1,4 @@
-import type {Fn, Sorter} from '../types';
+import type {Fn, Sorter} from '../types/utils';
 import {identity} from './identity';
 
 interface SortingAlgorithm {

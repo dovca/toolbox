@@ -1,4 +1,4 @@
-import type {AnyArray, Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
+import type {AnyArray, Fn, Fn2, Fn3, Fn4, Fn5} from '../types/utils';
 
 interface FnB0<R> {
 	(): Fn<R, void>;

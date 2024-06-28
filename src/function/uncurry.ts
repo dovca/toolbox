@@ -1,4 +1,4 @@
-import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
+import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types/utils';
 
 /**
  * Transforms a curried function into a function that accepts all its arguments at once.

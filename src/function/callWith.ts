@@ -1,4 +1,4 @@
-import type {Fn, FnN} from '../types';
+import type {Fn, FnN} from '../types/utils';
 
 export function callWith<R, A>(...args: [A]): Fn<R, FnN<R, [A]>>;
 export function callWith<R, A, B>(...args: [A, B]): Fn<R, FnN<R, [A, B]>>;

@@ -1,5 +1,5 @@
-import type {Comparator, Fn} from '../types';
-import {ascending} from '../misc';
+import type {Comparator, Fn} from '../types/utils';
+import {ascending} from '../misc/sorting';
 
 /**
  * Sorts the flowing array of strings or numbers.

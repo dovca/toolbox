@@ -1,7 +1,7 @@
-import type {Fn, Predicate, T2} from '../types';
+import type {Fn, Predicate, T2} from '../types/utils';
 import {groupWith} from './group';
-import {pipe} from '../function';
-import {toString} from '../convert';
+import {pipe} from '../function/pipe';
+import {toString} from '../convert/toString';
 
 /**
  * Partitions a flowing array into two arrays based on a predicate. The first array contains all elements that pass the

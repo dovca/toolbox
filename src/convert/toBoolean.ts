@@ -1,4 +1,4 @@
-import type {ToBoolean} from '../types';
+import type {ToBoolean} from '../types/convert';
 
 export function toBoolean(): false;
 export function toBoolean<T>(value: T): ToBoolean<T>;

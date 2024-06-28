@@ -1,5 +1,6 @@
-import {reversedIterator} from '../iterators';
-import type {AnyArray, Reverse} from '../types';
+import {reversedIterator} from '../iterators/reversed';
+import type {AnyArray} from '../types/utils';
+import type {Reverse} from '../types/array';
 
 /**
  * Reverses the given array.

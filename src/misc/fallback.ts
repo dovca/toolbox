@@ -1,5 +1,6 @@
-import type {Indirectable, IsNullable, IsNullish} from '../types';
-import {unwrap} from '../function';
+import type {Indirectable} from '../types/utils';
+import type {IsNullable, IsNullish} from '../types/predicate';
+import {unwrap} from '../function/unwrap';
 
 /**
  * Returns the fallback value if the value is nullish. Otherwise, returns the value.

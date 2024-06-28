@@ -1,5 +1,5 @@
-import type {Equalizer, Fn} from '../types';
-import {memoize} from '../function';
+import type {Equalizer, Fn} from '../types/utils';
+import {memoize} from '../function/memoize';
 import {filter} from './filter';
 import {keep} from './keep';
 

@@ -1,4 +1,4 @@
-import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
+import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types/utils';
 
 /**
  * Curries the given function.

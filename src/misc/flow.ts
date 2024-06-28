@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {Fn} from '../types/utils';
 
 /**
  * Constructs something similar to a pipe function, but the first argument being the initial value to be passed through.

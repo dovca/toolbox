@@ -1,5 +1,5 @@
-import type {ConditionalKeys, Fn} from '../types';
-import {property} from '../object';
+import type {ConditionalKeys, Fn} from '../types/utils';
+import {property} from '../object/property';
 
 /**
  * Groups the values of an array by a key. The elements in groups are in the same relative order as they appear

@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {Fn} from '../types/utils';
 
 /**
  * Adds value(s) to the beginning of the flowing array.

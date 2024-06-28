@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {Fn} from '../types/utils';
 
 /**
  * Splits a flowing array into two arrays at a specific position.

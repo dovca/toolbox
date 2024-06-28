@@ -1,4 +1,5 @@
-import type {AnyArray, Join} from '../types';
+import type {AnyArray} from '../types/utils';
+import type {Join} from '../types/array';
 
 type Joiner<Glue extends string> = <T extends AnyArray>(values: T) => Join<T, Glue>;
 

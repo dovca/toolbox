@@ -1,4 +1,5 @@
-import type {AnyArray, First} from '../types';
+import type {AnyArray} from '../types/utils';
+import type {First} from '../types/array';
 
 /**
  * Returns the first element of an array. If the array is empty, undefined is returned.

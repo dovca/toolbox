@@ -1,4 +1,4 @@
-import type {Fn, IterationCallback} from '../types';
+import type {Fn, IterationCallback} from '../types/utils';
 
 /**
  * Filters a flowing array based on a predicate.

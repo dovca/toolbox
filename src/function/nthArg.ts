@@ -1,4 +1,4 @@
-import type {Nth} from '../types';
+import type {Nth} from '../types/array';
 
 /**
  * Produces the `n`th argument of a flowing function.

@@ -1,4 +1,4 @@
-import type {Unquote} from '../types';
+import type {Unquote} from '../types/string';
 
 export function unquote<S extends string>(str: S): Unquote<S> {
 	const match = str.match(/^(['"])(.*)\1$/);

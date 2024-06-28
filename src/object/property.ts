@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {Fn} from '../types/utils';
 
 /**
  * Gets the value of a flowing object's property. A single-depth version of `access`.

@@ -1,4 +1,4 @@
-import type {FnN} from '../types';
+import type {FnN} from '../types/utils';
 
 /**
  * Creates a new function that negates the boolean result of the given function.

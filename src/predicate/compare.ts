@@ -1,6 +1,6 @@
-import type {Comparator, Equalizer, Fn, Fn2, Predicate} from '../types';
-import {sameValueZero} from '../utils';
-import {negate} from '../function';
+import type {Comparator, Equalizer, Fn, Fn2, Predicate} from '../types/utils';
+import {sameValueZero} from '../utils/sameValueZero';
+import {negate} from '../function/negate';
 
 export function comparator<T>(predicate: Equalizer<T>): Fn<Predicate<T>, T>;
 export function comparator<R, T>(comp: Comparator<T, R>): Fn<Fn<R, T>, T>;

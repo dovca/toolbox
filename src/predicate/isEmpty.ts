@@ -1,4 +1,4 @@
-import type {IsEmpty} from '../types';
+import type {IsEmpty} from '../types/predicate';
 
 export function isEmpty<T>(value: T): IsEmpty<T> {
 	return (

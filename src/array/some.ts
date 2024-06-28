@@ -1,4 +1,4 @@
-import type {IterationCallback, Predicate} from '../types';
+import type {IterationCallback, Predicate} from '../types/utils';
 
 /**
  * Checks if at least one element in the flowing array passes the given predicate

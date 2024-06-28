@@ -1,5 +1,5 @@
-import type {Fn, Fn2, Fn3, Fn4, Fn5, FnN} from '../types';
-import {MultiMap} from '../utils';
+import type {Fn, Fn2, Fn3, Fn4, Fn5, FnN} from '../types/utils';
+import {MultiMap} from '../utils/MultiMap';
 
 type MemoizedFnBase = {
 	clear(): void;

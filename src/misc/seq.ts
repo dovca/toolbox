@@ -1,5 +1,6 @@
-import {add, isGreaterThanOrEqual, isLessThanOrEqual} from '../number';
-import {growWhile} from '../array';
+import {add} from '../number/arithmetic';
+import {isGreaterThanOrEqual, isLessThanOrEqual} from '../number/comparisons';
+import {growWhile} from '../array/grow';
 
 export function seq(end: number): number[];
 export function seq(start: number, end: number, step?: number): number[];

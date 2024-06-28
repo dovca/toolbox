@@ -1,5 +1,7 @@
-import type {Fn, FnT3, IterationResult, Maybe, MyGeneratorFunction} from '../types';
-import {backwardIterator, reversedIterator, forwardIterator} from '../iterators';
+import type {Fn, FnT3, IterationResult, Maybe, MyGeneratorFunction} from '../types/utils';
+import {backwardIterator} from '../iterators/backward';
+import {forwardIterator} from '../iterators/forward';
+import {reversedIterator} from '../iterators/reversed';
 
 type FindFn = <T>(matcher: FnT3<boolean, IterationResult<T>>) => Fn<Maybe<T>, readonly T[]>;
 

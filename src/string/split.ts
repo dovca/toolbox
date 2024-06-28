@@ -1,4 +1,4 @@
-import type {Arrayifier} from '../types';
+import type {Arrayifier} from '../types/utils';
 
 type SplitOnce<Str extends string, Sep extends string> = Str extends `${infer First}${Sep}${infer Rest}`
 	? [First, Rest]

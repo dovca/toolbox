@@ -1,6 +1,6 @@
-import type {Fn} from '../types';
-import {isValidIndex} from '../predicate';
-import {modulo} from '../number';
+import type {Fn} from '../types/utils';
+import {isValidIndex} from '../predicate/isValidIndex';
+import {modulo} from '../number/arithmetic';
 
 export function charAt(index: number): Fn<string> {
 	return (input) => isValidIndex(index)(input)

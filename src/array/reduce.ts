@@ -1,5 +1,7 @@
-import type {Fn, Fn3, Maybe, MyGeneratorFunction} from '../types';
-import {backwardIterator, forwardIterator, reversedIterator} from '../iterators';
+import type {Fn, Fn3, Maybe, MyGeneratorFunction} from '../types/utils';
+import {backwardIterator} from '../iterators/backward';
+import {forwardIterator} from '../iterators/forward';
+import {reversedIterator} from '../iterators/reversed';
 
 type Reduce = <A, V = A>(
 	reducer: Fn3<A, A | V, V, number>,

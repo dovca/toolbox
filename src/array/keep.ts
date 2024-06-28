@@ -1,5 +1,5 @@
-import type {Fn} from '../types';
-import {isOneOf} from '../predicate';
+import type {Fn} from '../types/utils';
+import {isOneOf} from '../predicate/isOneOf';
 import {filter} from './filter';
 
 /**

@@ -1,6 +1,6 @@
 import {filter} from './filter';
-import {isTruthy} from '../predicate';
-import type {Falsy} from '../types';
+import {isTruthy} from '../predicate/isTruthy';
+import type {Falsy} from '../types/utils';
 
 /**
  * Removes all falsy values from the given array.

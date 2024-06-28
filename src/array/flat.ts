@@ -1,4 +1,4 @@
-import type {AnyArray, Fn} from '../types';
+import type {AnyArray, Fn} from '../types/utils';
 
 /**
  * Flattens a flowing array.

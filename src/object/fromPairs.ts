@@ -1,4 +1,4 @@
-import type {Values} from '../types';
+import type {Values} from '../types/utils';
 
 /**
  * Creates an object from the given pairs.

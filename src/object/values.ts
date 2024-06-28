@@ -1,4 +1,4 @@
-import type {Values} from '../types';
+import type {Values} from '../types/utils';
 
 /**
  * Gets the values of an object as an array.

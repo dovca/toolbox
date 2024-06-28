@@ -1,5 +1,6 @@
 import {type Join} from 'string-ts';
-import type {Dictionary, Fn, Fn2, JoinMarker, ToString, StringKeys, Values} from '../types';
+import type {Dictionary, Fn, Fn2, JoinMarker, StringKeys, Values} from '../types/utils';
+import type {ToString} from '../types/convert';
 import {entries} from './entries';
 
 // Lowercase overload

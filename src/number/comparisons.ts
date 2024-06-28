@@ -1,8 +1,8 @@
-import {comparator, isEqual} from '../predicate';
-import {negate} from '../function';
+import {comparator, isEqual} from '../predicate/compare';
+import {negate} from '../function/negate';
 import {parity} from './arithmetic';
-import {operatorGreaterThan, operatorGreaterThanOrEqual, operatorLessThan, operatorLessThanOrEqual} from '../lang';
-import type {Fn, Predicate} from '../types';
+import {operatorGreaterThan, operatorGreaterThanOrEqual, operatorLessThan, operatorLessThanOrEqual} from '../lang/operators';
+import type {Fn, Predicate} from '../types/utils';
 
 /**
  * Returns true if the parameter is the number `0`.

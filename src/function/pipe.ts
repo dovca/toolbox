@@ -1,6 +1,6 @@
-import type {Fn, Maybe, Nullable} from '../types';
-import {reduce} from '../array';
-import {isNullish} from '../predicate';
+import type {Fn, Maybe, Nullable} from '../types/utils';
+import {reduce} from '../array/reduce';
+import {isNullish} from '../predicate/isNullish';
 
 export function pipe<T>(): Fn<T>;
 export function pipe<A, B>(f1: Fn<B, A>): Fn<B, A>;

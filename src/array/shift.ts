@@ -1,4 +1,5 @@
-import type {AnyArray, Shift} from '../types';
+import type {AnyArray} from '../types/utils';
+import type {Shift} from '../types/array';
 
 type Shifter<N extends number> = <T extends AnyArray>(input: T) => Shift<T, N>;
 

@@ -1,4 +1,4 @@
-import type {MyGenerator} from '../types';
+import type {MyGenerator} from '../types/utils';
 
 export function* reversedIterator<T>(values: readonly T[]): MyGenerator<T> {
 	for (let i = values.length - 1, j = 0; i >= 0; i--, j++) {

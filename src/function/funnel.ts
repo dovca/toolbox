@@ -1,8 +1,8 @@
+import type {Fn, FnT1, FnT2, FnT3, FnT4, FnT5, T1, T2, T3, T4, T5} from '../types/utils';
 import {gather} from './gather';
 import {pipe} from './pipe';
 import {spread} from './spread';
 
-import type {Fn, FnT1, FnT2, FnT3, FnT4, FnT5, T1, T2, T3, T4, T5} from '../types';
 
 /**
  * Works just like `pipe`, but allows an n-ary function to be passed as the first argument.

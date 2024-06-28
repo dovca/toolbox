@@ -1,5 +1,5 @@
-import type {Fn} from '../types';
-import {discard} from '../array';
+import type {Fn} from '../types/utils';
+import {discard} from '../array/discard';
 
 export function lastIndexOf(searchValue: string, position?: number): Fn<number, string | string[]>;
 export function lastIndexOf<A, S extends A = A>(searchValue: S, position?: number): Fn<number, readonly A[]>;

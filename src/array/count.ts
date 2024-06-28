@@ -1,5 +1,5 @@
-import type {Fn} from '../types';
-import {identity} from '../misc';
+import type {Fn} from '../types/utils';
+import {identity} from '../misc/identity';
 
 /**
  * Maps the flowing values to new results and counts the occurrences of each result.

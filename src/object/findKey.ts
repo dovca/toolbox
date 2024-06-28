@@ -1,5 +1,5 @@
 import {entries} from './entries';
-import type {Fn, Maybe, Predicate, StringKeys, Values} from '../types';
+import type {Fn, Maybe, Predicate, StringKeys, Values} from '../types/utils';
 
 /**
  * Returns the first key whose value satisfies the predicate, or undefined if no such key is found.

@@ -1,4 +1,4 @@
-import type {ToString} from '../types';
+import type {ToString} from '../types/convert';
 
 /**
  * Returns the keys of an object.

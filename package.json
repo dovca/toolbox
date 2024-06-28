@@ -6,11 +6,12 @@
     "lib": "src",
     "test": "test"
   },
+  "type": "module",
   "homepage": "https://github.com/dovca/toolbox",
   "packageManager": "bun",
   "scripts": {
     "test": "bun test --bail",
-    "generate-barrels": "barrelsby --delete -d ./src -l all"
+    "generate-barrels": "barrelsby --delete -d ./src"
   },
   "author": "david@ovcacik.xyz",
   "license": "LGPL-3.0-or-later",

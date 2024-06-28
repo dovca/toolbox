@@ -1,4 +1,4 @@
-import type {Fn, IterationCallback} from '../types';
+import type {Fn, IterationCallback} from '../types/utils';
 
 /**
  * Maps and flattens a flowing array with depth of 1.

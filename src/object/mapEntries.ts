@@ -1,5 +1,5 @@
+import type {Fn, StringKeys, Values} from '../types/utils';
 import {entries} from './entries';
-import type {Fn, StringKeys, Values} from '../types';
 
 /** Maps the entries of an object to a new object.
  * @param mapper The function that maps the entries.

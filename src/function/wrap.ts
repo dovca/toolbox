@@ -1,4 +1,4 @@
-import type {AnyFunction, FnN} from '../types';
+import type {AnyFunction, FnN} from '../types/utils';
 
 /**
  * Wrap a value in a function if it's not a function.

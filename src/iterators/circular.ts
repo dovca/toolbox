@@ -1,5 +1,5 @@
-import type {MyGeneratorFunction} from '../types';
-import {modulo} from '../number';
+import type {MyGeneratorFunction} from '../types/utils';
+import {modulo} from '../number/arithmetic';
 
 export function circularIterator<T>(startIndex = 0): MyGeneratorFunction<T> {
 	return function* (values) {

@@ -1,6 +1,7 @@
-import type {First, Fn, Negative, Shift} from '../types';
 import {type Slice, slice as typedSlice} from 'string-ts';
-import {isArray} from '../predicate';
+import type {Fn, Negative} from '../types/utils';
+import type {First, Shift} from '../types/array';
+import {isArray} from '../predicate/isArray';
 
 function arraySlice<T>(start?: number, end?: number): Fn<T[], readonly T[]> {
 	return (values) => values.slice(start, end);

@@ -1,5 +1,5 @@
-import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
-import {identity} from '../misc';
+import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types/utils';
+import {identity} from '../misc/identity';
 
 export function gather(): Fn<[], void>;
 export function gather<A>(): Fn<[A], A>;

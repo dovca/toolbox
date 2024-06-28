@@ -1,6 +1,7 @@
-import type {Access} from '../types';
-import {isArray, isObject} from '../predicate';
-import {splitOnce} from '../string';
+import type {Access} from '../types/object';
+import {isArray} from '../predicate/isArray';
+import {isObject} from '../predicate/isObject';
+import {splitOnce} from '../string/split';
 
 type Accessor<Path extends string, Sep extends string> = <Obj>(obj: Obj) => Access<Obj, Path, Sep>;
 

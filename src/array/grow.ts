@@ -1,6 +1,6 @@
-import type {Fn, Predicate} from '../types';
+import type {Fn, Predicate} from '../types/utils';
 import {lastLoose} from './last';
-import {identity} from '../misc';
+import {identity} from '../misc/identity';
 
 /**
  * Appends a new value to the flowing array, created by transforming the last value.

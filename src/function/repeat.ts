@@ -1,4 +1,4 @@
-import type {Fn} from '../types';
+import type {Fn} from '../types/utils';
 
 /**
  * Repeats the function `times` times. The result of the previous function call is passed as the argument to the next function call.

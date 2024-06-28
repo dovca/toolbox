@@ -1,6 +1,9 @@
-import type {AnyArray, Assign} from '../types';
-import {isArray, isObject} from '../predicate';
-import {splitOnce, unquote} from '../string';
+import type {AnyArray} from '../types/utils';
+import type {Assign} from '../types/object';
+import {isArray} from '../predicate/isArray';
+import {isObject} from '../predicate/isObject';
+import {splitOnce} from '../string/split';
+import {unquote} from '../string/unquote';
 
 type Assigner<
 	Path extends string,

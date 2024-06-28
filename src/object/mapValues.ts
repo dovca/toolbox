@@ -1,4 +1,4 @@
-import type {Fn, Fn2, StringKeys, Values} from '../types';
+import type {Fn, Fn2, StringKeys, Values} from '../types/utils';
 import {entries} from './entries';
 
 /** Transforms the values of an object.

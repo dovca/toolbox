@@ -1,4 +1,4 @@
-import type {AnyFunction, Fn, Fn2, Fn3, Fn4, Fn5} from '../types';
+import type {AnyFunction, Fn, Fn2, Fn3, Fn4, Fn5} from '../types/utils';
 
 /**
  * Treats the given values as a function and its arguments and calls it.

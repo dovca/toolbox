@@ -1,4 +1,4 @@
-import type {Fn2, Maybe} from '../types';
+import type {Fn2, Maybe} from '../types/utils';
 
 export type BinaryOperation<T = number> = (b?: Maybe<T>) => (a: T) => T;
 

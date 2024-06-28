@@ -1,4 +1,5 @@
-import type {AnyArray, Pop} from '../types';
+import type {AnyArray} from '../types/utils';
+import type {Pop} from '../types/array';
 
 type Popper<N extends number> = <T extends AnyArray>(values: T) => Pop<T, N>;
 

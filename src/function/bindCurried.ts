@@ -1,4 +1,4 @@
-import type {AnyFunction, Fn} from '../types';
+import type {AnyFunction, Fn} from '../types/utils';
 import {wrap} from './wrap';
 
 interface FnBC0<R> {

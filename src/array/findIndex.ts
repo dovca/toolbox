@@ -1,5 +1,7 @@
-import type {Fn, FnT3, IterationResult, MyGeneratorFunction} from '../types';
-import {backwardIterator, reversedIterator, forwardIterator} from '../iterators';
+import type {Fn, FnT3, IterationResult, MyGeneratorFunction} from '../types/utils';
+import {backwardIterator} from '../iterators/backward';
+import {forwardIterator} from '../iterators/forward';
+import {reversedIterator} from '../iterators/reversed';
 
 type FindIndexFn = <T>(matcher: FnT3<boolean, IterationResult<T>>) => Fn<number, readonly T[]>;
 

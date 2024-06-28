@@ -1,8 +1,10 @@
-import type {AnyArray, Fn, IterationCallback, IterationResult, MyGeneratorFunction} from '../types';
-import {funnel} from '../function';
-import {not} from '../boolean';
-import {identity} from '../misc';
-import {backwardIterator, forwardIterator, reversedIterator} from '../iterators';
+import type {AnyArray, Fn, IterationCallback, IterationResult, MyGeneratorFunction} from '../types/utils';
+import {funnel} from '../function/funnel';
+import {not} from '../boolean/logic';
+import {identity} from '../misc/identity';
+import {backwardIterator} from '../iterators/backward';
+import {forwardIterator} from '../iterators/forward';
+import {reversedIterator} from '../iterators/reversed';
 import {push} from './push';
 import {unshift} from './unshift';
 

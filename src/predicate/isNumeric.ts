@@ -1,4 +1,4 @@
-import {isFinite} from '../number';
+import {isFinite} from '../number/comparisons';
 
 export function isNumeric(value: number): value is number;
 export function isNumeric(value: string): value is `${number}`;

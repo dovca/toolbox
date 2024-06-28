@@ -1,4 +1,4 @@
-import type {Predicate} from '../types';
+import type {Predicate} from '../types/utils';
 
 /**
  * Produces `true` as soon as one of the given predicates passes for the flowing value.

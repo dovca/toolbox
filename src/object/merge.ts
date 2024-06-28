@@ -1,4 +1,4 @@
-import type {Override, StringKeys, Values} from '../types';
+import type {Override, StringKeys, Values} from '../types/utils';
 
 /**
  * Merges the given values into the flowing values.

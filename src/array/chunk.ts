@@ -1,6 +1,6 @@
-import type {Fn, IterationCallback, Maybe} from '../types';
-import {forwardIterator} from '../iterators';
-import {property} from '../object';
+import type {Fn, IterationCallback, Maybe} from '../types/utils';
+import {forwardIterator} from '../iterators/forward';
+import {property} from '../object/property';
 
 /**
  * Split a flowing array into chunks based on the result of the mapper function. A chunk boundary is created between

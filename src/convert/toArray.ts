@@ -1,5 +1,5 @@
-import {isArray} from '../predicate';
-import type {ToArray} from '../types';
+import {isArray} from '../predicate/isArray';
+import type {ToArray} from '../types/convert';
 
 /**
  * Convert a value to an array if it's not already an array.

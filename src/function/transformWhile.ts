@@ -1,4 +1,4 @@
-import type {Fn, Predicate} from '../types';
+import type {Fn, Predicate} from '../types/utils';
 
 /**
  * Repeatedly calls the given transformer function with the flowing value until the predicate fails.

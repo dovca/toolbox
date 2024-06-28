@@ -1,4 +1,4 @@
-import type {Equalizer, Fn} from '../types';
+import type {Equalizer, Fn} from '../types/utils';
 import {discard} from './discard';
 import {differenceWith} from './difference';
 

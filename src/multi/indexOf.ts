@@ -1,4 +1,4 @@
-import {discard} from '../array';
+import {discard} from '../array/discard';
 
 type Indexer<T> = {
 	(input: string): number;

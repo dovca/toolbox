@@ -1,5 +1,5 @@
-import type {Fn, Fn3, IterationCallback, Maybe} from '../types';
-import {forwardIterator} from '../iterators';
+import type {Fn, Fn3, IterationCallback, Maybe} from '../types/utils';
+import {forwardIterator} from '../iterators/forward';
 
 /**
  * Maps a flowing array.

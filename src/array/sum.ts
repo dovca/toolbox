@@ -1,6 +1,6 @@
 import {reduce} from './reduce';
-import {operatorPlus} from '../lang';
-import type {Fn} from '../types';
+import {operatorPlus} from '../lang/operators';
+import type {Fn} from '../types/utils';
 
 /**
  * Returns the sum of all elements in the array.

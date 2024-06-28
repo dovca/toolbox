@@ -1,4 +1,4 @@
-import type {StringKeys, Values} from '../types';
+import type {StringKeys, Values} from '../types/utils';
 
 /**
  * Returns an array of key-value pairs of an object.

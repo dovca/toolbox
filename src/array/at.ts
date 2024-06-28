@@ -1,6 +1,6 @@
-import {modulo} from '../number';
-import {isValidIndex} from '../predicate';
-import type {Maybe} from '../types';
+import {modulo} from '../number/arithmetic';
+import {isValidIndex} from '../predicate/isValidIndex';
+import type {Maybe} from '../types/utils';
 
 type Extractor = <T>(values: readonly T[]) => Maybe<T>;
 type MultiExtractor = <T>(values: readonly T[]) => readonly Maybe<T>[];

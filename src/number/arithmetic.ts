@@ -1,4 +1,4 @@
-import {type BinaryOperation, binaryOperation, type UnsafeBinaryOperation, unsafeBinaryOperation} from '../misc';
+import {type BinaryOperation, binaryOperation, type UnsafeBinaryOperation, unsafeBinaryOperation} from '../misc/binaryOperation';
 import {
 	inverseOperatorMinus,
 	inverseOperatorSlash,
@@ -13,8 +13,8 @@ import {
 	safeOperatorPlus,
 	safeOperatorSlash,
 	safeOperatorStar
-} from '../lang';
-import type {Fn} from '../types';
+} from '../lang/operators';
+import type {Fn} from '../types/utils';
 
 /**
  * Sums the flowing value with the given value.

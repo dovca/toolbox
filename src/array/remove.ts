@@ -1,7 +1,7 @@
-import type {Fn, IterationCallback} from '../types';
+import type {Fn, IterationCallback} from '../types/utils';
 import {filter} from './filter';
-import {funnel} from '../function';
-import {not} from '../boolean';
+import {funnel} from '../function/funnel';
+import {not} from '../boolean/logic';
 
 
 

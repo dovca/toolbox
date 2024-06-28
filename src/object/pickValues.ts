@@ -1,4 +1,4 @@
-import type {Fn, Values} from '../types';
+import type {Fn, Values} from '../types/utils';
 
 /**
  * Gets the values of a flowing object for the given keys. An optimized solution for `pick` followed by `values`.

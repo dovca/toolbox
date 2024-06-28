@@ -1,5 +1,5 @@
 import type {Join} from 'string-ts';
-import type {Fn, JoinMarker} from '../types';
+import type {Fn, JoinMarker} from '../types/utils';
 
 export function prepend(): Fn<string>;
 export function prepend<

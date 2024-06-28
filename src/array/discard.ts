@@ -1,6 +1,6 @@
+import type {Fn} from '../types/utils';
+import {isOneOf} from '../predicate/isOneOf';
 import {remove} from './remove';
-import {isOneOf} from '../predicate';
-import type {Fn} from '../types';
 
 /**
  * Removes values of a flowing array based on value equality using SameValueZero.
