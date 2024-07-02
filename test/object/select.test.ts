@@ -42,7 +42,7 @@ test('omit', () => {
 	expect(omit('a', 'b', 'c')(obj)).toEqual({});
 });
 
-test('pickByKeys', () => {
+test('omitByKeys', () => {
 	const obj = {a: 1, aa: 2, bbb: 3};
 
 	expect(omitByKeys<typeof obj>((key) => isString(key))(obj)).toEqual({});
@@ -52,7 +52,7 @@ test('pickByKeys', () => {
 	expect(omitByKeys<typeof obj>((key) => key.includes('c'))(obj)).toEqual(obj);
 });
 
-test('pickByValues', () => {
+test('omitByValues', () => {
 	const obj = {a: 1, aa: 2, bbb: 3};
 
 	expect(omitByValues<typeof obj>((val) => isNumber(val))(obj)).toEqual({});
