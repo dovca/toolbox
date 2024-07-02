@@ -98,6 +98,7 @@ export * from "./object/access";
 export * from "./object/assign";
 export * from "./object/deepen";
 export * from "./object/entries";
+export * from "./object/extendsObject";
 export * from "./object/findKey";
 export * from "./object/findValue";
 export * from "./object/flatten";
