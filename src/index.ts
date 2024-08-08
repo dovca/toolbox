@@ -24,6 +24,7 @@ export * from "./array/forEach";
 export * from "./array/group";
 export * from "./array/grow";
 export * from "./array/intersection";
+export * from "./array/intersects";
 export * from "./array/join";
 export * from "./array/keep";
 export * from "./array/keyBy";
