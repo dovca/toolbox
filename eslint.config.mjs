@@ -36,5 +36,7 @@ export default tseslint.config(
 		files: ['**/*.js'],
 		extends: [tseslint.configs.disableTypeChecked],
 	},
-	// expectType,
+	{
+		ignores: ['dist/'],
+	},
 );
