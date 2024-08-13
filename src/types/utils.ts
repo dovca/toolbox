@@ -11,28 +11,29 @@ export type T4<A = any, B = A, C = B, D = C> = [A, B, C, D];
 /** A five-element tuple. */
 export type T5<A = any, B = A, C = B, D = C, E = D> = [A, B, C, D, E];
 
-/** A function that takes one parameter. */
-export type Fn<R, P1 = R> = (p1: P1) => R;
-/** A function that takes two parameters. */
-export type Fn2<R, P1 = R, P2 = P1> = (p1: P1, p2: P2) => R;
-/** A function that takes three parameters. */
-export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = (p1: P1, p2: P2, p3: P3) => R;
-/** A function that takes four parameters. */
-export type Fn4<R, P1 = R, P2 = P1, P3 = P2, P4 = P3> = (p1: P1, p2: P2, p3: P3, p4: P4) => R;
-/** A function that takes five parameters. */
-export type Fn5<R, P1 = R, P2 = P1, P3 = P2, P4 = P3, P5 = P4> = (p1: P1, p2: P2, p3: P3, p4: P4, p5: P5) => R;
-/** A function that takes an unknown number of parameters. */
+
+/** A function that takes a variable number of parameters. */
 export type FnN<R, P extends readonly any[] = readonly any[]> = (...args: P) => R;
+/** A function that takes one parameter. */
+export type Fn<R, P1 = R> = FnN<R, T1<P1>>;
+/** A function that takes two parameters. */
+export type Fn2<R, P1 = R, P2 = P1> = FnN<R, T2<P1, P2>>;
+/** A function that takes three parameters. */
+export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = FnN<R, T3<P1, P2, P3>>;
+/** A function that takes four parameters. */
+export type Fn4<R, P1 = R, P2 = P1, P3 = P2, P4 = P3> = FnN<R, T4<P1, P2, P3, P4>>;
+/** A function that takes five parameters. */
+export type Fn5<R, P1 = R, P2 = P1, P3 = P2, P4 = P3, P5 = P4> = FnN<R, T5<P1, P2, P3, P4, P5>>;
 /** A function that takes a single parameter specified as a tuple. */
-export type FnT1<R, T extends T1> = (...args: T) => R;
+export type FnT1<R, T extends T1> = FnN<R, T>;
 /** A function that takes two parameters specified as a tuple. */
-export type FnT2<R, T extends T2> = (...args: T) => R;
+export type FnT2<R, T extends T2> = FnN<R, T>;
 /** A function that takes three parameters specified as a tuple. */
-export type FnT3<R, T extends T3> = (...args: T) => R;
+export type FnT3<R, T extends T3> = FnN<R, T>;
 /** A function that takes four parameters specified as a tuple. */
-export type FnT4<R, T extends T4> = (...args: T) => R;
+export type FnT4<R, T extends T4> = FnN<R, T>;
 /** A function that takes five parameters specified as a tuple. */
-export type FnT5<R, T extends T5> = (...args: T) => R;
+export type FnT5<R, T extends T5> = FnN<R, T>;
 
 /** A tuple representing the result of an array iteration: the value, index and the array  */
 export type IterationResult<T> = [T, number, readonly T[]];
