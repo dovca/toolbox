@@ -7,6 +7,7 @@ export * from "./array/any";
 export * from "./array/at";
 export * from "./array/chunk";
 export * from "./array/compact";
+export * from "./array/converge";
 export * from "./array/count";
 export * from "./array/cut";
 export * from "./array/difference";

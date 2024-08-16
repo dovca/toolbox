@@ -86,7 +86,7 @@ export const modulo: BinaryOperation = binaryOperation(operatorPercent);
  * max(2)(3); // 3
  * ```
  */
-export const max: BinaryOperation = binaryOperation(Math.max);
+export const max: BinaryOperation = binaryOperation<number>(Math.max);
 
 /**
  * Returns the lower number of the flowing and given.

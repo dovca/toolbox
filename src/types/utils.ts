@@ -94,6 +94,8 @@ export type AnyFunction = (...args: AnyArray) => any;
 export type Falsy = false | 0 | '' | null | undefined | 0n;
 /** The type of all primitive values. */
 export type Primitive = string | number | boolean | bigint | null | undefined;
+/** The type of objects than can be compared numerically. */
+export type Numeric = number | { valueOf(): number; };
 
 /** A single-element tuple of type containing either type T or itself recursively. */
 export type ReadonlyDeepSingle<T> = readonly [T | ReadonlyDeepSingle<T>];
