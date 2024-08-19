@@ -34,6 +34,10 @@ export type FnT3<R, T extends T3> = FnN<R, T>;
 export type FnT4<R, T extends T4> = FnN<R, T>;
 /** A function that takes five parameters specified as a tuple. */
 export type FnT5<R, T extends T5> = FnN<R, T>;
+/** Constructs a tuple of functions that feed their results to each other. */
+export type FnChain<T extends readonly any[]> = T extends [infer A, infer B, ...infer Rest]
+	? [Fn<B, A>, ...FnChain<[B, ...Rest]>]
+	: [];
 
 /** A tuple representing the result of an array iteration: the value, index and the array  */
 export type IterationResult<T> = [T, number, readonly T[]];
