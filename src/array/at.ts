@@ -3,9 +3,9 @@ import {isValidIndex} from '../predicate/isValidIndex';
 import type {Maybe} from '../types/utils';
 
 type Extractor = <T>(values: readonly T[]) => Maybe<T>;
-type MultiExtractor = <T>(values: readonly T[]) => readonly Maybe<T>[];
+type MultiExtractor = <T>(values: readonly T[]) => Maybe<T>[];
 type LooseExtractor = <T>(values: readonly T[]) => T;
-type LooseMultiExtractor = <T>(values: readonly T[]) => readonly T[];
+type LooseMultiExtractor = <T>(values: readonly T[]) => T[];
 
 /**
  * Produces the value at the given index of the flowing array.
