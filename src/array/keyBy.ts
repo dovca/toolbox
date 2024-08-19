@@ -2,11 +2,12 @@ import type {Dictionary, Fn} from '../types/utils';
 
 /**
  * Creates a dictionary from a flowing array, using the specified function to produce a key.
+ * Later values with the same mapped result will overwrite earlier ones.
  * @param key The function to produce dictionary keys with.
  * @returns Produces a new dictionary.
  * @example
  * ```typescript
- * keyBy(round)([1.1, 2.2, 3.3]); // {1: 1.1, 2: 2.2, 3: 3.3}
+ * keyBy(round)([1.1, 2.2, 3.3, 2.1]); // {1: 1.1, 2: 2.1, 3: 3.3}
  * ```
  */
 export function keyBy<T>(key: Fn<string | number, T>): Fn<Dictionary<T>, readonly T[]>;
@@ -23,6 +24,7 @@ export function keyBy<T>(key: Fn<string | number, T>): Fn<Dictionary<T>, readonl
  *   {id: 2, name: 'Bob'},
  *   {id: 3, name: 'Alice'},
  * ]); // {Alice: {id: 3, name: 'Alice'}, Bob: {id: 2, name: 'Bob'}}
+ * ```
  */
 export function keyBy<T extends object, K extends keyof T = keyof T>(key: K): Fn<Partial<Record<T[K] & (string | number), T>>, readonly T[]>;
 export function keyBy<K extends string, T extends { [k in K]: string | number }>(key: K): Fn<Partial<Record<T[K], T>>, readonly T[]>;
