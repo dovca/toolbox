@@ -172,6 +172,7 @@ export const safeDivide: UnsafeBinaryOperation = unsafeBinaryOperation(safeInver
  * ```typescript
  * safeMax(2)(3); // 3
  * safeMax(2)(undefined); // 2
+ * ```
  */
 export const safeMax: UnsafeBinaryOperation = unsafeBinaryOperation(safeOperator(Math.max, -Infinity));
 
@@ -181,6 +182,7 @@ export const safeMax: UnsafeBinaryOperation = unsafeBinaryOperation(safeOperator
  * ```typescript
  * safeMin(2)(3); // 2
  * safeMin(2)(undefined); // 2
+ * ```
  */
 export const safeMin: UnsafeBinaryOperation = unsafeBinaryOperation(safeOperator(Math.min, Infinity));
 
@@ -217,6 +219,7 @@ export const decrement: Fn<number> = subtract(1)
  * ```typescript
  * square(2); // 4 as in 2 * 2
  * square(-2); // 4 as in -2 * (-2)
+ * ```
  */
 export const square: Fn<number> = multiply();
 
@@ -225,6 +228,7 @@ export const square: Fn<number> = multiply();
  * @example
  * ```typescript
  * negative(2); // -2
+ * ```
  */
 export const negative: Fn<number> = multiply(-1);
 
@@ -262,6 +266,7 @@ export const abs: Fn<number> = Math.abs;
  * ```typescript
  * ceil(2.4); // 3
  * ceil(-2.4); // -2
+ * ```
  */
 export const ceil: Fn<number> = Math.ceil;
 
@@ -271,6 +276,7 @@ export const ceil: Fn<number> = Math.ceil;
  * ```typescript
  * floor(2.4); // 2
  * floor(-2.4); // -3
+ * ```
  */
 export const floor: Fn<number> = Math.floor;
 

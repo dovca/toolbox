@@ -10,6 +10,7 @@ import {isFinite} from '../number/comparisons';
  * isNumeric(1); // true
  * isNumeric('1'); // true
  * isNumeric(true); // false
+ * ```
  */
 export function isNumeric(value: number): value is number;
 export function isNumeric(value: string): value is `${number}`;

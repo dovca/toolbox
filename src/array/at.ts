@@ -43,6 +43,7 @@ export function at(...indices: number[]): Extractor | MultiExtractor {
  * atLoose(1)([1, 2, 3]); // 2
  * atLoose(-1)([1, 2, 3]); // 3
  * atLoose(1, -1)([1, 2, 3]); // [2, 3]
+ * ```
  */
 export function atLoose(index: number): LooseExtractor;
 export function atLoose(...indices: readonly number[]): LooseMultiExtractor;
