@@ -1,7 +1,7 @@
-import type {MyGeneratorFunction} from '../types/utils';
+import type {ToolboxGeneratorFunction} from '../types/utils';
 import {modulo} from '../number/arithmetic';
 
-export function circularIterator<T>(startIndex = 0): MyGeneratorFunction<T> {
+export function circularIterator<T>(startIndex = 0): ToolboxGeneratorFunction<T> {
 	return function* (values) {
 		const mod = modulo(values.length);
 

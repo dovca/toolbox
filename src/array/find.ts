@@ -1,11 +1,11 @@
-import type {Fn, FnT3, IterationResult, Maybe, MyGeneratorFunction} from '../types/utils';
+import type {Fn, FnT3, IterationResult, Maybe, ToolboxGeneratorFunction} from '../types/utils';
 import {backwardIterator} from '../iterators/backward';
 import {forwardIterator} from '../iterators/forward';
 import {reversedIterator} from '../iterators/reversed';
 
 type FindFn = <T>(matcher: FnT3<boolean, IterationResult<T>>) => Fn<Maybe<T>, readonly T[]>;
 
-function findFactory<T>(generator: MyGeneratorFunction<T>): Fn<Fn<Maybe<T>, readonly T[]>, FnT3<boolean, IterationResult<T>>> {
+function findFactory<T>(generator: ToolboxGeneratorFunction<T>): Fn<Fn<Maybe<T>, readonly T[]>, FnT3<boolean, IterationResult<T>>> {
 	return (matcher) => (values) => {
 		for (const [value, ...rest] of generator(values)) {
 			if (matcher(value, ...rest)) {

@@ -40,9 +40,9 @@ export type IterationResult<T> = [T, number, readonly T[]];
 /** A function that is used to iterate over an array. */
 export type IterationCallback<R, T> = FnT3<R, IterationResult<T>>;
 /** A generator that yields the result of an array iteration. */
-export type MyGenerator<T> = Generator<IterationResult<T>>;
+export type ToolboxGenerator<T> = Generator<IterationResult<T>>;
 /** A generator function that iterates over an array. */
-export type MyGeneratorFunction<T> = Fn<MyGenerator<T>, readonly T[]>;
+export type ToolboxGeneratorFunction<T> = Fn<ToolboxGenerator<T>, readonly T[]>;
 
 /** Used as an invisible glue to join strings. */
 export type JoinMarker = '‍‍‍';

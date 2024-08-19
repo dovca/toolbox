@@ -1,10 +1,10 @@
-import type {Fn, IterationCallback, MyGeneratorFunction} from '../types/utils';
+import type {Fn, IterationCallback, ToolboxGeneratorFunction} from '../types/utils';
 import {forwardIterator} from '../iterators/forward';
 import {reversedIterator} from '../iterators/reversed';
 
 type ForEachFn = <T>(callback: IterationCallback<void, T>) => Fn<readonly T[], readonly T[]>;
 
-function forEachFactory<T>(generator: MyGeneratorFunction<T>): Fn<Fn<readonly T[]>, IterationCallback<void, T>> {
+function forEachFactory<T>(generator: ToolboxGeneratorFunction<T>): Fn<Fn<readonly T[]>, IterationCallback<void, T>> {
 	return (callback) => (values) => {
 		for (const result of generator(values)) {
 			callback(...result);

@@ -1,11 +1,11 @@
-import type {Fn, FnT3, IterationResult, MyGeneratorFunction} from '../types/utils';
+import type {Fn, FnT3, IterationResult, ToolboxGeneratorFunction} from '../types/utils';
 import {backwardIterator} from '../iterators/backward';
 import {forwardIterator} from '../iterators/forward';
 import {reversedIterator} from '../iterators/reversed';
 
 type FindIndexFn = <T>(matcher: FnT3<boolean, IterationResult<T>>) => Fn<number, readonly T[]>;
 
-function findIndexFactory<T>(generator: MyGeneratorFunction<T>): Fn<Fn<number, readonly T[]>, FnT3<boolean, IterationResult<T>>> {
+function findIndexFactory<T>(generator: ToolboxGeneratorFunction<T>): Fn<Fn<number, readonly T[]>, FnT3<boolean, IterationResult<T>>> {
 	return (matcher) => (values) => {
 		for (const [value, index, array] of generator(values)) {
 			if (matcher(value, index, array)) {

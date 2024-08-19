@@ -1,4 +1,4 @@
-import type {AnyArray, Fn, IterationCallback, IterationResult, MyGeneratorFunction} from '../types/utils';
+import type {AnyArray, Fn, IterationCallback, IterationResult, ToolboxGeneratorFunction} from '../types/utils';
 import {funnel} from '../function/funnel';
 import {not} from '../boolean/logic';
 import {identity} from '../misc/identity';
@@ -11,7 +11,7 @@ import {unshift} from './unshift';
 type DropFn = <T>(predicate: IterationCallback<boolean, T>) => Fn<T[], readonly T[]>;
 
 function dropFactory<T>(
-	iterator: MyGeneratorFunction<T>,
+	iterator: ToolboxGeneratorFunction<T>,
 	mutator: Fn<Fn<T[], AnyArray>, T> = push,
 	predicateModifier: Fn<boolean> = not,
 ): Fn<Fn<T[], readonly T[]>, IterationCallback<boolean, T>> {

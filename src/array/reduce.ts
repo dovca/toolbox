@@ -1,4 +1,4 @@
-import type {Fn, Fn3, Maybe, MyGeneratorFunction} from '../types/utils';
+import type {Fn, Fn3, Maybe, ToolboxGeneratorFunction} from '../types/utils';
 import {backwardIterator} from '../iterators/backward';
 import {forwardIterator} from '../iterators/forward';
 import {reversedIterator} from '../iterators/reversed';
@@ -8,7 +8,7 @@ type Reduce = <A, V = A>(
 	start?: Maybe<A>,
 ) => Fn<A, readonly V[]>
 
-function reduceFactory<A, V = A>(generator: MyGeneratorFunction<V>, maxIterations?: number): (
+function reduceFactory<A, V = A>(generator: ToolboxGeneratorFunction<V>, maxIterations?: number): (
 	reducer: Fn3<A, A | V, V, number>,
 	start?: Maybe<A>,
 ) => Fn<A, readonly V[]> {
