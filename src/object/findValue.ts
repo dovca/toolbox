@@ -1,4 +1,4 @@
-import type {Fn, Maybe, Predicate, StringKeys, Values} from '../types/utils';
+import type {Fn, Indexable, Maybe, Predicate, StringKeys, Values} from '../types/utils';
 import {entries} from './entries';
 
 /**
@@ -10,7 +10,7 @@ import {entries} from './entries';
  * findValue(startsWith('b'))({foo: 2, bar: 3}); // 3
  * ```
  */
-export function findValue<T extends object>(predicate: Predicate<StringKeys<T>>): Fn<Maybe<Values<T>>, T> {
+export function findValue<T extends Indexable>(predicate: Predicate<StringKeys<T>>): Fn<Maybe<Values<T>>, T> {
 	return (obj) => {
 		for (const [key, value] of entries(obj)) {
 			if (predicate(key)) {

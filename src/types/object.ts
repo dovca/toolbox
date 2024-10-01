@@ -10,6 +10,14 @@ type _Access<Obj, Key extends string> = Obj extends object | AnyArray
 			: undefined
 	: undefined;
 
+type _Assign<Obj, Key extends string, Value> = Obj extends object
+	? Key extends `"${infer UnquotedKey}"`
+		? Prettify<Override<Obj, { [K in UnquotedKey]: Value }>>
+		: Key extends `${number}`
+			? Value[]
+			: Prettify<Override<Obj, { [K in Key]: Value }>>
+	: undefined;
+
 /**
  * Extracts a deeply nested property type from an object type.
  * @example
@@ -26,14 +34,6 @@ export type Access<
 	? Path extends `${infer Key}${Sep}${infer Rest}`
 		? Access<_Access<Obj, Key>, Rest, Sep>
 		: _Access<Obj, Path>
-	: undefined;
-
-type _Assign<Obj, Key extends string, Value> = Obj extends object
-	? Key extends `"${infer UnquotedKey}"`
-		? Prettify<Override<Obj, { [K in UnquotedKey]: Value }>>
-		: Key extends `${number}`
-			? Value[]
-			: Prettify<Override<Obj, { [K in Key]: Value }>>
 	: undefined;
 
 /**

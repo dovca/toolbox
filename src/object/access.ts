@@ -3,7 +3,7 @@ import {isArray} from '../predicate/isArray';
 import {isObject} from '../predicate/isObject';
 import {splitOnce} from '../string/split';
 
-type Accessor<Path extends string, Sep extends string> = <Obj>(obj: Obj) => Access<Obj, Path, Sep>;
+type Accessor<Path extends string, Sep extends string> = <Obj>(object: Obj) => Access<Obj, Path, Sep>;
 
 /**
  * Access a nested property of an object using a path string.

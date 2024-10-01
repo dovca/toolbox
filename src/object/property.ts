@@ -1,4 +1,8 @@
-import type {Fn} from '../types/utils';
+import type {Indexable, ValidIndex} from '../types/utils';
+
+type PropertyExtractor<Prop extends ValidIndex> = <Obj extends { [P in Prop]: any }>(object: Obj) => Obj[Prop];
+
+type PropertyOfExtractor<Obj extends Indexable> = <Prop extends keyof Obj>(property: Prop) => Obj[Prop];
 
 /**
  * Gets the value of a flowing object's property. A single-depth version of `access`.
@@ -9,6 +13,10 @@ import type {Fn} from '../types/utils';
  * property('a')({a: 1, b: 2}); // 1
  * ```
  */
-export function property<T extends object, P extends keyof T>(prop: P): Fn<T[P], T> {
+export function property<Prop extends ValidIndex>(prop: Prop): PropertyExtractor<Prop> {
 	return (obj) => obj[prop];
+}
+
+export function propertyOf<Obj extends Indexable>(obj: Obj): PropertyOfExtractor<Obj> {
+	return (prop) => obj[prop];
 }

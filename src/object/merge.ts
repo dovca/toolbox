@@ -1,4 +1,4 @@
-import type {Override, StringKeys, Values} from '../types/utils';
+import type {Indexable, Override, StringKeys, Values} from '../types/utils';
 
 /**
  * Merges the given values into the flowing values.
@@ -9,7 +9,7 @@ import type {Override, StringKeys, Values} from '../types/utils';
  * merge({a: 2, b: 2})({a: 1, c: 2}); // {a: 2, b: 2, c: 2}
  * ```
  */
-export function merge<New extends object>(newValues: New): <Old extends object>(oldValues: Old) => Override<Old, New> {
+export function merge<New extends Indexable>(newValues: New): <Old extends Indexable>(oldValues: Old) => Override<Old, New> {
 	return (oldValues) => ({...oldValues, ...newValues});
 }
 
@@ -22,7 +22,7 @@ export function merge<New extends object>(newValues: New): <Old extends object>(
  * mergeInto({a: 1, c: 2})({a: 2, b: 2}); // {a: 2, b: 2, c: 2}
  * ```
  */
-export function mergeInto<Old extends object>(oldValues: Old): <New extends object>(newValues: New) => Override<Old, New> {
+export function mergeInto<Old extends Indexable>(oldValues: Old): <New extends Indexable>(newValues: New) => Override<Old, New> {
 	return (newValues) => merge(newValues)(oldValues);
 }
 
@@ -37,8 +37,8 @@ export function mergeInto<Old extends object>(oldValues: Old): <New extends obje
  * ```
  */
 export function mergeWith<NewVal>(resolver: (oldVal: any, newVal: any, key: string) => NewVal):
-	<New extends object>(newValues: New) =>
-		<Old extends object>(oldValues: Old) =>
+	<New extends Indexable>(newValues: New) =>
+		<Old extends Indexable>(oldValues: Old) =>
 			Record<StringKeys<Old> | StringKeys<New>, Values<Old> | Values<New> | NewVal> {
 	return (newValues) => (oldValues) => {
 		const result: Record<string, any> = {...oldValues};
@@ -62,8 +62,8 @@ export function mergeWith<NewVal>(resolver: (oldVal: any, newVal: any, key: stri
  * ```
  */
 export function mergeIntoWith<NewVal>(resolver: (oldVal: any, newVal: any, key: string) => NewVal):
-	<Old extends object>(oldValues: Old) =>
-		<New extends object>(newValues: New) =>
+	<Old extends Indexable>(oldValues: Old) =>
+		<New extends Indexable>(newValues: New) =>
 			Record<StringKeys<Old> | StringKeys<New>, Values<Old> | Values<New> | NewVal> {
 	return (oldValues) => (newValues) => mergeWith(resolver)(newValues)(oldValues);
 }

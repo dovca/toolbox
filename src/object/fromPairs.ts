@@ -1,4 +1,4 @@
-import type {Values} from '../types/utils';
+import type {ValidIndex, Values} from '../types/utils';
 
 /**
  * Creates an object from the given pairs.
@@ -10,8 +10,8 @@ import type {Values} from '../types/utils';
  * ```
  */
 export function fromPairs<T extends object>(pairs: [keyof T, Values<T>][]): T;
-export function fromPairs<K extends string | number | symbol, V>(pairs: [K, V][]): Record<K, V>;
-export function fromPairs<K extends string | number | symbol, V>(pairs: [K, V][]): Record<K, V> {
+export function fromPairs<K extends ValidIndex, V>(pairs: [K, V][]): Record<K, V>;
+export function fromPairs<K extends ValidIndex, V>(pairs: [K, V][]): Record<K, V> {
 	return pairs.reduce((acc, [key, value]) => {
 		acc[key] = value;
 		return acc;

@@ -9,7 +9,7 @@ type Assigner<
 	Path extends string,
 	Value,
 	Sep extends string,
-> = <Obj extends object | AnyArray>(obj: Obj) => Assign<Obj, Path, Value, Sep>;
+> = <Obj extends object | AnyArray>(object: Obj) => Assign<Obj, Path, Value, Sep>;
 
 /**
  * Assign a value to a nested property of an object using a path string.

@@ -1,4 +1,4 @@
-import type {Fn, Predicate, StringKeys, Values} from '../types/utils';
+import type {Fn, Indexable, Predicate, StringKeys, Values} from '../types/utils';
 import {entries} from './entries';
 
 /**
@@ -10,7 +10,7 @@ import {entries} from './entries';
  * valuesWhere((key) => key.length > 2)({a: 1, ab: 2, abc: 3, abcd: 4}); // => [3, 4]
  * ```
  */
-export function valuesWhere<T extends object>(predicate: Predicate<StringKeys<T>>): Fn<Values<T>[], T> {
+export function valuesWhere<T extends Indexable>(predicate: Predicate<StringKeys<T>>): Fn<Values<T>[], T> {
 	return (obj) => {
 		const values: Values<T>[] = [];
 

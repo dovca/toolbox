@@ -1,4 +1,4 @@
-import type {Values} from '../types/utils';
+import type {Indexable, Values} from '../types/utils';
 
 /**
  * Gets the values of an object as an array.
@@ -9,6 +9,6 @@ import type {Values} from '../types/utils';
  * values({a: 1, b: 2}); // [1, 2]
  * ```
  */
-export function values<T extends object>(object: T): Values<T>[] {
+export function values<T extends Indexable>(object: T): Values<T>[] {
 	return Object.values(object);
 }

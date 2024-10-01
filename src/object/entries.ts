@@ -1,4 +1,4 @@
-import type {StringKeys, Values} from '../types/utils';
+import type {Indexable, StringKeys, Values} from '../types/utils';
 
 /**
  * Returns an array of key-value pairs of an object.
@@ -9,6 +9,6 @@ import type {StringKeys, Values} from '../types/utils';
  * entries({a: 1, b: 2}); // [['a', 1], ['b', 2]]
  * ```
  */
-export function entries<T extends object>(obj: T): [StringKeys<T>, Values<T>][] {
+export function entries<T extends Indexable>(obj: T): [StringKeys<T>, Values<T>][] {
 	return Object.entries(obj) as [StringKeys<T>, Values<T>][];
 }

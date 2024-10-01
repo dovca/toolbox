@@ -1,4 +1,4 @@
-import type {Fn, Values} from '../types/utils';
+import type {Fn, Indexable, Values} from '../types/utils';
 
 /**
  * Gets the values of a flowing object for the given keys. An optimized solution for `pick` followed by `values`.
@@ -9,7 +9,7 @@ import type {Fn, Values} from '../types/utils';
  * pickValues('a', 'b')({a: 1, b: 2, c: 3}); // [1, 2]
  * ```
  */
-export function pickValues<T extends object, K extends keyof T = keyof T>(...keys: K[]): Fn<Values<Pick<T, K>>[], T> {
+export function pickValues<T extends Indexable, K extends keyof T = keyof T>(...keys: K[]): Fn<Values<Pick<T, K>>[], T> {
 	return (object) => {
 		const result = [] as Values<Pick<T, K>>[];
 		for (const key of keys) {

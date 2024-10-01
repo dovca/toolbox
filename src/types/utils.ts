@@ -63,7 +63,7 @@ export type Sorter<T> = Comparator<T, number>;
 export type Arrayifier<T> = Fn<T[], T>;
 
 /** An object with string keys and values of type T. */
-export type Dictionary<T> = Record<string, T>;
+export type Dictionary<T = any> = Record<string, T>;
 /** The type of the keys of an object. */
 export type StringKeys<T extends object> = ToString<keyof T>;
 /** The type of the values of an object. */
@@ -88,6 +88,8 @@ export type Prettify<T> = { [K in keyof T]: T[K]; } & unknown;
 /** Swap the keys and values of an object. */
 export type Transpose<T extends Record<string, string | number>> = Record<Values<T>, keyof T>;
 
+export type ValidIndex = string | number | symbol;
+
 /** The empty tuple type. */
 export type EmptySet = readonly [];
 /** A general array type. */
@@ -100,6 +102,8 @@ export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;
 /** The type of objects than can be compared numerically. */
 export type Numeric = number | { valueOf(): number; };
+
+export type Indexable = object | AnyArray;
 
 /** A single-element tuple of type containing either type T or itself recursively. */
 export type ReadonlyDeepSingle<T> = readonly [T | ReadonlyDeepSingle<T>];
