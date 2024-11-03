@@ -68,6 +68,14 @@ export type Dictionary<T = any> = Record<string, T>;
 export type StringKeys<T extends object> = ToString<keyof T>;
 /** The type of the values of an object. */
 export type Values<T extends object> = T[keyof T];
+/** The type of the entries of an object. */
+export type Entries<T extends object> = {
+	[K in keyof T]-?: [K, T[K]];
+}[keyof T];
+/** The type of the object constructed from the given entries. */
+export type FromEntries<T extends readonly [ValidIndex, any]> = {
+	[K in T as K[0]]: K[1]
+};
 /** The type T or `null` or `undefined`. */
 export type Nullable<T> = T | null | undefined;
 /** The type T or `undefined`. */
@@ -85,9 +93,10 @@ export type Override<A extends object, B extends object> = Omit<A, keyof B> & {
 /** Prettify the type of an object. */
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export type Prettify<T> = { [K in keyof T]: T[K]; } & unknown;
+
 /** Swap the keys and values of an object. */
 export type Transpose<T extends Record<string, string | number>> = Record<Values<T>, keyof T>;
-
+/** Union of types that can be used as an object's key */
 export type ValidIndex = string | number | symbol;
 
 /** The empty tuple type. */

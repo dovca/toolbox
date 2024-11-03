@@ -1,5 +1,9 @@
 import {expect, test} from 'bun:test';
-import {length, maximize, minimize} from '../../src';
+import {converge, length, maximize, minimize} from '../../src';
+
+test('converge', () => {
+	expect(converge<string, number>((s) => Number(s), (a, b) => b - a)(['20', '0xA', '333'])).toBe('0xA');
+});
 
 test('minimize', () => {
 	expect(minimize(length)([])).toBe(undefined);

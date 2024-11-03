@@ -1,18 +1,12 @@
 import {expect, test} from 'bun:test';
 import {upperCase} from 'string-ts';
-import {mapEntries, reverse, type Transpose} from '../../src';
-
-type Obj = {foo: string; baz: string};
+import {mapEntries, reverse} from '../../src';
 
 test('mapEntries', () => {
-	const obj = {foo: 'bar', baz: 'qux'};
+	const obj = {foo: 'bar', baz: 'qux'} as const;
 
-	expect(mapEntries<Obj, Transpose<Obj>>(reverse)(obj)).toEqual({bar: 'foo', qux: 'baz'});
-	expect(
-		mapEntries<Obj, {FOO: string; BAZ: string;}>(
-			([key, value]) => [upperCase(key), upperCase(value)]
-		)(obj)
-	).toEqual({
+	expect(mapEntries(reverse)(obj)).toEqual({bar: 'foo', qux: 'baz'});
+	expect(mapEntries((entry) => [upperCase(entry[0]), upperCase(entry[1])])(obj)).toEqual({
 		FOO: 'BAR',
 		BAZ: 'QUX',
 	});

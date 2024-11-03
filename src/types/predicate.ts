@@ -3,8 +3,7 @@ import type {Some} from './array';
 
 // Are the types A and B equal?
 export type Equals<X, Y> =
-	(<T>() => T extends X ? 1 : 2) extends
-		(<T>() => T extends Y ? 1 : 2) ? true : false;
+	(<T>() => T extends X ? 1 : 2) extends (<T>() => T extends Y ? 1 : 2) ? true : false;
 
 // Does the type T contain null or undefined?
 export type IsNullable<T> =
@@ -31,7 +30,7 @@ export type IsEmpty<T> = T extends '' | null | undefined
 				: keyof T extends never
 					? true // The object is definitely empty, it has no keys
 					: false // The object is definitely not empty, it has at least one key
-				: boolean; // We just don't know
+			: boolean; // We just don't know
 
 export type IsTuple<T extends AnyArray> = number extends T['length']
 	? false
@@ -44,17 +43,18 @@ export type IsNegative<T extends number> = number extends T
 		: false;
 
 export type IsTypeLiteral<T> =
-	// TODO figure out why boolean can't be checked with `Equals<T, boolean>`
-	boolean extends T ? false :
-	T extends Primitive
-		? T extends null | undefined
-			? true
-			: Some<[
-				Equals<T, string>,
-				Equals<T, number>,
-				Equals<T, bigint>,
-				Equals<T, symbol>,
-			]> extends true
-				? false
-				: true
-		: false;
+// TODO figure out why boolean can't be checked with `Equals<T, boolean>`
+	boolean extends T
+		? false
+		: T extends Primitive
+			? T extends null | undefined
+				? true
+				: Some<[
+					Equals<T, string>,
+					Equals<T, number>,
+					Equals<T, bigint>,
+					Equals<T, symbol>,
+				]> extends true
+					? false
+					: true
+			: false;
