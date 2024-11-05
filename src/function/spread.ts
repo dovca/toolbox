@@ -2,6 +2,10 @@ import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types/utils';
 
 /**
  * Spread the flowing array of values as arguments for the given function.
+ * @example
+ * ```typescript
+ * 
+ * ```
  */
 export function spread<R, A>(fn: Fn<R, A>): Fn<R, A>;
 export function spread<R, A, B>(fn: Fn2<R, A, B>): Fn<R, [A, B]>;
