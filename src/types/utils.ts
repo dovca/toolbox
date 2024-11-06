@@ -84,6 +84,8 @@ export type Maybe<T> = T | undefined;
 export type Many<T> = T | readonly T[];
 /** A single value of type T or a function that returns it. */
 export type Indirectable<T> = T | (() => T);
+/** The Type T or a promise of it. */
+export type Awaitable<T> = T | Promise<T>;
 /** The keys of an object that have values of type C. */
 export type ConditionalKeys<T extends object, C> = { [K in keyof T]: T[K] extends C ? K : never }[keyof T];
 /** Override some properties of type A with properties of type B. */
