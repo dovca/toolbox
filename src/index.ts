@@ -88,6 +88,7 @@ export * from "./misc/log";
 export * from "./misc/noop";
 export * from "./misc/seq";
 export * from "./misc/sorting";
+export * from "./misc/tryCatch";
 export * from "./multi/concat";
 export * from "./multi/includes";
 export * from "./multi/indexOf";
