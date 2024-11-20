@@ -69,13 +69,9 @@ export type StringKeys<T extends object> = ToString<keyof T>;
 /** The type of the values of an object. */
 export type Values<T extends object> = T[keyof T];
 /** The type of the entries of an object. */
-export type Entries<T extends object> = {
-	[K in keyof T]-?: [K, T[K]];
-}[keyof T];
+export type Entries<T extends object> = { [K in keyof T]-?: [K, T[K]]; }[keyof T];
 /** The type of the object constructed from the given entries. */
-export type FromEntries<T extends readonly [ValidIndex, any]> = {
-	[K in T as K[0]]: K[1]
-};
+export type FromEntries<T extends readonly [ValidIndex, any]> = { [K in T as K[0]]: K[1] };
 /** The type T or `null` or `undefined`. */
 export type Nullable<T> = T | null | undefined;
 /** The type T or `undefined`. */
@@ -86,16 +82,19 @@ export type Many<T> = T | readonly T[];
 export type Indirectable<T> = T | (() => T);
 /** The Type T or a promise of it. */
 export type Awaitable<T> = T | Promise<T>;
+/** Prettify the type of an object. */
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+export type Prettify<T> = { [K in keyof T]: T[K]; } & unknown;
 /** The keys of an object that have values of type C. */
 export type ConditionalKeys<T extends object, C> = { [K in keyof T]: T[K] extends C ? K : never }[keyof T];
 /** Override some properties of type A with properties of type B. */
 export type Override<A extends object, B extends object> = Omit<A, keyof B> & {
 	[K in keyof B as B[K] extends never ? never : K]: B[K]
 };
-/** Prettify the type of an object. */
-// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-export type Prettify<T> = { [K in keyof T]: T[K]; } & unknown;
-
+/** Require some properties of type T. */
+export type SetRequired<T, K extends keyof T> = Prettify<Omit<T, K> & Required<Pick<T, K>>>;
+/** Make some properties of type T optional. */
+export type SetOptional<T, K extends keyof T> = Prettify<Omit<T, K> & Partial<Pick<T, K>>>;
 /** Swap the keys and values of an object. */
 export type Transpose<T extends Record<string, string | number>> = Record<Values<T>, keyof T>;
 /** Union of types that can be used as an object's key */
