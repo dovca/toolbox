@@ -5,6 +5,7 @@
 export * from "./array/all";
 export * from "./array/any";
 export * from "./array/at";
+export * from "./array/choose";
 export * from "./array/chunk";
 export * from "./array/compact";
 export * from "./array/converge";
