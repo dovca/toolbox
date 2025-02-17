@@ -88,8 +88,8 @@ export type Prettify<T> = { [K in keyof T]: T[K]; } & unknown;
 /** The keys of an object that have values of type C. */
 export type ConditionalKeys<T extends object, C> = { [K in keyof T]: T[K] extends C ? K : never }[keyof T];
 /** Override some properties of type A with properties of type B. */
-export type Override<A extends object, B extends object> = Omit<A, keyof B> & {
-	[K in keyof B as B[K] extends never ? never : K]: B[K]
+export type Override<Old extends object, New extends object> = Omit<Old, keyof New> & {
+	[K in keyof New as New[K] extends never ? never : K]: New[K]
 };
 /** Require some properties of type T. */
 export type SetRequired<T, K extends keyof T> = Prettify<Omit<T, K> & Required<Pick<T, K>>>;
