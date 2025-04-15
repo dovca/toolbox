@@ -1,6 +1,6 @@
 {
   "name": "@dovca/toolbox",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "A set of general-purpose typescript functions for common tasks.",
   "author": "david@ovcacik.xyz",
   "homepage": "https://github.com/dovca/toolbox",
