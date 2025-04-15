@@ -66,6 +66,8 @@ export type Arrayifier<T> = Fn<T[], T>;
 export type Dictionary<T = any> = Record<string, T>;
 /** The type of the keys of an object. */
 export type StringKeys<T extends object> = ToString<keyof T>;
+/** the type of the values of an array. */
+export type ArrayValues<T extends AnyArray> = T[number];
 /** The type of the values of an object. */
 export type Values<T extends object> = T[keyof T];
 /** The type of the entries of an object. */
