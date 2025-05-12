@@ -17,3 +17,5 @@ export function flow<V, A, B, C, D, E, F, G, H, I, J>(value: V, ...fns: FnChain<
 export function flow(value: any, ...fns: Fn<any>[]): any {
 	return fns.reduce((x, f) => f(x), value);
 }
+
+export {flow as _};
