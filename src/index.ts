@@ -109,6 +109,7 @@ export * from "./object/findKey";
 export * from "./object/findValue";
 export * from "./object/flatten";
 export * from "./object/fromPairs";
+export * from "./object/hasDeepKey";
 export * from "./object/keys";
 export * from "./object/keysWhere";
 export * from "./object/mapEntries";
