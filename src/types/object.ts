@@ -1,13 +1,19 @@
 import type {AnyArray, Override, Prettify} from './utils';
+import type {CollapseAllRepeats, RemoveAllPrefixes, RemoveAllSuffixes} from './string';
+
+export type NormalizeAccessPath<Path extends string, Sep extends string = '.'> =
+	RemoveAllPrefixes<RemoveAllSuffixes<CollapseAllRepeats<Path, Sep>, Sep>, Sep>;
 
 type _Access<Obj, Key extends string> = Obj extends object | AnyArray
-	? Key extends keyof Obj
-		? Obj[Key]
-		: Key extends `${number}`
-			? Obj extends AnyArray
-				? Obj[number]
+	? Key extends ''
+		? Obj
+		: Key extends keyof Obj
+			? Obj[Key]
+			: Key extends `${number}`
+				? Obj extends AnyArray
+					? Obj[number]
+					: undefined
 				: undefined
-			: undefined
 	: undefined;
 
 type _Assign<Obj, Key extends string, Value> = Obj extends object

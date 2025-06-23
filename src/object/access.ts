@@ -1,4 +1,4 @@
-import type {Access} from '../types/object';
+import type {Access, NormalizeAccessPath} from '../types/object';
 import {isArray} from '../predicate/isArray';
 import {isObject} from '../predicate/isObject';
 import {splitOnce} from '../string/split';
@@ -22,9 +22,17 @@ export function access<
 >(
 	path: Path,
 	separator: Sep = '.' as Sep,
-): Accessor<Path, Sep> {
+): Accessor<NormalizeAccessPath<Path>, Sep> {
 	return (obj) => {
+		if (path === '') {
+			return obj as Access<typeof obj, NormalizeAccessPath<Path>, Sep>;
+		}
+
 		const [key, rest] = splitOnce(separator)(path);
+
+		if (key === '') {
+			return access(rest, separator)(obj) as Access<typeof obj, NormalizeAccessPath<Path>, Sep>;
+		}
 
 		return (
 			rest
@@ -32,6 +40,6 @@ export function access<
 					? access(rest, separator)(obj[key as keyof typeof obj])
 					: undefined
 				: obj[key as keyof typeof obj]
-		) as Access<typeof obj, Path, Sep>
-	}
+		) as Access<typeof obj, NormalizeAccessPath<Path>, Sep>;
+	};
 }
