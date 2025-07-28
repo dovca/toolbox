@@ -1,6 +1,4 @@
 import type {Fn} from '../types/utils';
-import {isOneOf} from '../predicate/isOneOf';
-import {remove} from './remove';
 
 /**
  * Removes values of a flowing array based on value equality using SameValueZero.
@@ -14,5 +12,5 @@ import {remove} from './remove';
 export function discard<V>(...values: readonly V[]): Fn<V[], readonly V[]>;
 export function discard<V, D extends V = V>(...values: readonly D[]): Fn<Exclude<V, D>[], readonly V[]>;
 export function discard<V>(...values: readonly V[]): Fn<V[], readonly V[]> {
-	return remove(isOneOf(...values)) as any;
+	return (arr) => arr.filter((val) => !values.includes(val));
 }

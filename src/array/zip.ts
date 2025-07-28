@@ -34,7 +34,7 @@ export function zipWith<A, I, R>(zipper: Fn2<R, Maybe<I>, Maybe<A>>): Fn<Fn<R[],
  * @returns Produces a new array of tuples.
  */
 export function zip<I, A>(values: readonly A[]): Fn<[Maybe<I>, Maybe<A>][], readonly I[]> {
-	return zipWith(gather<[Maybe<I>, Maybe<A>], Maybe<I>, Maybe<A>>(identity))(values);
+	return zipWith((a, b) => [a, b] as [Maybe<I>, Maybe<A>])(values);
 }
 
 export function zipObject<K extends string | number, V>(keys: readonly K[], values: readonly V[]): Record<K, V> {

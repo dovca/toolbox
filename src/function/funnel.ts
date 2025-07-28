@@ -53,5 +53,5 @@ export function funnel<A extends T5, B, C, D, E, F, G, H>(f1: FnT5<B, A>, ...fns
 export function funnel<A extends T5, B, C, D, E, F, G, H, I>(f1: FnT5<B, A>, ...fns: FnChain<[B, C, D, E, F, G, H, I]>): FnT5<I, A>;
 
 export function funnel(first: (...args: any[]) => any, ...rest: ((arg: any) => any)[]): Fn<any> {
-	return gather(pipe(spread(first), ...rest));
+	return (...args) => pipe((a) => first(...a), ...rest)(args);
 }

@@ -1,6 +1,4 @@
 import type {Fn} from '../types/utils';
-import {isOneOf} from '../predicate/isOneOf';
-import {filter} from './filter';
 
 /**
  * Creates a new array with elements from the flowing array that are present in the given values.
@@ -13,5 +11,5 @@ import {filter} from './filter';
  * ```
  */
 export function keep<T>(...values: readonly T[]): Fn<T[], readonly T[]> {
-	return filter(isOneOf(...values))
+	return (arr) => arr.filter((val) => values.includes(val));
 }

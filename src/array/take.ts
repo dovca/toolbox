@@ -1,5 +1,4 @@
-import type {AnyArray, Fn, IterationCallback, IterationResult, ToolboxGeneratorFunction} from '../types/utils';
-import {funnel} from '../function/funnel';
+import type {AnyArray, Fn, IterationCallback, ToolboxGeneratorFunction} from '../types/utils';
 import {not} from '../boolean/logic';
 import {identity} from '../misc/identity';
 import {backwardIterator} from '../iterators/backward';
@@ -15,20 +14,16 @@ function takeFactory<T>(
 	mutator: Fn<Fn<T[], AnyArray>, T> = push,
 	predicateModifier: Fn<boolean> = identity,
 ): Fn<Fn<T[], readonly T[]>, IterationCallback<boolean, T>> {
-	return (predicate) => {
-		const finalPredicate = funnel<IterationResult<T>, boolean, boolean>(predicate, predicateModifier);
-
-		return (values) => {
-			let result: T[] = [];
-			for (const [value, index, array] of iterator(values)) {
-				if (finalPredicate(value, index, array)) {
-					result = mutator(value)(result);
-				} else {
-					break;
-				}
+	return (predicate) => (values) => {
+		let result: T[] = [];
+		for (const [value, index, array] of iterator(values)) {
+			if (predicateModifier(predicate(value, index, array))) {
+				result = mutator(value)(result);
+			} else {
+				break;
 			}
-			return result;
-		};
+		}
+		return result;
 	};
 }
 

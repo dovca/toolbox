@@ -1,5 +1,3 @@
-import {reduce} from './reduce';
-import {operatorPlus} from '../lang/operators';
 import type {Fn} from '../types/utils';
 
 /**
@@ -11,4 +9,4 @@ import type {Fn} from '../types/utils';
  * sum([1, 2, 3, 4]); // 10
  * ```
  */
-export const sum: Fn<number, readonly number[]> = reduce(operatorPlus, 0);
+export const sum: Fn<number, readonly number[]> = (array) => array.reduce((acc, val) => acc + val, 0);

@@ -1,5 +1,4 @@
 import type {Fn, FnChain, Maybe, Nullable} from '../types/utils';
-import {reduce} from '../array/reduce';
 import {isNullish} from '../predicate/isNullish';
 
 export function pipe<T>(): Fn<T>;
@@ -13,7 +12,12 @@ export function pipe<A, B, C, D, E, F, G, H>(...fns: FnChain<[A, B, C, D, E, F, 
 export function pipe<A, B, C, D, E, F, G, H, I>(...fns: FnChain<[A, B, C, D, E, F, G, H, I]>): Fn<I, A>;
 export function pipe(...fns: Fn<any>[]): Fn<any>;
 export function pipe(...fns: Fn<any>[]): Fn<any> {
-	return (value) => reduce<any>((x, f) => f(x), value)(fns);
+	return (value) => {
+		for (const fn of fns) {
+			value = fn(value);
+		}
+		return value;
+	}
 }
 
 export function optionalPipe<T>(): Fn<T>;

@@ -9,7 +9,7 @@ import type {Fn} from '../types/utils';
  */
 export function repeat<T>(times: number, fn: Fn<T>): Fn<T> {
 	return (value) => {
-		for (let i = times; i--;) {
+		while (times--) {
 			value = fn(value);
 		}
 		return value;

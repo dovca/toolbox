@@ -1,9 +1,4 @@
 import type {Fn, IterationCallback} from '../types/utils';
-import {filter} from './filter';
-import {funnel} from '../function/funnel';
-import {not} from '../boolean/logic';
-
-
 
 /**
  * Removes values of a flowing array based on a predicate.
@@ -11,5 +6,5 @@ import {not} from '../boolean/logic';
  * @returns Produces a new array without values that pass the predicate.
  */
 export function remove<T>(predicate: IterationCallback<boolean, T>): Fn<T[], readonly T[]> {
-	return filter(funnel(predicate, not));
+	return (values) => values.filter((value, index, array) => !predicate(value, index, array));
 }

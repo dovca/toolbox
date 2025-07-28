@@ -11,9 +11,5 @@ import type {Reverse} from '../types/array';
  * ```
  */
 export function reverse<T extends AnyArray>(values: T): Reverse<T> {
-	const result = Array.from({length: values.length});
-	for (const [value, index] of reversedIterator(values)) {
-		result[index] = value;
-	}
-	return result as Reverse<T>;
+	return values.toReversed() as Reverse<T>;
 }
