@@ -2,6 +2,11 @@ import type {Fn, FnChain} from '../types/utils';
 
 /**
  * Constructs something similar to a pipe function, but the first argument being the initial value to be passed through.
+ * @example
+ * ```typescript
+ * flow(1, double, increment); // 3
+ * flow(1, increment, square); // 4
+ * ```
  */
 export function flow<V>(value: V): V;
 export function flow<V, A>(value: V, ...fns: FnChain<[V, A]>): A;
