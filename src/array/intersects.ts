@@ -1,6 +1,5 @@
 import type {Equalizer, Fn} from '../types/utils';
 import {memoize} from '../function/memoize';
-import {some} from './some';
 import {sameValueZero} from '../utils/sameValueZero';
 
 /** Factory that creates new intersection functions with a custom comparator. See `intersects` for a simpler version.
@@ -13,7 +12,7 @@ import {sameValueZero} from '../utils/sameValueZero';
  */
 export function intersectsWith<T>(comparator: Equalizer<T>): Fn<Fn<boolean, readonly T[]>, readonly T[]> {
 	const memComparator = memoize(comparator);
-	return (other) => some((i) => other.some((o) => memComparator(i, o)));
+	return (other) => (values) => values.some((i) => other.some((o) => memComparator(i, o)));
 }
 
 /** Produces `true` iff the flowing array has any elements in common with the given array.

@@ -30,15 +30,14 @@ export function keyBy<T extends object, K extends keyof T = keyof T>(key: K): Fn
 export function keyBy<K extends string, T extends { [k in K]: string | number }>(key: K): Fn<Partial<Record<T[K], T>>, readonly T[]>;
 
 export function keyBy<T>(key: keyof T | Fn<string | number, T>): Fn<Dictionary<T>, readonly T[]> {
+	const computeKey: Fn<string, T> = typeof key === 'function'
+		? (value) => String(key(value))
+		: (value) => String(value[key]);
+
 	return (values) => {
 		const result: Dictionary<T> = {};
 		for (const value of values) {
-			const computedKey = String(
-				typeof key === 'function'
-					? key(value)
-					: value[key]
-			);
-			result[computedKey] = value;
+			result[computeKey(value)] = value;
 		}
 		return result;
 	};

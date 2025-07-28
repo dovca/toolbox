@@ -3,6 +3,7 @@ import {entries} from './entries';
 
 /**
  * Produces an array of keys from the given object where the value passes the predicate.
+ * To filter keys based on the key itself, use `keys(obj)` followed by `filter` instead.
  * @param predicate The predicate to test each value against.
  * @returns Produces an array of keys.
  * @example

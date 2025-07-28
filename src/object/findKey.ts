@@ -3,6 +3,7 @@ import type {Fn, Indexable, Maybe, Predicate, StringKeys, Values} from '../types
 
 /**
  * Returns the first key whose value satisfies the predicate, or undefined if no such key is found.
+ * To find a key based on the key itself, use `keys(obj)` followed by `find` instead.
  * @param predicate The predicate to check.
  * @returns The found key or undefined.
  * @example

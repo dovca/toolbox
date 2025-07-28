@@ -1,33 +1,33 @@
 import type {Fn, Fn2, Fn3, Fn4, Fn5, FnN} from '../types/utils';
 import {MultiMap} from '../utils/MultiMap';
 
-type MemoizedFnBase = {
+interface MemoizedFnBase {
 	clear(): void;
-};
+}
 
-export type MemoizedFn<R, A> = {
+export interface MemoizedFn<R, A> extends MemoizedFnBase {
 	(a: A): R;
-} & MemoizedFnBase;
+}
 
-export type MemoizedFn2<R, A, B> = {
+export interface MemoizedFn2<R, A, B> extends MemoizedFnBase {
 	(a: A, b: B): R;
-} & MemoizedFnBase;
+}
 
-export type MemoizedFn3<R, A, B, C> = {
+export interface MemoizedFn3<R, A, B, C> extends MemoizedFnBase {
 	(a: A, b: B, c: C): R;
-} & MemoizedFnBase;
+}
 
-export type MemoizedFn4<R, A, B, C, D> = {
+export interface MemoizedFn4<R, A, B, C, D> extends MemoizedFnBase {
 	(a: A, b: B, c: C, d: D): R;
-} & MemoizedFnBase;
+}
 
-export type MemoizedFn5<R, A, B, C, D, E> = {
+export interface MemoizedFn5<R, A, B, C, D, E> extends MemoizedFnBase {
 	(a: A, b: B, c: C, d: D, e: E): R;
-} & MemoizedFnBase;
+}
 
-export type MemoizedFnN<R, P extends readonly any[]> = {
+export interface MemoizedFnN<R, P extends readonly any[]> extends MemoizedFnBase {
 	(...args: P): R;
-} & MemoizedFnBase;
+}
 
 export function memoize<R, A>(fn: Fn<R, A>): MemoizedFn<R, A>;
 export function memoize<R, A, B>(fn: Fn2<R, A, B>): MemoizedFn2<R, A, B>;

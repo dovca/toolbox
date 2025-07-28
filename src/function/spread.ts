@@ -4,7 +4,7 @@ import type {Fn, Fn2, Fn3, Fn4, Fn5} from '../types/utils';
  * Spread the flowing array of values as arguments for the given function.
  * @example
  * ```typescript
- * 
+ * spread((a: number, b: number) => a + b)([1, 2]); // 3
  * ```
  */
 export function spread<R, A>(fn: Fn<R, A>): Fn<R, A>;

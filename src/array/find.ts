@@ -1,6 +1,5 @@
 import type {Fn, FnT3, IterationResult, Maybe, ToolboxGeneratorFunction} from '../types/utils';
 import {backwardIterator} from '../iterators/backward';
-import {forwardIterator} from '../iterators/forward';
 import {reversedIterator} from '../iterators/reversed';
 
 type FindFn = <T>(matcher: FnT3<boolean, IterationResult<T>>) => Fn<Maybe<T>, readonly T[]>;
@@ -24,7 +23,7 @@ function findFactory<T>(generator: ToolboxGeneratorFunction<T>): Fn<Fn<Maybe<T>,
  * find(isOdd)([2, 3, 4, 5, 6]); // 3
  * ```
  */
-export const find: FindFn = findFactory(forwardIterator);
+export const find: FindFn = (matcher) => (values) => values.find(matcher);
 
 /**
  * Finds the last value in the flowing array that passes the given predicate.

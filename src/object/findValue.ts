@@ -3,6 +3,7 @@ import {entries} from './entries';
 
 /**
  * Returns the first value whose key satisfies the predicate, or undefined if no such value is found.
+ * To find a value based on the value itself, use `values(obj)` followed by `find` instead.
  * @param predicate The predicate to check.
  * @returns The found key or undefined.
  * @example

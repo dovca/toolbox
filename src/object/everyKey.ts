@@ -1,5 +1,4 @@
 import type {Predicate, StringKeys} from '../types/utils';
-import {every} from '../array/every';
 import {keys} from './keys';
 
 /**
@@ -8,5 +7,5 @@ import {keys} from './keys';
  * @returns Produces `true` if all keys pass the predicate, otherwise `false`.
  */
 export function everyKey<T extends object>(predicate: Predicate<StringKeys<T>>): Predicate<T> {
-	return (obj) => every(predicate)(keys(obj));
+	return (obj) => keys(obj).every(predicate);
 }
