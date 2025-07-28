@@ -1,22 +1,22 @@
-import type {Fn, Indexable, Predicate, StringKeys, ValidIndex, Values} from '../types/utils';
+import type {Fn, Indexable, Predicate, StringKeys, ValidKey, Values} from '../types/utils';
 import {isOneOf} from '../predicate/isOneOf';
 import {entries} from './entries';
 
 type PickForeign<
 	Obj extends Indexable,
-	Keys extends ValidIndex,
+	Keys extends ValidKey,
 > = Pick<Obj, { [K in keyof Obj]: K extends Keys ? K : never; }[keyof Obj]>;
 
 type OmitForeign<
 	Obj extends Indexable,
-	Keys extends ValidIndex,
+	Keys extends ValidKey,
 > = Omit<Obj, { [K in keyof Obj]: K extends Keys ? K : never; }[keyof Obj]>;
 
-type Picker<Keys extends ValidIndex> = {
+type Picker<Keys extends ValidKey> = {
 	<T extends Indexable>(object: T): PickForeign<T, Keys>;
 };
 
-type Omitter<Keys extends ValidIndex> = {
+type Omitter<Keys extends ValidKey> = {
 	<T extends Indexable>(object: T): OmitForeign<T, Keys>;
 };
 
@@ -68,7 +68,7 @@ export function pickByValues<T extends Indexable>(picker: Predicate<Values<T>>):
  * pick('a', 'b')({a: 1, b: 2, c: 3}); // {a: 1, b: 2}
  * ```
  */
-export function pick<K extends ValidIndex[]>(...keys: K): Picker<K[number]> {
+export function pick<K extends ValidKey[]>(...keys: K): Picker<K[number]> {
 	return pickByKeys(isOneOf(...keys)) as any;
 }
 
@@ -107,6 +107,6 @@ export function omitByValues<T extends Indexable>(picker: Predicate<Values<T>>):
  * omit('a', 'b')({a: 1, b: 2, c: 3}); // {c: 3}
  * ```
  */
-export function omit<K extends ValidIndex[]>(...keys: K): Omitter<K[number]> {
+export function omit<K extends ValidKey[]>(...keys: K): Omitter<K[number]> {
 	return omitByKeys(isOneOf(...keys)) as any;
 }

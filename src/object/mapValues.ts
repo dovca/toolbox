@@ -1,4 +1,4 @@
-import type {Fn2, Indexable, StringKeys, ValidIndex, Values} from '../types/utils';
+import type {Fn2, Indexable, StringKeys, ValidKey, Values} from '../types/utils';
 import {entries} from './entries';
 import type {ToString} from '../types/convert';
 
@@ -16,7 +16,7 @@ import type {ToString} from '../types/convert';
  * mapValues((value) => value * 2)({a: 1, b: 2}); // {a: 2, b: 4}
  * ```
  */
-export function mapValues<ValueIn, KeyIn extends ValidIndex, ValueOut>(
+export function mapValues<ValueIn, KeyIn extends ValidKey, ValueOut>(
 	mapper: Fn2<ValueOut, ValueIn, ToString<KeyIn>>,
 ): (object: Record<KeyIn, ValueIn>) => Record<ToString<KeyIn>, ValueOut>;
 
@@ -37,7 +37,7 @@ export function mapValues<ObjectIn extends Indexable, ValueOut>(
 	mapper: Fn2<ValueOut, Values<ObjectIn>, StringKeys<ObjectIn>>,
 ): (object: ObjectIn) => Record<StringKeys<ObjectIn>, ValueOut>;
 
-export function mapValues<ValueIn, KeyIn extends ValidIndex, ValueOut>(
+export function mapValues<ValueIn, KeyIn extends ValidKey, ValueOut>(
 	mapper: Fn2<ValueOut, ValueIn, ToString<KeyIn>>,
 ): (object: Record<KeyIn, ValueIn>) => Record<ToString<KeyIn>, ValueOut> {
 	return (obj: { [K in KeyIn]: ValueIn}) => {

@@ -1,4 +1,4 @@
-import type {Entries, Fn, FromEntries, Indexable, StringKeys, ValidIndex, Values} from '../types/utils';
+import type {Entries, Fn, FromEntries, Indexable, StringKeys, ValidKey, Values} from '../types/utils';
 import {entries} from './entries';
 
 /** Maps the entries of an object to a new object.
@@ -9,7 +9,7 @@ import {entries} from './entries';
  * mapEntries(([key, value]) => [key.toUpperCase(), value * 2])({a: 1, b: 2}); // {A: 2, B: 4}
  * ```
  */
-export function mapEntries<InObject extends object, OutEntries extends readonly [ValidIndex, any]>(
+export function mapEntries<InObject extends object, OutEntries extends readonly [ValidKey, any]>(
 	mapper: Fn<OutEntries, Entries<InObject>>,
 ): Fn<FromEntries<OutEntries>, InObject>;
 /** Maps the entries of an object to a new object.

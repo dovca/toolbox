@@ -14,27 +14,27 @@ export type T5<A = any, B = A, C = B, D = C, E = D> = [A, B, C, D, E];
 
 /** A function that takes a variable number of parameters. */
 export type FnN<R, P extends readonly any[] = readonly any[]> = (...args: P) => R;
-/** A function that takes one parameter. */
+/** A function that takes one parameter P and returns R. */
 export type Fn<R, P1 = R> = FnN<R, T1<P1>>;
-/** A function that takes two parameters. */
+/** A function that takes two parameters P1, P2 and returns R. */
 export type Fn2<R, P1 = R, P2 = P1> = FnN<R, T2<P1, P2>>;
-/** A function that takes three parameters. */
+/** A function that takes three parameters P1, P2, P3 and returns R. */
 export type Fn3<R, P1 = R, P2 = P1, P3 = P2> = FnN<R, T3<P1, P2, P3>>;
-/** A function that takes four parameters. */
+/** A function that takes four parameters P1, P2, P3, P4 and returns R. */
 export type Fn4<R, P1 = R, P2 = P1, P3 = P2, P4 = P3> = FnN<R, T4<P1, P2, P3, P4>>;
-/** A function that takes five parameters. */
+/** A function that takes five parameters P1, P2, P3, P4, P5 and returns R. */
 export type Fn5<R, P1 = R, P2 = P1, P3 = P2, P4 = P3, P5 = P4> = FnN<R, T5<P1, P2, P3, P4, P5>>;
-/** A function that takes a single parameter specified as a tuple. */
+/** A function that takes a single parameter specified as a tuple T and returns R. */
 export type FnT1<R, T extends T1> = FnN<R, T>;
-/** A function that takes two parameters specified as a tuple. */
+/** A function that takes two parameters specified as a tuple T and returns R. */
 export type FnT2<R, T extends T2> = FnN<R, T>;
-/** A function that takes three parameters specified as a tuple. */
+/** A function that takes three parameters specified as a tuple T and returns R. */
 export type FnT3<R, T extends T3> = FnN<R, T>;
-/** A function that takes four parameters specified as a tuple. */
+/** A function that takes four parameters specified as a tuple T and returns R. */
 export type FnT4<R, T extends T4> = FnN<R, T>;
-/** A function that takes five parameters specified as a tuple. */
+/** A function that takes five parameters specified as a tuple T and returns R. */
 export type FnT5<R, T extends T5> = FnN<R, T>;
-/** Constructs a tuple of functions that feed their results to each other. */
+/** Constructs a tuple of functions that feed their results into parameters left to right. */
 export type FnChain<T extends readonly any[]> = T extends [infer A, infer B, ...infer Rest]
 	? [Fn<B, A>, ...FnChain<[B, ...Rest]>]
 	: [];
@@ -51,29 +51,29 @@ export type ToolboxGeneratorFunction<T> = Fn<ToolboxGenerator<T>, readonly T[]>;
 /** Used as an invisible glue to join strings. */
 export type JoinMarker = '‍‍‍';
 
-/** A function that takes one parameter and returns true or false. */
+/** A function that takes one parameter of type T and returns true or false. */
 export type Predicate<T> = Fn<boolean, T>;
-/** A function that takes two parameters of the same type and returns a result. */
+/** A function that takes two parameters of the same type T and returns a result R. */
 export type Comparator<T, R> = Fn2<R, T>;
-/** A function that takes two parameters of the same type and returns a boolean. */
+/** A function that takes two parameters of the same type T and returns true or false. */
 export type Equalizer<T> = Comparator<T, boolean>;
-/** A function that takes two parameters of the same type and returns a number indicating their relative order. */
+/** A function that takes two parameters of the same type T and returns a number indicating their relative order. */
 export type Sorter<T> = Comparator<T, number>;
-/** A function that takes one parameter and returns it as an array. */
+/** A function that takes one parameter of type T and returns it as an array. */
 export type Arrayifier<T> = Fn<T[], T>;
 
 /** An object with string keys and values of type T. */
 export type Dictionary<T = any> = Record<string, T>;
-/** The type of the keys of an object. */
+/** The type of the keys of an object T. */
 export type StringKeys<T extends object> = ToString<keyof T>;
-/** the type of the values of an array. */
+/** The type of the values of an array. */
 export type ArrayValues<T extends AnyArray> = T[number];
-/** The type of the values of an object. */
+/** The type of the values of an object T. */
 export type Values<T extends object> = T[keyof T];
-/** The type of the entries of an object. */
+/** The type of the entries of an object T. */
 export type Entries<T extends object> = { [K in keyof T]-?: [K, T[K]]; }[keyof T];
 /** The type of the object constructed from the given entries. */
-export type FromEntries<T extends readonly [ValidIndex, any]> = { [K in T as K[0]]: K[1] };
+export type FromEntries<T extends readonly [ValidKey, any]> = { [K in T as K[0]]: K[1] };
 /** The type T or `null` or `undefined`. */
 export type Nullable<T> = T | null | undefined;
 /** The type T or `undefined`. */
@@ -97,10 +97,10 @@ export type Override<Old extends object, New extends object> = Omit<Old, keyof N
 export type SetRequired<T, K extends keyof T> = Prettify<Omit<T, K> & Required<Pick<T, K>>>;
 /** Make some properties of type T optional. */
 export type SetOptional<T, K extends keyof T> = Prettify<Omit<T, K> & Partial<Pick<T, K>>>;
-/** Swap the keys and values of an object. */
+/** Swap the keys and values of an object T. */
 export type Transpose<T extends Record<string, string | number>> = Record<Values<T>, keyof T>;
-/** Union of types that can be used as an object's key */
-export type ValidIndex = string | number | symbol;
+/** Types that can be used as an object's key */
+export type ValidKey = string | number | symbol;
 
 /** The empty tuple type. */
 export type EmptySet = readonly [];
@@ -114,7 +114,7 @@ export type Falsy = false | 0 | '' | null | undefined | 0n;
 export type Primitive = string | number | boolean | bigint | null | undefined;
 /** The type of objects than can be compared numerically. */
 export type Numeric = number | { valueOf(): number; };
-
+/** The type of structured non-primitive values. */
 export type Indexable = object | AnyArray;
 
 /** A single-element tuple of type containing either type T or itself recursively. */

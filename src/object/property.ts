@@ -1,6 +1,6 @@
-import type {Indexable, ValidIndex} from '../types/utils';
+import type {Indexable, ValidKey} from '../types/utils';
 
-type PropertyExtractor<Prop extends ValidIndex> = <Obj extends { [P in Prop]: any }>(object: Obj) => Obj[Prop];
+type PropertyExtractor<Prop extends ValidKey> = <Obj extends { [P in Prop]: any }>(object: Obj) => Obj[Prop];
 
 type PropertyOfExtractor<Obj extends Indexable> = <Prop extends keyof Obj>(property: Prop) => Obj[Prop];
 
@@ -13,7 +13,7 @@ type PropertyOfExtractor<Obj extends Indexable> = <Prop extends keyof Obj>(prope
  * property('a')({a: 1, b: 2}); // 1
  * ```
  */
-export function property<Prop extends ValidIndex>(prop: Prop): PropertyExtractor<Prop> {
+export function property<Prop extends ValidKey>(prop: Prop): PropertyExtractor<Prop> {
 	return (obj) => obj[prop];
 }
 
