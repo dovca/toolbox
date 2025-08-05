@@ -8,7 +8,6 @@ import {
 	push,
 	square,
 	reverse,
-	lowerCase,
 	optionalPipe
 } from '../../src';
 
@@ -36,13 +35,12 @@ test('pipe: functions of different argument types', () => {
 		square,
 		increment,
 		fromCharCode,
-		lowerCase,
 		toArray,
 		push('b'),
 		reverse,
 	);
 
-	expect(piped(1)).toEqual(['b', 'a']);
+	expect(piped(1)).toEqual(['b', 'A']);
 });
 
 test('optionalPipe: 0 functions', () => {
@@ -74,13 +72,12 @@ test('optionalPipe: functions of different argument types', () => {
 		square,
 		increment,
 		fromCharCode,
-		lowerCase,
 		toArray,
 		push('b'),
 		reverse,
 	);
 
-	expect(piped(1)).toEqual(['b', 'a']);
+	expect(piped(1)).toEqual(['b', 'A']);
 	expect<string[] | undefined>(piped(null)).toEqual(undefined);
 	expect<string[] | undefined>(piped(undefined)).toEqual(undefined);
 });
