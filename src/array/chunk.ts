@@ -1,20 +1,26 @@
 import type {Fn, IterationCallback, Maybe} from '../types/utils';
 import {forwardIterator} from '../iterators/forward';
 import {property} from '../object/property';
+import {identity} from '../misc/identity';
 
 /**
  * Split a flowing array into chunks based on the result of the mapper function. A chunk boundary is created between
  * two elements if the result of the mapper function differs. This method is similar to run-length encoding.
- * @param mapper The function to determine the chunk boundaries.
- * @returns Produces an array of chunks.
+ * @param mapper The function to determine the chunk boundaries. If no mapper is provided, the identity function is used,
+ * which means that in each resulting chunk, elements are equal to each other.
+ * @returns Produces an array of chunks, where each element in a chunk maps to the same value.
  * @example
  * ```typescript
+ * chunkWith()([1, 1, 1, 2, 3, 3]) // [[1, 1, 1], [2], [3, 3]]
  * chunkWith(isOdd)([1, 3, 5, 2, 4, 6, 7]) // [[1, 3, 5], [2, 4, 6], [7]]
  * chunkWith(isLessThan(3))([1, 2, 3, 4, 5]) // [[1, 2], [3, 4, 5]]
  * ```
  */
-export function chunkWith<T, M = unknown>(mapper: IterationCallback<M, T>): Fn<T[][], readonly T[]> {
+export function chunkWith<T, M = unknown>(mapper: IterationCallback<M, T> = identity): Fn<T[][], readonly T[]> {
 	return (values) => {
+		if (values.length === 0) return [];
+		if (values.length === 1) return [values] as T[][];
+
 		let group: T[] = [];
 		let mapperResult: Maybe<M> = undefined;
 		let lastMapperResult: Maybe<M> = undefined;

@@ -11,6 +11,7 @@ test('chunk', () => {
 });
 
 test('chunkWith', () => {
+	expect(chunkWith()([1, 1, 1, 2, 3, 3])).toEqual([[1, 1, 1], [2], [3, 3]]);
 	expect(chunkWith(isOdd)([])).toEqual([]);
 	expect(chunkWith(isOdd)([1, 3, 5, 2, 4, 6, 7])).toEqual([[1, 3, 5], [2, 4, 6], [7]]);
 	expect(chunkWith(isLessThan(3))([1, 2, 3, 4, 5])).toEqual([[1, 2], [3, 4, 5]]);
