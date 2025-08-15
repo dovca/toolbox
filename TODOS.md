@@ -1,2 +1,4 @@
 - chunkWith and chunk
   - maybe rename to chunk and chunkSize?
+- map
+  - indicate that passing a tuple will return a tuple

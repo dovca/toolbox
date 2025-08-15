@@ -46,6 +46,7 @@ export * from "./array/some";
 export * from "./array/sort";
 export * from "./array/sum";
 export * from "./array/take";
+export * from "./array/tally";
 export * from "./array/union";
 export * from "./array/unique";
 export * from "./array/unshift";
